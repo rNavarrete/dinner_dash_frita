@@ -1,0 +1,7 @@
+== README
+
+FRITA - a cuban gastronomic love affair
+
+staging(http://)
+
+production(http://)
