@@ -1,0 +1,9 @@
+<% if flash[:errors] %>
+  <% flash[:errors].each do |k, v| %>
+    <%= "#{k.to_s.capitalize} #{v.first}" %>
+  <% end %>
+<% end %>
+
+<% if flash[:notice] %>
+  <%= "#{flash[:notice]}" %>
+<% end %>

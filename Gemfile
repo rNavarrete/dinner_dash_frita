@@ -10,9 +10,8 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
 
+gem 'bcrypt', '~> 3.1.7'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -27,6 +26,7 @@ group :test do
   gem 'capybara', '~> 2.4.3'
   gem 'poltergeist', '~> 1.5.1'
   gem 'launchy', '~> 2.4.2'
+  gem 'database_cleaner', '~> 1.3.0'
 end
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do
