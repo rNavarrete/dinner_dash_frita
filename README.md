@@ -5,4 +5,4 @@ FRITA - a cuban gastronomic love affair
 
 [staging](http://frozen-dusk-9793.herokuapp.com/)
 
-[production](http://stormy-ocean-3691.herokuapp.com)
+[production](http://http://enigmatic-sands-5124.herokuapp.com)
