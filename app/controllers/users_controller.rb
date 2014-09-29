@@ -13,14 +13,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    if params[:password] == params[:password_confirmation]
-      @user = User.new(user_params)
-      if @user.save
-        flash[:notice] = 'Successfully Created'
-        redirect_to @user
-      end
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:notice] = 'Successfully Created'
+      redirect_to @user
     else
-      flash[:errors] = 'Please Try Again'
+      flash[:errors] = @user.errors.messages
       render :new
     end
   end

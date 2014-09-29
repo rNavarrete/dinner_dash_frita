@@ -26,6 +26,7 @@ group :test do
   gem 'capybara', '~> 2.4.3'
   gem 'poltergeist', '~> 1.5.1'
   gem 'launchy', '~> 2.4.2'
+  gem 'database_cleaner', '~> 1.3.0'
 end
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do
