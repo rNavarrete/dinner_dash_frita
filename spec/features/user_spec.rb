@@ -46,11 +46,8 @@ describe 'user login' do
     click_on('Login')
     expect(page).to have_content 'Hello test1'
   end
-  
+
   it 'successfully logs out user'
-
-  end
-
   it 'cannot login with wrong password'
   it 'cannot login with wrong username'
 end
