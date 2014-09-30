@@ -38,7 +38,7 @@ end
 describe 'user login' do
   before do
     User.create(name: 'test1', password: '1234')
-    visit(users_path)
+    visit(root_path)
     click_on('Login')
   end
 
@@ -61,7 +61,7 @@ describe 'user login' do
       end
       click_on('Logout')
 
-      expect(page).to have_content 'Successfuly Logged Out.'
+      expect(page).to have_content 'Successfully Logged Out.'
     end
   end
 
