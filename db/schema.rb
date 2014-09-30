@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140929223713) do
+ActiveRecord::Schema.define(version: 20140930005812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "items", force: true do |t|
+  create_table "item", force: true do |t|
     t.string   "title"
     t.text     "description"
     t.decimal  "price",              precision: 8, scale: 2
