@@ -1,0 +1,43 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.flash{
+  text-align: center;
+  padding: 10px;
+}
+.errors{
+  background: #ED4E4E;
+}
+.notice{
+  background: #94D487;
+}
+.main-content{
+  padding: 10px;
+}
+nav{
+  float: right;
+  width: 30%;
+  text-align: left;
+  padding: 16px 0 7px;
+  text-align: right;
+}
+#login{
+  width: 69%;
+  float: left;
+}
+input{
+  display: block;
+  float: left;
+  padding: 8px;
+  font-size: 14px;
+  text-align: left;
+}
+input[type='submit']{
+  font-size: 24px;
+}
+header{
+  clear: both;
+  margin-top: 60px;
+}

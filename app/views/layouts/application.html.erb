@@ -7,14 +7,20 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <nav>
-      <% if current_user %>
-        <%= link_to 'Logout', logout_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Login', login_path %> |
-        <%= link_to 'New Account', new_user_path %>
-      <% end %>
-    </nav>
-    <%= yield %>
+    <%= render 'shared/flash_messages' %>
+    <section class="main-content">
+      <nav>
+        <% if current_user %>
+          <%= link_to 'Logout', logout_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Login', login_path %> |
+          <%= link_to 'New Account', new_user_path %>
+        <% end %>
+      </nav>
+      <%= yield %>
+      <header>
+        <h1>Frita</h1>
+      </header>
+    </section>
   </body>
 </html>

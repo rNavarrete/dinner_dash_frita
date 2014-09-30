@@ -1,11 +1,5 @@
-<%= render 'shared/flash_messages' %>
-<%= form_tag login_path do %>
-  <%= label_tag :name %>
-  <%= text_field_tag :name %>
-
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-
+<%= form_tag(login_path, { id: "login" }) do |f| %>
+  <%= text_field_tag :name, "", placeholder: 'Name' %>
+  <%= password_field_tag :password, "", placeholder: 'Password', class: 'focus' %>
   <%= submit_tag 'Login' %>
-
 <% end %>

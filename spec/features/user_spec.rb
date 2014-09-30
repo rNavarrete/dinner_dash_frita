@@ -20,16 +20,16 @@ describe 'create user' do
     fill_in('Password', with: '0987')
     fill_in('Confirm Password', with: '0987')
     click_on('Create Account')
-    expect(page).to have_content "Name has already been taken"
+    expect(page).to have_content 'Name has already been taken'
 
   end
 
-  it "cannot create user if username passwords don't match" do
+  it 'cannot create user if username passwords don not match' do
     fill_in('Name', with: 'test10')
     fill_in('Password', with: '0987')
     fill_in('Confirm Password', with: '0907')
     click_on('Create Account')
-    expect(page).to have_content "Password_confirmation doesn't match Password"
+    expect(page).to have_content "Password confirmation doesn't match Password"
   end
 end
 
@@ -47,7 +47,15 @@ describe 'user login' do
     expect(page).to have_content 'Hello test1'
   end
 
-  it 'successfully logs out user'
-  it 'cannot login with wrong password'
+  it 'successfully logs out user' do
+    
+  end
+  it 'cannot login with wrong password' do
+    fill_in('Name', with: 'test1')
+    fill_in('Password', with: '1234')
+    fill_in('Confirm Password', with: '0987')
+    click_on('Login')
+    expect(page).to have_content 'Invalid login'
+  end
   it 'cannot login with wrong username'
 end
