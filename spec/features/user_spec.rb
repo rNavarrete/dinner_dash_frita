@@ -34,7 +34,23 @@ describe 'create user' do
 end
 
 describe 'user login' do
-  it 'correctly logs in with username and  password'
+  before do
+    User.create(name: 'test1', password_digest: '1234')
+    visit(users_path)
+  end
+
+  it 'correctly logs in with username and  password' do
+    fill_in('Name', with: 'test1')
+    fill_in('Password', with: '1234')
+    fill_in('Confirm Password', with: '1234')
+    click_on('Login')
+    expect(page).to have_content 'Hello test1'
+  end
+  
+  it 'successfully logs out user'
+
+  end
+
   it 'cannot login with wrong password'
   it 'cannot login with wrong username'
 end

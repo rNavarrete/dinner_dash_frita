@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    if session[:user_id].nil?
+      redirect_to '/'
+    elsif User.find(session[:user_id]).admin?
+      @users = User.all
+    else
+      redirect_to "/users/#{session[:user_id]}"
+    end
   end
 
   def new
@@ -16,10 +22,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = 'Successfully Created'
+      flash[:notice] = 'User Successfully Created'
       redirect_to @user
     else
-      flash[:errors] = @user.errors.messages
+      flash[:errors] = @user.errors.full_messages.to_sentence
       render :new
     end
   end

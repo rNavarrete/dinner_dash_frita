@@ -33,7 +33,6 @@ group :development do
   gem 'spring'
   gem 'pry', '~> 0.10.1'
   gem 'puma', '~> 2.9.1'
-
 end
 
 gem 'rails_12factor', group: :production
@@ -49,4 +48,4 @@ gem 'rails_12factor', group: :production
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-ruby "2.1.1"
+# ruby "2.1.1"

@@ -1,9 +1,7 @@
 <% if flash[:errors] %>
-  <% flash[:errors].each do |k, v| %>
-    <%= "#{k.to_s.capitalize} #{v.first}" %>
-  <% end %>
+  <%= content_tag :section, flash[:errors], class: "flash notice" %>
 <% end %>
 
 <% if flash[:notice] %>
-  <%= "#{flash[:notice]}" %>
+  <%= content_tag :section, flash[:notice], class: "flash notice" %>
 <% end %>
