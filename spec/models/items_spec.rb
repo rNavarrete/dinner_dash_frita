@@ -3,34 +3,44 @@ require 'spec_helper'
 describe "creating an item" do
 
   it "should have a title" do
-    item = Item.create(title: "Crickets")
+    item = Item.new(title: "Crickets", description: "crunchy")
     expect(item.title).to eq "Crickets"
   end
 
+  # it "should have a unique title" do
+  #   item     = Item.new(title: "Crickets", description: "Tasty")
+  #   item_two = Item.new(title: "Crickets", description: "Yummy")
+
+  #   result   = Item.all
+  #   require 'pry'
+  #   binding.pry
+  #   expect(result.count).to eq(1)
+  # end
+
   it "should have a description" do
-    item = Item.create(description: "Crunchy")
+    item = Item.new(description: "Crunchy")
     expect(item.description).to eq "Crunchy"
   end
 
   it "should have a price" do
-    item = Item.create(price: 9.99)
+    item = Item.new(price: 9.99)
     expect(item.price).to eq 9.99
   end
 
 
   it "should be invalid without title" do
-    item = Item.create(title: nil, description: "Crunchy")
+    item = Item.new(title: nil, description: "Crunchy")
     expect(item).to_not be_valid
   end
 
   it "should be invalid without a description" do
-    item = Item.create(description: nil, title: "Crickets" )
+    item = Item.new(description: nil, title: "Crickets" )
     expect(item).to_not be_valid
   end
 
 
   it "should be invalid unless price is a positive integer" do
-    item = Item.create(title: "Oranges", description: "Tart")
+    item = Item.new(title: "Oranges", description: "Tart")
 
     item.price = "dog"
     expect(item).to_not be_valid
@@ -50,11 +60,12 @@ describe "creating an item" do
   end
 
   it "should have an image_url with a valid extension" do
-    good = %w{ donut.gif donut.jpg donut.png Donut.JPG Donut.Jpg http://a.b.c/x/y/z/donut.gif }
-     bad = %w{ donut.doc donut.gif/more donut.gif.more }
 
-     good.each {|file| expect(new_product(file)).to be_valid}
-     bad.each  {|file| expect(new_product(file)).to_not be_valid}
+    good = %w{ donut.gif donut.jpg donut.png Donut.JPG Donut.Jpg http://a.b.c/x/y/z/donut.gif }
+    bad = %w{ donut.doc donut.gif/more donut.gif.more }
+
+    good.each {|file| expect(new_product(file)).to be_valid}
+    bad.each  {|file| expect(new_product(file)).to_not be_valid}
   end
 
 
