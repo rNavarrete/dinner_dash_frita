@@ -67,8 +67,4 @@ describe "creating an item" do
     good.each {|file| expect(new_product(file)).to be_valid}
     bad.each  {|file| expect(new_product(file)).to_not be_valid}
   end
-
-
-
-
 end

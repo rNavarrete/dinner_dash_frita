@@ -15,6 +15,7 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
+        <td><img src="<%= item.image(:thumb) %>"></td>
         <td><span class="item_title"><%= item.title %><span><td><%= number_to_currency(item.price) %></td></td>
         <td><%= item.description %></td>
         <td><%= link_to 'Show', item %></td>

@@ -18,7 +18,7 @@
 
 <p>
   <strong>Image url:</strong>
-  <%= @item.image_file_name %>
+    <img src="<%= @item.image(:large) %>">
 </p>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
