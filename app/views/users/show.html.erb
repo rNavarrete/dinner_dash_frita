@@ -1,1 +1,40 @@
-<p>Welcome, <%= @user.name %>!</p>
+
+
+<h1>User Settings</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <th>Member Since</th>
+    <td><%= @user.created_at %></td>
+  </tr>
+  <tr>
+    <th>Credit Card:</th>
+    <td>****************</td>
+  </tr>
+  <tr>
+    <th>Exp:</th>
+    <td><%#= @user.exp %></td>
+  </tr>
+  <tr>
+    <th>Phone:</th>
+    <td><%#= @user.phone %></td>
+  </tr>
+  <tr>
+    <th>Street:</th>
+    <td><%#= @user.street %></td>
+  </tr>
+  <tr>
+    <th>City:</th>
+    <td><%#= @user.city %></td>
+  </tr>
+  <tr>
+    <th>Zip:</th>
+    <td><%#= @user.zip %></td>
+  </tr>
+</table>
+
+<%= link_to "Edit Settings", edit_user_path(@user) %>
