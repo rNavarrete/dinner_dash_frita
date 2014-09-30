@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = 'User Successfully Created'
+      flash[:notice] = 'Account Successfully Created'
       redirect_to @user
     else
       flash[:errors] = @user.errors.full_messages.to_sentence
