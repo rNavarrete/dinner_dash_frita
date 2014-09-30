@@ -13,4 +13,8 @@ Rails.application.routes.draw do
 
   get    'users/:id/orders', to: 'users#orders', as: 'user_orders'
 
+  namespace :admin do
+    resources :users
+  end
+
 end
