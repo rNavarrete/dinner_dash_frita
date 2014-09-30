@@ -21,4 +21,20 @@ describe "creating a category" do
     category = Category.new(description: nil, title: "Crickets" )
     expect(category).to_not be_valid
   end
+
+  it "should have a unique title" do
+    2.times do
+      Category.create(title: "Crickets", description: "Yummy")
+    end
+    result = Category.where(title: "Crickets")
+    expect(result.count).to eq(1)
+  end
+
+  it "should have a unique description" do
+    2.times do
+      Category.create(title: "Crickets", description: "Yummy")
+    end
+    result = Category.where(description: "Yummy")
+    expect(result.count).to eq(1)
+  end
 end
