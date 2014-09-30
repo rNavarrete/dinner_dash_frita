@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/' => 'welcome#index'
 
   resources :users
+  resources :items
 
   #optional if login button is on home page
   get    '/login',  to: 'sessions#new'
