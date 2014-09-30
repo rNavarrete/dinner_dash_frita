@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :items
   resources :categories
+  resources :item_categories
 
   #optional if login button is on home page
   get    '/login',  to: 'sessions#new'
