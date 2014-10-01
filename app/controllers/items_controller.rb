@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
+    @categories = Category.all
     @items = Item.all
   end
 
@@ -10,6 +11,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @categories = Category.all
   end
 
   def edit
@@ -20,6 +22,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       flash[:notice] = "Item Successfully Created"
+      @item_category = ItemCategory.create(item_id: @item.id, category_id: params[:item][:categories][1])
       redirect_to items_path
     else
       flash[:errors] = @item.errors.full_messages.to_sentence
