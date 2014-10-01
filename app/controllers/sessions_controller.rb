@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:notice] = 'Successfully Logged In'
-      redirect_to user_path(user)
+      redirect_to user_orders_path(user)
     else
       flash[:errors] = 'Invalid login'
       render :new
