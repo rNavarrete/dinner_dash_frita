@@ -11,8 +11,8 @@
     <section class="main-content">
       <nav>
         <% if current_user %>
-          <span>Welcome, <%= current_user.name %>!</span> |
-          <%= link_to 'My Orders', user_orders_path(current_user) %> |
+          <span> Welcome, <%= link_to current_user.name.capitalize, user_orders_path(current_user) %>!</span>  |
+          <%= link_to 'Settings', user_path(current_user) %> |
           <%= link_to 'Logout', logout_path, method: :delete %>
         <% elsif admin?  && current_user %>
           <%= link_to 'Logout', logout_path, method: :delete %>
@@ -22,10 +22,10 @@
           <%= link_to 'New Account', new_user_path %>
         <% end %>
       </nav>
-      <%= yield %>
       <header>
-        <h1>Frita</h1>
+        <h1>FRITA</h1>
       </header>
+      <%= yield %>
     </section>
   </body>
 </html>
