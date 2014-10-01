@@ -11,16 +11,18 @@
     <section class="main-content">
       <nav>
         <% if current_user %>
+          <span> Welcome, <%= link_to current_user.name.capitalize, user_orders_path(current_user) %>!</span>  |
+          <%= link_to 'Settings', user_path %> | 
           <%= link_to 'Logout', logout_path, method: :delete %>
         <% else %>
           <%= link_to 'Login', login_path %> |
           <%= link_to 'New Account', new_user_path %>
         <% end %>
       </nav>
-      <%= yield %>
       <header>
-        <h1>Frita</h1>
+        <h1>FRITA</h1>
       </header>
+      <%= yield %>
     </section>
   </body>
 </html>
