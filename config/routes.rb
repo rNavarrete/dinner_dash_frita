@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
-  get '/' => 'welcome#index'
+  root 'pages#index'
+  get '/' => 'pages#index'
+  get '/menu' => 'pages#menu'
 
   resources :users
   resources :items
