@@ -6,6 +6,9 @@
   <%= f.label :image, "Attach an Image" %><br />
   <%= f.file_field :image %>
 </p>
-
+<p><%= f.select(:categories, options_from_collection_for_select(Category.all, "id", "title", @item.categories.pluck(:title)),
+              {}, {multiple: true, size: Category.all.count}) %></p>
 <%= f.submit "Save Item", :id => 'save' %>
 <% end %>
+
+
