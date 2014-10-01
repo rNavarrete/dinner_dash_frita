@@ -87,3 +87,52 @@ describe 'user login' do
     end
   end
 end
+
+describe 'user orders' do
+  it 'correctly directs user to settings page after logging in' do
+    User.create(name: 'test1', password: '1234')
+    visit(root_path)
+    click_on('Login')
+    within(:css, "#login") do
+      fill_in('Name', with: 'test1')
+      fill_in('Password', with: '1234')
+      click_on('Login')
+    end
+    expect(page).to have_content 'Successfully Logged In'
+    expect(page).to have_content 'Welcome, test1!'
+    expect(page).to have_content 'My Orders'
+  end
+end
+
+describe 'user settings' do
+  before do
+    User.create(name: 'test1', password: '1234')
+    visit(root_path)
+    click_on('Login')
+    within(:css, "#login") do
+      fill_in('Name', with: 'test1')
+      fill_in('Password', with: '1234')
+      click_on('Login')
+    end
+
+    within(:css, "nav") do
+      click_on('Settings')
+    end
+  end
+
+  it 'correctly directs user to settings show page' do
+    expect(page).to have_content 'Account Settings'
+  end
+
+  it 'correctly navigates to edit user settings page and updates name' do
+    click_on('Edit Account Details')
+
+    expect(page).to have_content 'Edit Account'
+    fill_in('Name', with: 'lalala')
+    click_on('Update Account')
+
+    expect(page).to have_content 'Account Successfully Updated'
+    expect(page).to have_content 'Account Settings'
+    expect(page).to have_content 'Welcome, lalala!'
+  end
+end

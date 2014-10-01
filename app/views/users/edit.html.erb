@@ -1,6 +1,6 @@
-<%= @user %>
+<h1>Edit Account</h1>
 
-<%= form_for(@user) do |f| %>
-  <%= f.text_field :name, placeholder: 'Name'%>
-  <%= f.submit 'Update' %>
-<% end %>
+<%= form_for(@user, html: { id: "register" }) do |f| %>
+  <%= f.text_field :name, placeholder: 'Name' %>
+  <%= f.submit 'Update Account' %>
+<% end  %>
