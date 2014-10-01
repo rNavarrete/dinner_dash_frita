@@ -1,0 +1,26 @@
+This is the Menu!
+
+
+<h1>All Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><img src="<%= item.image(:thumb) %>"></td>
+        <td><span class="item_title"><%= item.title %></span></td>
+        <td><%= number_to_currency(item.price) %></td>
+        <td><%= item.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

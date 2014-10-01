@@ -5,8 +5,8 @@
 
 Item.create(title: "Mojito", description: "Frita house mojito", price: "7.00")
 Item.create(title: "Sangria", description: "Frita house sangria", price: "6.00")
-Item.create(title: "Passion fruit soda", description: "Made in-house", price: "3.00")
-Item.create(title: "Tamarind soda", description: "Made in-house", price: "3.00")
+Item.create(title: "Passion fruit soda", description: "Passion fruit soda made in-house", price: "3.00")
+Item.create(title: "Tamarind soda", description: "Tamarind soda made in-house", price: "3.00")
 Item.create(title: "Cafe con leche", description: "Fresh roasted beans", price: "3.00")
 Item.create(title: "Cortadito", description: "Cuban espresso", price: "3.00")
 Item.create(title: "Empanadas", description: "Sweet corn/chicken/beef picadillo", price: "8.00")
