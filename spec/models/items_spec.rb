@@ -1,21 +1,12 @@
 require 'spec_helper'
 
+
 describe "creating an item" do
 
   it "should have a title" do
     item = Item.new(title: "Crickets", description: "crunchy")
     expect(item.title).to eq "Crickets"
   end
-
-  # it "should have a unique title" do
-  #   item     = Item.new(title: "Crickets", description: "Tasty")
-  #   item_two = Item.new(title: "Crickets", description: "Yummy")
-
-  #   result   = Item.all
-  #   require 'pry'
-  #   binding.pry
-  #   expect(result.count).to eq(1)
-  # end
 
   it "should have a description" do
     item = Item.new(description: "Crunchy")
