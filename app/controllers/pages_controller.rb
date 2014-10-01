@@ -4,6 +4,6 @@ class PagesController < ApplicationController
   end
 
   def menu
-    @items = Item.all
+    @categories = Category.all
   end
 end
