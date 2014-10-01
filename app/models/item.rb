@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  has_many :item_categories
+  has_many :item_categories, dependent: :destroy
   has_many :categories, through: :item_categories
 
   has_attached_file :image, :styles => { :large => "600x600", :medium => "300x300>", :thumb => "100x100>" }, :default_url => "http://fillmurray.com/100/100"
