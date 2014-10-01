@@ -5,6 +5,7 @@ describe 'create user' do
     User.create(name: 'test1', password_digest: '1234')
     visit(new_user_path)
   end
+
   describe 'user creation happy path' do
     it 'creates a new user' do
       fill_in 'Name', with: 'test47'
@@ -50,7 +51,7 @@ describe 'user login' do
         click_on('Login')
       end
 
-      expect(page).to have_content 'Welcome, test1!'
+      expect(page).to have_content 'Welcome, Test1!'
     end
 
     it 'successfully logs out user' do
@@ -99,7 +100,7 @@ describe 'user orders' do
       click_on('Login')
     end
     expect(page).to have_content 'Successfully Logged In'
-    expect(page).to have_content 'Welcome, test1!'
+    expect(page).to have_content 'Welcome, Test1!'
     expect(page).to have_content 'My Orders'
   end
 end
@@ -133,6 +134,17 @@ describe 'user settings' do
 
     expect(page).to have_content 'Account Successfully Updated'
     expect(page).to have_content 'Account Settings'
-    expect(page).to have_content 'Welcome, lalala!'
+    expect(page).to have_content 'Welcome, Lalala!'
+  end
+
+  it 'deletes a user account when requested' do
+    click_on('Edit Account Details')
+    expect(page).to have_content 'Edit Account'
+    click_on('Delete Account')
+    accept_prompt do
+      click_link('Ok')
+    end
+    expect(page).to have_content 'Successfully Deleted Test1'
+    expect(page).to have_content 'Frita'
   end
 end

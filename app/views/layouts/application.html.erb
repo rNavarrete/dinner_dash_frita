@@ -11,8 +11,8 @@
     <section class="main-content">
       <nav>
         <% if current_user %>
-          <span> Welcome, <%= link_to current_user.name, user_orders_path(current_user) %>!</span>  |
-          <%= link_to 'Settings', user_path %>
+          <span> Welcome, <%= link_to current_user.name.capitalize, user_orders_path(current_user) %>!</span>  |
+          <%= link_to 'Settings', user_path %> | 
           <%= link_to 'Logout', logout_path, method: :delete %>
         <% else %>
           <%= link_to 'Login', login_path %> |

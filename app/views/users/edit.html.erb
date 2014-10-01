@@ -1,6 +1,8 @@
 <h1>Edit Account</h1>
 
-<%= form_for(@user, html: { id: "register" }) do |f| %>
+<%= form_for(@user, html: { id: "edit-user" }) do |f| %>
   <%= f.text_field :name, placeholder: 'Name' %>
   <%= f.submit 'Update Account' %>
 <% end  %>
+
+<%= link_to 'Delete Account', @user, method: :delete, data:{ confirm: 'Are you sure?'} %>

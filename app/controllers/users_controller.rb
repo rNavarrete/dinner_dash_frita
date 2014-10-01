@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice]    = 'Account Successfully Created'
-      redirect_to @user
+      redirect_to user_orders_path(@user)
     else
       flash[:errors] = @user.errors.full_messages.to_sentence
       render :new
@@ -32,11 +32,23 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
 
     if user.update(user_params)
-      flash[:notice]    = 'Account Successfully Updated'
+      flash[:notice] = 'Account Successfully Updated'
     else
       flash[:errors] = @user.errors.full_messages.to_sentence
     end
     redirect_to user_path
+  end
+
+  def destroy
+    user = User.find(params[:id])
+
+    if user.destroy
+      flash[:notice]  = "Successfully Deleted #{user.name.capitalize}"
+      redirect_to root_path
+    else
+      flash[:errors] = @user.errors.full_messages.to_sentence
+      redirect_to user_path
+    end
   end
 
   private
