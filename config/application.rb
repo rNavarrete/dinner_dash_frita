@@ -18,5 +18,6 @@ module DinerNinjaDash
     console do
       ActiveRecord::Base.connection
     end
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end
