@@ -128,7 +128,7 @@ describe 'user settings' do
   it 'correctly navigates to edit user settings page and updates name' do
     click_on('Edit Account Details')
 
-    expect(page).to have_content 'Edit Account'
+    expect(page).to have_content 'Edit My Account'
     fill_in('Name', with: 'lalala')
     click_on('Update Account')
 
