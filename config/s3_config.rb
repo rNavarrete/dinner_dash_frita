@@ -1,0 +1,3 @@
+ENV['S3_KEY']     = "AKIAJLBA52BSTAU7NGDQ"
+ENV['S3_SECRET']  = "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"
+ENV['S3_BUCKET']  = "rolands_pics"
