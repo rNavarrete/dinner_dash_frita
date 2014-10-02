@@ -1,5 +1,5 @@
 module ApplicationHelper
   def admin?
-    User.find(session[:user_id]).admin?
+    session[:user_id] ? User.find(session[:user_id]).admin? : false
   end
 end

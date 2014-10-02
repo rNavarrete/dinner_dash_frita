@@ -1,19 +1,11 @@
 <p style="color: green"><%= flash[:notice] %></p>
 
 
-<p>
-  <strong>Title:</strong>
-  <%= @category.title %>
-</p>
+<p><strong>Title:</strong><%= @category.title %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @category.description %>
-</p>
-<strong>ID:</strong>
-  <%= @category.id %>
-</p>
+<p><strong>Description:</strong><%= @category.description %></p>
 
+<p><strong>ID:</strong> <%= @category.id %></p>
 
 
 <%= link_to 'Edit', edit_category_path(@category) %> |

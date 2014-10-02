@@ -1,0 +1,10 @@
+<h1>Edit User <%= @user.name %></h1>
+
+<%= form_for(@user, html: { id: "edit-user" }) do |f| %>
+  <%= f.text_field :name, placeholder: 'Name' %>
+  <%= f.check_box  :admin %>
+  <%= f.label      :admin %><br><br><br>
+  <%= f.submit 'Update Account' %><br>
+<% end  %>
+
+<%= link_to 'Delete Account', @user, method: :delete, class: "button", data:{ confirm: 'Are you sure?'} %>
