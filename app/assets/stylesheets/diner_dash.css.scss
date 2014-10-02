@@ -1,4 +1,4 @@
-body{
+/*body{
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -6,16 +6,8 @@ body{
 th{
   text-align: left;
 }
-.flash{
-  text-align: center;
-  padding: 10px;
-}
-.errors{
-  background: #ED4E4E;
-}
-.notice{
-  background: #94D487;
-}
+
+
 .main-content{
   padding: 10px;
 }
@@ -30,6 +22,8 @@ nav{
   width: 69%;
   float: left;
 }
+
+
 input{
   display: block;
   float: left;
@@ -44,3 +38,46 @@ header{
   clear: both;
   margin-top: 60px;
 }
+*/
+.flash{
+  text-align: center;
+  padding: 10px;
+}
+
+.errors{
+  background: #ED4E4E;
+}
+
+.notice{
+  background: #94D487;
+}
+
+
+@font-face {
+    font-family: 'seasideresortnfregular';
+    src: font-url('SEASRN__-webfont.eot');
+    src: font-url('SEASRN__-webfont.eot?#iefix') format('embedded-opentype'),
+         url('SEASRN__-webfont.woff') format('woff'),
+         url('SEASRN__-webfont.ttf') format('truetype'),
+         url('SEASRN__-webfont.svg#seasideresortnfregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+#site_title{
+ font-family: 'seasideresortnfregular';
+ font-size: 48px;
+ color: red;
+}
+
+#nav_bar{
+ background-color: rgb(255, 245, 0);
+
+}
+
+#user_welcome{
+ margin-top: 14px;
+}
+

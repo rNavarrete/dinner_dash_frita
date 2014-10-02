@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
       flash[:notice] = 'Successfully Logged In'
       redirect_to user_orders_path(user)
     else
-      flash[:errors] = 'Invalid login'
-      render :new
+      flash[:errors] = 'Invalid login. Please try again.'
+      redirect_to root_path
     end
   end
 
