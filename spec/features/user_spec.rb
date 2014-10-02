@@ -139,8 +139,11 @@ describe 'user settings' do
 
   # it 'deletes a user account when requested' do
   #   click_on('Edit Account Details')
-  #   expect(page).to have_content 'Edit My Account'
+  #   expect(page).to have_content 'Edit Account'
   #   click_on('Delete Account')
+  #   accept_prompt do
+  #     click_link('Ok')
+  #   end
   #   expect(page).to have_content 'Successfully Deleted Test1'
   #   expect(page).to have_content 'Frita'
   # end
