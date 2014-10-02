@@ -13,7 +13,7 @@
         <% if current_user %>
           <span> Welcome, <%= link_to current_user.name.capitalize, user_orders_path(current_user) %>!</span>  |
           <%= link_to 'Settings', user_path(current_user) %> |
-          <%= link_to 'Logout', logout_path, method: :delete %>
+          <%= link_to 'Logout', logout_path %>
         <% elsif admin?  && current_user %>
           <%= link_to 'Logout', logout_path, method: :delete %>
           <%= link_to 'Users', admin_users_path %>

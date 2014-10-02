@@ -1,6 +1,6 @@
 <h1>Edit User <%= @user.name %></h1>
 
-<%= form_for(@user, html: { id: "edit-user" }) do |f| %>
+<%= form_for(@user, url: admin_user_path(@user), html: { id: "edit-user" }) do |f| %>
   <%= f.text_field :name, placeholder: 'Name' %>
   <%= f.check_box  :admin %>
   <%= f.label      :admin %><br><br><br>
