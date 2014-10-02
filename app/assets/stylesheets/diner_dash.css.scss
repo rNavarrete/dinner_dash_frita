@@ -6,16 +6,8 @@
 th{
   text-align: left;
 }
-.flash{
-  text-align: center;
-  padding: 10px;
-}
-.errors{
-  background: #ED4E4E;
-}
-.notice{
-  background: #94D487;
-}
+
+
 .main-content{
   padding: 10px;
 }
@@ -47,7 +39,18 @@ header{
   margin-top: 60px;
 }
 */
+.flash{
+  text-align: center;
+  padding: 10px;
+}
 
+.errors{
+  background: #ED4E4E;
+}
+
+.notice{
+  background: #94D487;
+}
 
 
 @font-face {
