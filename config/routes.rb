@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/menu' => 'pages#menu'
 
   resources :users
-  resources :items
+  resources :items, only: [:index, :show]
   resources :categories
 
   #optional if login form is on home page
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :menus
+    resources :items
+    resources :categories
   end
-
 end
