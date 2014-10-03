@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
       redirect_to user_orders_path(@user)
     else
-      flash[:error] = @user.errors.full_messages.to_sentence
+      flash[:errors] = @user.errors.full_messages.to_sentence
       render :new
     end
   end
