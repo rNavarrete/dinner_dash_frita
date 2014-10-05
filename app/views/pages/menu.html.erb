@@ -49,8 +49,6 @@
       <!--left-->
 
       <div class="col-md-3" id="leftCol">
-
-
         <ul class="nav nav-stacked" id="sidebar">
         	 <% @categories.each do |category| %>
               	<li><a href="#sec<%= category.id %>"><%= category.title %></a></li>
@@ -64,12 +62,17 @@
 
      <% @categories.each do |category| %>
 
+
+
+
+
+       <h2 id="sec<%= category.id %>"><%= category.title %></h2>
+
+
           <%  category.items.each do |item| %>
-
-
-        <h2 id="#sec<%=category.id %>"><%= category.title %></h2>
-
         <div class="row">
+        	        <h2><%= item.title %></h2>
+
           <div class="col-md-4"><img src="//placehold.it/300x300" class="img-responsive"></div>
           <div class="col-md-4"><img src="//placehold.it/300x300" class="img-responsive"></div>
           <div class="col-md-4"><img src="//placehold.it/300x300" class="img-responsive"></div>
