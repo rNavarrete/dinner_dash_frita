@@ -1,8 +1,11 @@
 #menu_items{
-  border:  outset 1px black;
 }
 
 #whitespace{
+}
+
+#menu_item_pics{
+  max-height: 167px;
 }
 
 @font-face {
@@ -280,8 +283,11 @@ author: bootply.com
 */
 
 
+
+
+
 #masthead {
- min-height:250px;
+ min-height:149px;
 }
 
 #masthead h1 {
@@ -318,7 +324,7 @@ author: bootply.com
 
   #sidebar.affix {
     position: fixed;
-    top:70px;
+    top:50px;
     width:228px;
   }
 }

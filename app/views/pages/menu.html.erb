@@ -60,24 +60,25 @@
       <!--right-->
        <div class="col-md-9">
 
-     <% @categories.each do |category| %>
+    <% @categories.each do |category| %>
+  <div class="category_title"><h2 id="sec<%= category.id %>"><%= category.title %></h2>
+</div>
+  <div class="row">
+    <% category.items.each do |item| %>
 
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail",  id="menu_items">
+        <img src="<%= item.image(:medium) %>", class="img-responsive img-rounded", id="menu_item_pics">
+        <div class="caption">
+          <h4><%= item.title %></h4>
 
-
-
-
-       <h2 id="sec<%= category.id %>"><%= category.title %></h2>
-
-
-          <%  category.items.each do |item| %>
-        <div class="row">
-        	        <h2><%= item.title %></h2>
-
-          <div class="col-md-4"><img src="//placehold.it/300x300" class="img-responsive"></div>
-          <div class="col-md-4"><img src="//placehold.it/300x300" class="img-responsive"></div>
-          <div class="col-md-4"><img src="//placehold.it/300x300" class="img-responsive"></div>
+          <p><a href="#" class="btn btn-primary" role="button">Add to Cart</a> <a href="#" class="btn btn-default disabled" role=""><%= number_to_currency(item.price) %></a></p>
         </div>
-         <% end %>
+      </div>
+    </div>
+    <% end %>
+
+        </div>
         <% end %>
         </div><!--/right-->
 
