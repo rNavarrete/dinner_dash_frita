@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DinerNinjaDash</title>
+    <title>FRITA</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -39,11 +39,7 @@
               <%= link_to 'Logout', logout_path %>
               <%= link_to 'Users', admin_users_path %>
             <% else %>
-              <%= form_tag(login_path, { style: "padding-top: 10px;" }) do %>
-              <%= text_field_tag :name, "", placeholder: 'Name' %>
-              <%= password_field_tag :password, "", placeholder: 'Password', class: 'focus' %>
-              <%= submit_tag 'Login' %>
-              <% end %>
+              <%= render 'sessions/new' %>
             <% end %>
           </ul>
         </div><!-- /.navbar-collapse -->
