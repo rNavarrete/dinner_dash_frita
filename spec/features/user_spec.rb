@@ -8,10 +8,13 @@ describe 'create user' do
 
   describe 'user creation happy path' do
     it 'creates a new user' do
-      fill_in 'Name', with: 'test47'
-      fill_in('user[password]', :with => '1234')
-      fill_in('user[password_confirmation]', :with => '1234')
-      click_on('Create Account')
+      within(:css, "#register") do
+        fill_in 'Name', with: 'test47'
+        fill_in('user[password]', :with => '1234')
+        fill_in('user[password_confirmation]', :with => '1234')
+        click_on('Create Account')
+      end
+
       expect(page).to have_content 'Test47'
       expect(page).to_not have_content 'Login'
     end
@@ -19,18 +22,24 @@ describe 'create user' do
 
   describe 'user creation sad path' do
     it 'cannot create user if username is taken' do
-      fill_in('Name', with: 'test1')
-      fill_in('Password', with: '0987')
-      fill_in('Confirm Password', with: '0987')
-      click_on('Create Account')
+      within(:css, "#register") do
+        fill_in('Name', with: 'test1')
+        fill_in('Password', with: '0987')
+        fill_in('Confirm Password', with: '0987')
+        click_on('Create Account')
+      end
+
       expect(page).to have_content 'Name has already been taken'
     end
 
     it 'cannot create user if username passwords don not match' do
-      fill_in('Name', with: 'test10')
-      fill_in('Password', with: '0987')
-      fill_in('Confirm Password', with: '0907')
-      click_on('Create Account')
+      within(:css, "#register") do
+        fill_in('Name', with: 'test10')
+        fill_in('Password', with: '0987')
+        fill_in('Confirm Password', with: '0907')
+        click_on('Create Account')
+      end
+      
       expect(page).to have_content "Password confirmation doesn't match Password"
     end
   end
