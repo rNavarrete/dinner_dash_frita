@@ -3,7 +3,7 @@
 
 # ruby encoding: utf-8
 
-Item.create(title: "Mojito", description: "Frita house mojito", price: "7.00")
+Item.create(title: "Mojito", description: "Frita house mojito", price: "7.00", image: "https://s3.amazonaws.com/rolands_pics/cuban+photography/drinks/mojito.jpg")
 Item.create(title: "Sangria", description: "Frita house sangria", price: "6.00")
 Item.create(title: "Passion fruit soda", description: "Passion fruit soda made in-house", price: "3.00")
 Item.create(title: "Tamarind soda", description: "Tamarind soda made in-house", price: "3.00")
@@ -64,3 +64,5 @@ ItemCategory.create(item_id: 22, category_id: 5)
 ItemCategory.create(item_id: 23, category_id: 5)
 ItemCategory.create(item_id: 24, category_id: 5)
 ItemCategory.create(item_id: 25, category_id: 5)
+
+User.create(name: "admin", password: "12345", admin: "true")
