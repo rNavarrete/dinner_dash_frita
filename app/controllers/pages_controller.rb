@@ -4,5 +4,6 @@ class PagesController < ApplicationController
 
   def menu
     @categories = Category.all
+    @user = User.new
   end
 end
