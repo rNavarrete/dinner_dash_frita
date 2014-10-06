@@ -4,13 +4,18 @@
     <title>FRITA</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans|Pacifico' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
+    <%= render "shared/navbar" %>
     <%= render 'shared/flash_messages' %>
+
     <nav id="nav_bar" class="navbar navbar-default" role="navigation">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -48,5 +53,37 @@
 
     <%= yield %>
 
+<script>
+$('#sidebar').affix({
+  offset: {
+    top: 917
+  }
+});
+
+/* activate scrollspy menu */
+var $body   = $(document.body);
+var navHeight = $('.navbar').outerHeight(true) + 10;
+
+$body.scrollspy({
+  target: '#leftCol',
+  offset: navHeight
+});
+
+/* smooth scrolling sections */
+$('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top - 50
+        }, 1000);
+        return false;
+      }
+    }
+});
+</script>
   </body>
 </html>
+
+

@@ -1,0 +1,66 @@
+<nav id="nav_bar" class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" id="site_title" href="#">Frita</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+       <!--     <li><a href="#">Link</a></li> -->
+       <% if session[:user_id].nil? %>
+            <li><a href="#" class="btn" data-toggle="modal" data-target="#basicModal">New Account</a></li>
+
+            <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%= form_for(@user, html: { id: "register" }) do |f| %>
+                      <%= f.text_field :name, placeholder: 'Name' %>
+                      <%= f.password_field :password, placeholder: 'Password' %>
+                      <%= f.password_field :password_confirmation, placeholder: 'Confirm Password' %>
+                      <%= f.submit 'Create Account' %>
+                    <% end %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+    <% end %>
+
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li><p id="user_welcome">Welcome, <%= link_to current_user.name.capitalize, user_orders_path(current_user) %>!</p></li>
+          <li><%= link_to 'Settings', user_path(current_user) %></li>
+          <li><%= link_to 'Logout', logout_path %></li>
+        <% elsif admin?  && current_user %>
+          <%= link_to 'Logout', logout_path %>
+          <%= link_to 'Users', admin_users_path %>
+        <% else %>
+          <%= form_tag(login_path, { style: "padding-top: 10px;" }) do %>
+          <%= text_field_tag :name, "", placeholder: 'Name' %>
+          <%= password_field_tag :password, "", placeholder: 'Password', class: 'focus' %>
+          <%= submit_tag 'Login' %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+
+</nav>
