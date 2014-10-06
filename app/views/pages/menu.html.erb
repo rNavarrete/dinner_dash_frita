@@ -35,7 +35,6 @@
       <div class="row">
         <div class="col-md-7">
           <h1>Frita Menu</h1>
-            <p class="lead">With Affix and Scrollspy</p>
           </h1>
         </div>
       </div>
@@ -51,7 +50,7 @@
       <div class="col-md-3" id="leftCol">
         <ul class="nav nav-stacked" id="sidebar">
         	 <% @categories.each do |category| %>
-              	<li><a href="#sec<%= category.id %>"><%= category.title %></a></li>
+              	<li><a href="#sec<%= category.id %>", ><%= category.title %></a></li>
                <% end %>
        </ul>
       </div><!--/left-->
@@ -61,7 +60,7 @@
        <div class="col-md-9">
 
     <% @categories.each do |category| %>
-  <div class="category_title"><h2 id="sec<%= category.id %>"><%= category.title %></h2>
+  <div class="category_title"><h2 id="sec<%= category.id %>" class="category_titles"><%= category.title %></h2>
 </div>
   <div class="row">
     <% category.items.each do |item| %>
@@ -70,7 +69,7 @@
       <div class="thumbnail",  id="menu_items">
         <img src="<%= item.image(:medium) %>", class="img-responsive img-rounded", id="menu_item_pics">
         <div class="caption">
-          <h4><%= item.title %></h4>
+          <h3><%= item.title %></h3>
 
           <p><a href="#" class="btn btn-primary" role="button">Add to Cart</a> <a href="#" class="btn btn-default disabled" role=""><%= number_to_currency(item.price) %></a></p>
         </div>

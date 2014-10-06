@@ -1,4 +1,35 @@
+html *{
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+#admin_categories_edit_table{
+  font-size:  25px;
+}
+
+
+
+.category_titles{
+  font-family: 'Pacifico', cursive;
+
+}
+
+
+#sidebar{
+  font-family: 'Pacifico', cursive;
+  font-size: 25px;
+}
+
+#masthead{
+  color: red;
+  font-family: 'seasideresortnfregular';
+
+}
+
 #menu_items{
+  box-shadow: 10px 10px 5px #888888;
+  box-shadow: 8px 6px 12px #888888;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 #whitespace{
@@ -23,10 +54,6 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-body {
-  padding-bottom: 40px;
-  color: #5a5a5a;
-}
 
 
 
