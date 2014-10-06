@@ -3,6 +3,6 @@ diner-ninja-dash
 ================
 FRITA - a cuban gastronomic love affair
 
-[staging](http://frozen-dusk-9793.herokuapp.com/)
+[staging]
 
-[production](http://stormy-ocean-3691.herokuapp.com)
+[production](http://blooming-river-9713.herokuapp.com/)
