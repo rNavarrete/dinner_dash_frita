@@ -4,6 +4,10 @@ class Admin::ItemsController < Admin::AdminController
     @items      = Item.all
   end
 
+  def show
+
+  end
+
   def new
     @item       = Item.new
     @categories = Category.all
@@ -19,7 +23,7 @@ class Admin::ItemsController < Admin::AdminController
     if @item.save
       flash[:notice] = "Item Successfully Created"
       ItemCategory.create(item_id: @item.id, category_id: params[:item][:categories][1])
-      redirect_to admin_items_path
+      redirect_to admin_path
     else
       flash[:errors] = @item.errors.full_messages.to_sentence
       render :new
@@ -31,7 +35,7 @@ class Admin::ItemsController < Admin::AdminController
 
     if @item.update(item_params)
       flash[:notice] = "Item was successfully updated."
-      redirect_to admin_items_path
+      redirect_to admin_path
     else
       flash[:error]  = "Item was not updated. Please try again."
       render :new
@@ -40,7 +44,7 @@ class Admin::ItemsController < Admin::AdminController
 
   def destroy
     Item.find(params[:id]).destroy
-    redirect_to admin_items_path
+    redirect_to admin_path
   end
 
   private

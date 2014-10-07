@@ -39,7 +39,6 @@ build/
 ## Environment normalisation:
 /.bundle/
 /lib/bundler/man/
-schema.rb
 s3.yml
 s3_config.rb
 

@@ -39,7 +39,7 @@ describe 'create user' do
         fill_in('Confirm Password', with: '0907')
         click_on('Create Account')
       end
-      
+
       expect(page).to have_content "Password confirmation doesn't match Password"
     end
   end
@@ -110,7 +110,6 @@ describe 'user orders' do
     end
     expect(page).to have_content 'Successfully Logged In'
     expect(page).to have_content 'Welcome, Test1!'
-    expect(page).to have_content 'My Orders'
   end
 end
 
