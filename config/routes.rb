@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :carts
+
   root 'pages#menu'
 
   get '/menu'  => 'pages#menu'
