@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" id="site_title" href="#">Frita</a>
+          <%= link_to "Frita", root_path, class: "navbar-brand", id: "site_title" %>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,38 +18,21 @@
        <% if session[:user_id].nil? %>
             <li><a href="#" class="btn" data-toggle="modal" data-target="#basicModal">New Account</a></li>
 
-            <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Create Account</h4>
-                  </div>
-                  <div class="modal-body">
-                    <%= bootstrap_form_for(@user, html: { id: "register" }) do |f| %>
-                      <%= f.text_field :name, placeholder: 'Name' %>
-                      <%= f.password_field :password, placeholder: 'Password' %>
-                      <%= f.password_field :password_confirmation, placeholder: 'Confirm Password' %>
-                      <%= f.submit 'Create Account', class: "btn btn-primary" %>
-                    <% end %>
-                  </div>
-                  <div class="modal-footer">
-                  </div>
-                </div>
-              </div>
-            </div>
+            <%= render partial: 'shared/create_user_form' %>
+
     <% end %>
 
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if current_user %>
+        <% if current_user && !admin? %>
           <li><p id="user_welcome">Welcome, <%= link_to current_user.name.capitalize, user_orders_path(current_user) %>!</p></li>
           <li><%= link_to 'Settings', user_path(current_user) %></li>
           <li><%= link_to 'Logout', logout_path %></li>
-        <% elsif admin?  && current_user %>
-          <%= link_to 'Logout', logout_path %>
-          <%= link_to 'Users', admin_users_path %>
+        <% elsif admin? && current_user %>
+        <li><p id="user_welcome">Welcome, <%= link_to current_user.name.capitalize, user_orders_path(current_user) %>!</p></li>
+          <li><%= link_to 'Administrator Menu', admin_path %></li>
+          <li><%= link_to 'Logout', logout_path %></li>
         <% else %>
           <%= form_tag(login_path, { style: "padding-top: 10px;" }) do %>
           <%= text_field_tag :name, "", placeholder: 'Name' %>

@@ -78,4 +78,4 @@ ItemCategory.create(item_id: 28, category_id: 5)
 ItemCategory.create(item_id: 29, category_id: 5)
 ItemCategory.create(item_id: 30, category_id: 5)
 
-User.create(name: "admin", password: "12345", admin: "true")
+User.create(name: "admin", email: "admin@example.com", password: "12345", admin: "true")

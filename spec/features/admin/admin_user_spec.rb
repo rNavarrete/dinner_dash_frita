@@ -5,11 +5,13 @@ describe 'logged in administrator' do
 
   before do
       @user = create(:user, name: "bert", email: "bertrand@example.com", password: "12345", password_confirmation: "12345", admin: "true")
-      visit '/'
-      fill_in 'Name', with: "#{@user.name}"
-      fill_in 'Password', with: "#{@user.password}"
+      visit root_path
+      within('#nav_bar') do
+        fill_in 'name', with: "#{@user.name}"
+        fill_in 'password', with: "#{@user.password}"
+      end
       click_on 'Login'
-    #  expect(current_path).to eq admin_path   # what's the admin dashboard path?
+     expect(current_path).to eq admin_path
   end
 
 
@@ -25,8 +27,10 @@ describe 'logged in administrator' do
 
   it 'can save an edited category' do
     @category = create(:category)
-    visit admin_categories_path(@category)
-    click_on 'Edit'
+    visit admin_path
+    within('.edit-categories-container') do
+      click_on 'Edit'
+    end
     fill_in 'category[title]', with: "Brand new category"
     click_on 'Save Category'
     expect(current_path).to eq admin_categories_path
