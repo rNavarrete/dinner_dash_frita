@@ -28,7 +28,7 @@ class Admin::CategoriesController < Admin::AdminController
 
     if @category.update(category_params)
       flash[:notice] = "Category was successfully updated."
-      redirect_to admin_path
+      redirect_to admin_categories_path
     else
       flash[:error] = "Category was not updated. Please try again."
       render :new

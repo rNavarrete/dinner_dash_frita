@@ -35,7 +35,7 @@ class Admin::ItemsController < Admin::AdminController
 
     if @item.update(item_params)
       flash[:notice] = "Item was successfully updated."
-      redirect_to admin_path
+      redirect_to admin_items_path
     else
       flash[:error]  = "Item was not updated. Please try again."
       render :new
