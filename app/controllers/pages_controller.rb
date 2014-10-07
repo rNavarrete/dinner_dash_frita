@@ -1,4 +1,8 @@
 class PagesController < ApplicationController
+  include PagesHelper
+
+  before_filter :verify_admin, only: [:admin]
+
   def index
   end
 
@@ -9,5 +13,6 @@ class PagesController < ApplicationController
 
   def admin
     @categories = Category.all
+    @users = User.all
   end
 end

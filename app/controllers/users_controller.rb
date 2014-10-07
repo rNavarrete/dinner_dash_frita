@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       flash[:notice]    = 'Account Successfully Created'
 
-      redirect_to user_orders_path(@user)
+      redirect_to root_path
     else
       flash[:errors] = @user.errors.full_messages.to_sentence
       render :new

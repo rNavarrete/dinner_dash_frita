@@ -1,6 +1,5 @@
 class Admin::UsersController < Admin::AdminController
 
-
   def index
     @users = User.all
   end
@@ -28,7 +27,7 @@ class Admin::UsersController < Admin::AdminController
 
     if user.destroy
       flash[:notice]  = "Successfully Deleted #{user.name.capitalize}"
-      redirect_to admin_all_users_path
+      redirect_to admin_path
     else
       flash[:errors] = user.errors.full_messages.to_sentence
       redirect_to admin_show_user_path(user)
