@@ -21,6 +21,10 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'figaro'
+gem 'factory_girl_rails', '~> 4.4.1'
+gem 'quiet_assets', '~> 1.0.3'
+gem 'better_errors'
+gem 'binding_of_caller'
 
 group :test do
   gem 'rspec-rails', '~> 3.1.0'
