@@ -6,4 +6,8 @@ class PagesController < ApplicationController
     @categories = Category.all
     @user = User.new
   end
+
+  def admin
+    @categories = Category.all
+  end
 end

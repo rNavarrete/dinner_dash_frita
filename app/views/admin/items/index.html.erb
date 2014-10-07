@@ -1,7 +1,10 @@
 <% @categories.each do |category| %>
 
+
+<p><%= link_to "Create a New item", new_admin_item_path, id: "new_item" %></p>
+
   <h1><%= category.title %></h1>
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th>Image</th>
@@ -26,5 +29,3 @@
     </tbody>
   </table>
 <% end %>
-
-<p><%= link_to "Create a New item", new_admin_item_path, id: "new_item" %></p>
