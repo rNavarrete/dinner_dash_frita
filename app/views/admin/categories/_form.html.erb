@@ -1,6 +1,0 @@
-<%= form_for(@category, html: {multipart: true}, :url => admin_category_path(@category) ) do |f| %>
-  <p><%= f.text_field :title, :id => 'title', placeholder: "Title" %></p>
-  <p><%= f.text_area :description, :id => 'description', placeholder: "Description" %></p>
-
-  <%= f.submit "Save Category", :id => 'save' %>
-<% end %>

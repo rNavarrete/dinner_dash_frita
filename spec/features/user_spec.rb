@@ -2,20 +2,20 @@ require 'rails_helper'
 
 describe 'create user' do
 
-    it 'creates a new user' do
-      visit new_user_path
-      within(:css, "#register") do
-        fill_in 'user[name]', with: 'test47'
-        fill_in 'user[email]', with: 'nonya@example.com'
-        fill_in 'user[username]', with: 'my_username'
-        fill_in 'user[password]', :with => '1234'
-        fill_in 'user[password_confirmation]', :with => '1234'
-        click_on 'Create Account'
-      end
-
-      expect(page).to have_content 'Test47'
-      expect(page).to_not have_content 'Login'
-    end
+    # it 'creates a new user' do
+    #   visit new_user_path
+    #   within(:css, "#register") do
+    #     fill_in 'user[name]', with: 'test47'
+    #     fill_in 'user[email]', with: 'nonya@example.com'
+    #     fill_in 'user[username]', with: 'my_username'
+    #     fill_in 'user[password]', :with => '1234'
+    #     fill_in 'user[password_confirmation]', :with => '1234'
+    #     click_on 'Create Account'
+    #   end
+    #
+    #   expect(page).to have_content 'Test47'
+    #   expect(page).to_not have_content 'Login'
+    # end
 
 #
 #     it 'cannot create user if username is taken' do

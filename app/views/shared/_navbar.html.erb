@@ -23,19 +23,17 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+                    <h4 class="modal-title" id="myModalLabel">Create Account</h4>
                   </div>
                   <div class="modal-body">
-                    <%= form_for(@user, html: { id: "register" }) do |f| %>
+                    <%= bootstrap_form_for(@user, html: { id: "register" }) do |f| %>
                       <%= f.text_field :name, placeholder: 'Name' %>
                       <%= f.password_field :password, placeholder: 'Password' %>
                       <%= f.password_field :password_confirmation, placeholder: 'Confirm Password' %>
-                      <%= f.submit 'Create Account' %>
+                      <%= f.submit 'Create Account', class: "btn btn-primary" %>
                     <% end %>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                   </div>
                 </div>
               </div>

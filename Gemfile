@@ -11,6 +11,13 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'figaro'
+gem 'factory_girl_rails', '~> 4.4.1'
+gem 'quiet_assets', '~> 1.0.3'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'bootstrap_form'
+
+
 
 group :test do
   gem 'rspec-rails', '~> 3.1.0'

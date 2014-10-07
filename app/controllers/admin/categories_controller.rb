@@ -16,7 +16,7 @@ class Admin::CategoriesController < Admin::AdminController
 
     if @category.save
       flash[:notice] = "Category Successfully Created"
-      redirect_to admin_categories_path
+      redirect_to admin_path
     else
       flash[:errors] = @category.errors.full_messages.to_sentence
       render :new
@@ -28,7 +28,7 @@ class Admin::CategoriesController < Admin::AdminController
 
     if @category.update(category_params)
       flash[:notice] = "Category was successfully updated."
-      redirect_to admin_categories_path
+      redirect_to admin_path
     else
       flash[:error] = "Category was not updated. Please try again."
       render :new
@@ -37,7 +37,7 @@ class Admin::CategoriesController < Admin::AdminController
 
   def destroy
     Category.find(params[:id]).destroy
-    redirect_to admin_categories_path
+    redirect_to admin_path
   end
 
   private
