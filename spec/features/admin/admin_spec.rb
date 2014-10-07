@@ -13,6 +13,6 @@ describe 'admin user', type: :feature do
     fill_in 'name', with: "#{@user.name}"
     fill_in 'password', with: "#{@user.password}"
     click_on 'Login'
-    expect(page).to have_content("Admin Dashboard")
+    expect(page).to have_content("Admin Options")
   end
 end
