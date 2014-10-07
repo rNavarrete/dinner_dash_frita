@@ -2,22 +2,26 @@ require 'rails_helper'
 
 describe 'create user' do
 
-    # it 'creates a new user' do
-    #   visit new_user_path
-    #   within(:css, "#register") do
-    #     fill_in 'user[name]', with: 'test47'
-    #     fill_in 'user[email]', with: 'nonya@example.com'
-    #     fill_in 'user[username]', with: 'my_username'
-    #     fill_in 'user[password]', :with => '1234'
-    #     fill_in 'user[password_confirmation]', :with => '1234'
-    #     click_on 'Create Account'
-    #   end
-    #
-    #   expect(page).to have_content 'Test47'
-    #   expect(page).to_not have_content 'Login'
-    # end
-
+#   before do
+#     User.create(name: 'test1', password_digest: '1234')
+#     visit(new_user_path)
+#   end
 #
+#   describe 'user creation happy path' do
+#     it 'creates a new user' do
+#       within(:css, "#register") do
+#         fill_in 'Name', with: 'test47'
+#         fill_in('user[password]', :with => '1234')
+#         fill_in('user[password_confirmation]', :with => '1234')
+#         click_on('Create Account')
+#       end
+#
+#       expect(page).to have_content 'Test47'
+#       expect(page).to_not have_content 'Login'
+#     end
+#   end
+#
+#   describe 'user creation sad path' do
 #     it 'cannot create user if username is taken' do
 #       within(:css, "#register") do
 #         fill_in('Name', with: 'test1')
@@ -94,7 +98,6 @@ describe 'create user' do
 #     end
 #   end
 #
-#
 # describe 'user orders' do
 #   it 'correctly directs user to settings page after logging in' do
 #     User.create(name: 'test1', password: '1234')
@@ -108,6 +111,7 @@ describe 'create user' do
 #     expect(page).to have_content 'Successfully Logged In'
 #     expect(page).to have_content 'Welcome, Test1!'
 #     expect(page).to have_content 'My Orders'
+
 #   end
 # end
 #
@@ -142,15 +146,14 @@ describe 'create user' do
 #     expect(page).to have_content 'Account Settings'
 #     expect(page).to have_content 'Welcome, Lalala!'
 #   end
-#
-#   # it 'deletes a user account when requested' do
-#   #   click_on('Edit Account Details')
-#   #   expect(page).to have_content 'Edit Account'
-#   #   click_on('Delete Account')
-#   #   accept_prompt do
-#   #     click_link('Ok')
-#   #   end
-#   #   expect(page).to have_content 'Successfully Deleted Test1'
-#   #   expect(page).to have_content 'Frita'
-#   # end
+  # it 'deletes a user account when requested' do
+  #   click_on('Edit Account Details')
+  #   expect(page).to have_content 'Edit Account'
+  #   click_on('Delete Account')
+  #   accept_prompt do
+  #     click_link('Ok')
+  #   end
+  #   expect(page).to have_content 'Successfully Deleted Test1'
+  #   expect(page).to have_content 'Frita'
+  # end
 end
