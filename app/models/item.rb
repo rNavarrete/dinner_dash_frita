@@ -1,7 +1,9 @@
 class Item < ActiveRecord::Base
   has_many :item_categories, dependent: :destroy
   has_many :categories, through: :item_categories
-  has_many :order_items
+  has_many :line_items
+
+  before_destroy :ensure_not_referenced_by_any_line_item
   has_many :orders, through: :order_items
 
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "http://fillmurray.com/252/158"
@@ -13,4 +15,16 @@ class Item < ActiveRecord::Base
     with:    %r{\.(gif|jpg|png)\Z}i,
     message: 'must be a URL for GIF, JPG or PNG image.' }
   validates :status, inclusion: { in: ['active', 'retired'] }
+
+  private
+
+   def ensure_not_referenced_by_any_line_item
+     if line_items.empty?
+       return true
+     else
+       errors.add(:base, 'Line Items present')
+       return false
+     end
+   end
+
 end
