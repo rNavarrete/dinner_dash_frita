@@ -6,4 +6,5 @@ module ApplicationHelper
   def verify_admin
     redirect_to root_path unless User.find(session[:user_id]).admin?
   end
+
 end

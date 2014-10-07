@@ -1,6 +1,6 @@
 Item.create(title: "Grapefruit Mojito", description: "Frita house mojito", price: "7.00", image_file_name: "rhubarb-mojito.jpg")
 Item.create(title: "Sangria", description: "Frita house sangria", price: "6.00", image_file_name: "sangria.jpg")
-Item.create(title: "Passion fruit Drink", description: "Passion fruit soda made in-house", price: "3.00", image_file_name: "ku-de-ta-bangkok-7.jpg")
+Item.create(title: "Passion fruit drink", description: "Passion fruit soda made in-house", price: "3.00", image_file_name: "ku-de-ta-bangkok-7.jpg")
 Item.create(title: "Tamarindo", description: "Tamarind soda made in-house", price: "3.00", image_file_name: "tamarindo.jpg")
 Item.create(title: "Cafe con leche", description: "Fresh roasted beans", price: "3.00", image_file_name: "cafe1.jpg")
 Item.create(title: "Cortadito", description: "Cuba Libre", price: "3.00", image_file_name: "cafe2.jpg")
