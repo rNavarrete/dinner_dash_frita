@@ -61,26 +61,32 @@ describe 'create user' do
 
 
 
-  describe 'user login' do
+describe 'user login' do
 
-    before do
-      User.create(name: 'test1', password: '1234')
-      visit(root_path)
-      click_on('Login')
-    end
+  before do
+    User.create(name: 'test1', password: '1234')
+    visit(root_path)
+    click_on('Login')
+  end
 
-    describe 'happy login path' do
-      it 'correctly logs in with username and password' do
-        within(:css, "#login") do
-          fill_in('Name', with: 'test1')
-          fill_in('Password', with: '1234')
-          click_on('Login')
-        end
+  describe 'happy login path' do
+    it 'correctly logs in with username and password' do
+      within(:css, "#name") do
 
-        expect(page).to have_content 'Welcome, Test1!'
+        fill_in('name', with: 'test1')
+
       end
+
+      within(:css, "#password") do
+
+        fill_in('password', with: '1234')
+        click_on('Login')
+      end
+
+      expect(page).to have_content 'Welcome, Test1!'
     end
   end
+end
 
   #   it 'successfully logs out user' do
   #     within(:css, "#login") do
