@@ -1,6 +1,6 @@
 class Cart < ActiveRecord::Base
    has_many :line_items, dependent: :destroy
-   belongs_to :user, through: :line_items
+   belongs_to :user
 
 
   class Null
