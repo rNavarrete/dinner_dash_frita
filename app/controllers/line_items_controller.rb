@@ -1,19 +1,16 @@
 class LineItemsController < ApplicationController
-  before_action :set_cart, only: [:create]
+  # before_action :set_cart, only: [:create]
+  before_action :cart, only: [:create]
   # before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   def create
     item = Item.find(params[:id])
-    @line_item = @cart.line_items.build(item: item, quantity: params[:quantity][:quantity])
-    params.inspect
-    if @line_item.save
-      flash[:notice] = "#{params[:quantity][:quantity]} " +  "#{item.title}".pluralize +  " successfully added to cart."
-      redirect_to root_path
-    else
-      flash[:error] = "Item did not save. Please try again."
-      redirect_to root_path
-    end
-  end
+    session[:cart_items] ||= []
+    session[:cart_items] << [params[:id], params[:quantity][:quantity] ]
+    flash[:notice] = "#{params[:quantity][:quantity]} " +  "#{item.title}".pluralize +  " successfully added to cart. #{session[:cart_items]}"
+
+    redirect_to :back
+   end
 
   private
 
