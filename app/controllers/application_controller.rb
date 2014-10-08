@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   include UsersHelper
 
   private
+
+  # def cart
+  #   @cart ||= Cart.find_by_id(session[:cart_id]) || Cart::Null.new
+  # end
+
   def cart
     @cart ||= Cart.find_by_id(session[:cart_id]) || Cart::Null.new
   end

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password]) && user.admin?
       session[:user_id] = user.id
       flash[:notice] = 'Successfully Logged In'
-      NormalizeUserCart.call(user, session)
+      # NormalizeUserCart.call(user, session)
       redirect_to admin_path
     elsif user && user.authenticate(params[:password])
       session[:user_id] = user.id
