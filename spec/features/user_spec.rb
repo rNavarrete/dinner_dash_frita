@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'create user' do
 
   before do
-    User.create(name: 'Joe', email: 'joe@example.com', username: 'joe', password: '1234', password_confirmation: '1234')
+    @user = User.create(name: 'Joe', email: 'joe@example.com', username: 'joe', password: '1234', password_confirmation: '1234')
     visit(new_user_path)
   end
 
@@ -24,34 +24,26 @@ describe 'create user' do
   end
 
 
-# below test not actually prohibiting user from making account
-# uncomment last line in spec
-
   describe 'user creation sad path' do
     it 'cannot create user if username is taken' do
       within(:css, "#register-user") do
-        2.times do
         fill_in 'Name',             with: 'saduser'
         fill_in 'Email',            with: 'saduser@example.com'
-        fill_in 'Username',         with: 'happyuser'
+        fill_in 'Username',         with: 'joe'
         fill_in 'Password',         with: '1111'
         fill_in 'Confirm Password', with: '1111'
 
         click_on('Create Account')
+      end
+
+      expect(page).to have_content 'Username has already been taken'
+      expect(page).to_not have_content 'Logout'
     end
   end
 
-      expect(page).to have_content 'Username has already been taken.'
-      # expect(page).to_not have_content 'Logout'
-    end
-  end
-
-
-# below test not actually prohibiting user from making account
-# uncomment last line in spec
 
   describe 'user creation sad path' do
-    it 'cannot create user if password does not match password confirmation' do
+    it "cannot create user if password doesn't match password confirmation" do
       within(:css, "#register-user") do
         fill_in 'Name',             with: 'user'
         fill_in 'Email',            with: 'user@example.com'
@@ -61,34 +53,34 @@ describe 'create user' do
         click_on('Create Account')
       end
 
-      expect(page).to have_content "Password confirmation doesn't match password."
-      # expect(page).to_not have_content 'Logout'
+      expect(page).to have_content "Password confirmation doesn't match Password"
+      expect(page).to_not have_content 'Logout'
     end
   end
 
 
 
-#
-# describe 'user login' do
-#
-#   before do
-#     User.create(name: 'test1', password: '1234')
-#     visit(root_path)
-#     click_on('Login')
-#   end
-#
-#   describe 'happy login path' do
-#     it 'correctly logs in with username and password' do
-#       within(:css, "#login") do
-#         fill_in('Name', with: 'test1')
-#         fill_in('Password', with: '1234')
-#         click_on('Login')
-#       end
-#
-#       expect(page).to have_content 'Welcome, Test1!'
-#     end
-#   end
-# end
+
+  describe 'user login' do
+
+    before do
+      User.create(name: 'test1', password: '1234')
+      visit(root_path)
+      click_on('Login')
+    end
+
+    describe 'happy login path' do
+      it 'correctly logs in with username and password' do
+        within(:css, "#login") do
+          fill_in('Name', with: 'test1')
+          fill_in('Password', with: '1234')
+          click_on('Login')
+        end
+
+        expect(page).to have_content 'Welcome, Test1!'
+      end
+    end
+  end
 
   #   it 'successfully logs out user' do
   #     within(:css, "#login") do
