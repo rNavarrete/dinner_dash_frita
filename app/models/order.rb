@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
   validates :pickup_or_delivery, inclusion: { in: ['pickup', 'delivery'] }
 
   # validates :street_number, :street, :city, if: :delivery?
-  # validates :state, inclusion: { in: valid_state_code }, if: :delivery?
+  validates :state, inclusion: { in: valid_state_code }, if: :delivery?
   validates :zip, format: { with: /\d{5}/ }
 
   def delivery?
