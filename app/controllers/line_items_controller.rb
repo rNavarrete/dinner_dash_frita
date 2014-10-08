@@ -7,7 +7,7 @@ class LineItemsController < ApplicationController
     @line_item = @cart.line_items.build(item: item, quantity: params[:quantity][:quantity])
     params.inspect
     if @line_item.save
-      flash[:notice] = "#{params[:quantity][:quantity]} " +  "#{item.title}".pluralize +  " successfully added to cart." 
+      flash[:notice] = "#{params[:quantity][:quantity]} " +  "#{item.title}".pluralize +  " successfully added to cart."
       redirect_to root_path
     else
       flash[:error] = "Item did not save. Please try again."
@@ -16,8 +16,9 @@ class LineItemsController < ApplicationController
   end
 
   private
+
   def set_cart
-    @cart = Cart.find(session[:cart_id])
+    @cart = Cart.find_by_id(session[:cart_id])
   rescue ActiveRecord::RecordNotFound
     @cart = Cart.create
     session[:cart_id] = @cart.id
