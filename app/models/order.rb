@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
   has_many :items, through: :order_items
 
   validates :user, presence: true
-  validates :items, presence:true
+  validates :items, presence: true
   validates_associated :items
 
   validates :status, inclusion: { in: ['ordered', 'cancelled', 'completed', 'paid'] }
