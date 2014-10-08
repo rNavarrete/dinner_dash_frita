@@ -10,9 +10,9 @@ class Order < ActiveRecord::Base
   validates :status, inclusion: { in: ['ordered', 'cancelled', 'completed', 'paid'] }
   validates :pickup_or_delivery, inclusion: { in: ['pickup', 'delivery'] }
 
-  # validates :street_number, :street, :city, if: :delivery?
-  validates :state, inclusion: { in: valid_state_code }, if: :delivery?
-  # validates :zip, format: { with: /\d{5}/ }
+  validates :street_number, :street, :city, if: :delivery?
+  # validates :state, inclusion: { in: valid_state_code }, if: :delivery?
+  validates :zip, format: { with: /\d{5}/ }
 
   def delivery?
     pickup_or_delivery == 'delivery'
