@@ -31,7 +31,7 @@
           <li ><%= link_to 'Logout', logout_path %></li>
           <li>
             <button type="button" id="cart-button" class="btn btn-default btn-md">
-            <span class="glyphicon glyphicon-shopping-cart"></span><%= @cart.line_items.count %>
+            <span class="glyphicon glyphicon-shopping-cart"></span><%= cart.item_count %>
           </button>
         </li>
         <% elsif admin? && current_user %>
