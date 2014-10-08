@@ -5,20 +5,11 @@ class LineItemsController < ApplicationController
 
   def create
     item = Item.find(params[:id])
-    if current_user
-      @line_item = cart.line_items.create(item: item, quantity: params[:quantity][:quantity])
-      if @line_item.save
-        flash[:notice] = "#{params[:quantity][:quantity]} " +  "#{item.title}".pluralize +  " successfully added to cart."
-        redirect_to root_path
-      end
-    else
-      puts "hello"
+    session[:cart_items] ||= []
+    session[:cart_items] << [params[:id], params[:quantity][:quantity] ]
+    flash[:notice] = "#{params[:quantity][:quantity]} " +  "#{item.title}".pluralize +  " successfully added to cart. #{session[:cart_items]}"
 
-      session[:cart_items] << [params[:id], params[:quantity][:quantity] ]
-
-      flash[:notice] = "#{params[:quantity][:quantity]} " +  "#{item.title}".pluralize +  " successfully added to cart. #{session[:cart_items]}"
-      redirect_to :back
-    end
+    redirect_to :back
    end
 
   private

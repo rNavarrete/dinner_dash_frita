@@ -14,5 +14,3 @@ module NormalizeUserCart
 
 end
 
-
-Cart.find_by(user_id: session[:user_id])

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to admin_path
     elsif user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      fix_cart_shit(user)
+      # fix_cart_shit(user)
       flash[:notice] = 'Successfully Logged In'
       redirect_to root_path
     else
