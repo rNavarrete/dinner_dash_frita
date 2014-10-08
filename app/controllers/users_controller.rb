@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       flash[:errors] = @user.errors.full_messages.to_sentence
-      redirect_to request.path
+      redirect_to root_path
     end
   end
 
