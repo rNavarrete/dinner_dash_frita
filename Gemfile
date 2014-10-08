@@ -15,6 +15,7 @@ gem 'quiet_assets', '~> 1.0.3'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'bootstrap_form'
+gem "gritter", "1.1.0"
 
 
 

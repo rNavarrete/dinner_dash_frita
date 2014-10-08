@@ -11,11 +11,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice]    = 'Account Successfully Created'
+      # flash[:notice]    = 'Account Successfully Created'
+      gflash :now, :Success => "Awesome! Account Created"
 
       redirect_to root_path
     else
-      flash[:errors] = @user.errors.full_messages.to_sentence
+      # flash[:errors] = @user.errors.full_messages.to_sentence
+      gflash :now, :error =>  @user.errors.full_messages.to_sentence
       redirect_to root_path
     end
   end
