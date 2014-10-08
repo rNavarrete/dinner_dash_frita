@@ -26,9 +26,14 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user && !admin? %>
-          <li><p id="user_welcome">Welcome, <%= link_to current_user.name.capitalize, user_orders_path(current_user) %>!</p></li>
-          <li><%= link_to 'Settings', user_path(current_user) %></li>
-          <li><%= link_to 'Logout', logout_path %></li>
+          <li ><%= link_to "Welcome, #{current_user.name.capitalize}", user_orders_path(current_user), class: "welcome-link"%></li>
+          <li ><%= link_to 'Settings', user_path(current_user) %></li>
+          <li ><%= link_to 'Logout', logout_path %></li>
+          <li>
+            <button type="button" id="cart-button" class="btn btn-default btn-md">
+            <span class="glyphicon glyphicon-shopping-cart"></span><%= @cart.line_items.count %>
+          </button>
+        </li>
         <% elsif admin? && current_user %>
         <li><p id="user_welcome">Welcome, <%= link_to current_user.name.capitalize, user_orders_path(current_user) %>!</p></li>
           <li><%= link_to 'Administrator Menu', admin_path %></li>
@@ -37,7 +42,7 @@
           <%= form_tag(login_path, { style: "padding-top: 10px;" }) do %>
           <%= text_field_tag :name, "", placeholder: 'Name' %>
           <%= password_field_tag :password, "", placeholder: 'Password', class: 'focus' %>
-          <%= submit_tag 'Login' %>
+          <%= submit_tag 'Login', class: "btn btn-sm" %>
           <% end %>
         <% end %>
       </ul>

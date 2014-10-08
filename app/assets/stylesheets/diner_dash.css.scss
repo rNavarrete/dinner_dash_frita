@@ -1,3 +1,27 @@
+#bs-example-navbar-collapse-1 > ul.nav.navbar-nav.navbar-right > li > a {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#bs-example-navbar-collapse-1 > ul.nav.navbar-nav.navbar-right > li > a:hover {
+  color: red;
+}
+.navbar-right li a:hover {
+  color: red;
+}
+
+#cart-button {
+  background-color: black;
+  color: rgba(255, 255, 255, .4);
+  margin-top: 8px;
+}
+#cart-button:hover {
+  color:red;
+}
+
+.glyphicon-shopping-cart {
+  color: rgba(255, 255, 255, .4);
+  margin-right: 15px;
+}
 html *{
     font-family: 'Josefin Sans', sans-serif;
 
