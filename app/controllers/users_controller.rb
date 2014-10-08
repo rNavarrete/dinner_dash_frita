@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       # flash[:notice]    = 'Account Successfully Created'
-      gflash :now, :Success => "Awesome! Account Created"
+      gflash :now, :success => "Awesome! Account Created"
 
       redirect_to root_path
     else
