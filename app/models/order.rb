@@ -12,7 +12,7 @@ class Order < ActiveRecord::Base
 
   # validates :street_number, :street, :city, if: :delivery?
   validates :state, inclusion: { in: valid_state_code }, if: :delivery?
-  validates :zip, format: { with: /\d{5}/ }
+  # validates :zip, format: { with: /\d{5}/ }
 
   def delivery?
     pickup_or_delivery == 'delivery'
