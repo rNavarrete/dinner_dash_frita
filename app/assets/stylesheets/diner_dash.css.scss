@@ -1,14 +1,10 @@
-#bs-example-navbar-collapse-1 > ul.nav.navbar-nav.navbar-right > li > a {
+ul.nav.navbar-nav.navbar-right > li > a {
   color: rgba(255, 255, 255, 0.6);
 }
 
-#bs-example-navbar-collapse-1 > ul.nav.navbar-nav.navbar-right > li > a:hover {
+ul.nav.navbar-nav.navbar-right > li > a:hover {
   color: red;
 }
-.navbar-right li a:hover {
-  color: red;
-}
-
 #cart-button {
   background-color: black;
   color: rgba(255, 255, 255, .4);
@@ -16,11 +12,19 @@
 }
 #cart-button:hover {
   color:red;
+  background-color: rgba(0, 0, 0, .2);
 }
-
+.user-name {
+  color: red;
+  text-decoration: none;
+}
 .glyphicon-shopping-cart {
   color: rgba(255, 255, 255, .4);
   margin-right: 15px;
+}
+#cart-button:hover .glyphicon-shopping-cart {
+  color: red;
+  border-color: red;
 }
 html *{
     font-family: 'Josefin Sans', sans-serif;
