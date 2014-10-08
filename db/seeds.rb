@@ -79,3 +79,8 @@ ItemCategory.create(item_id: 29, category_id: 5)
 ItemCategory.create(item_id: 30, category_id: 5)
 
 User.create(name: "admin", email: "admin@example.com", password: "12345", admin: "true")
+
+User.create(name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", password: "password", admin: "false")
+User.create(name: "Jeff", username: "j3", email: "demo+jeff@jumpstartlab.com", password: "password", admin: "false")
+User.create(name: "Jorge Tellez", username: "novohispano", email: "demo+jorge@jumpstartlab.com", password: "password", admin: "false")
+User.create(name: "Josh Cheek", username: "josh", email: "demo+josh@jumpstartlab.com", password: "password", admin: "true")
