@@ -61,32 +61,32 @@ describe 'create user' do
 
 
 
-describe 'user login' do
+  describe 'user login' do
 
-  before do
-    User.create(name: 'test1', password: '1234')
-    visit(root_path)
-    click_on('Login')
-  end
+    before do
+      @user = create(:user, name: "Joe", password: "1234", password_confirmation: "1234")
+      visit root_path
+    end
 
-  describe 'happy login path' do
-    it 'correctly logs in with username and password' do
-      within(:css, "#name") do
+    it "can log in a user with an established username and password" do
+      within(:css, "#nav_bar") do
+        fill_in 'name', with: "#{@user.name}"
+        fill_in 'password', with: "#{@user.password}"
+        click_on 'Login'
 
-        fill_in('name', with: 'test1')
+        expect(page).to have_content "Welcome, #{@user.name}"
 
+        # why isn't the expect(page) working????
       end
-
-      within(:css, "#password") do
-
-        fill_in('password', with: '1234')
-        click_on('Login')
-      end
-
-      expect(page).to have_content 'Welcome, Test1!'
     end
   end
-end
+
+
+  # -------------------------------------
+
+
+
+
 
   #   it 'successfully logs out user' do
   #     within(:css, "#login") do
