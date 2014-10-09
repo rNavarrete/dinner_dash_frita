@@ -1,0 +1,29 @@
+<div class="cart-view">
+<div class="container">
+  <h1 class="page-header">Your Cart</h1>
+
+  <div class="edit-users-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= @cart_items %>
+          <% @cart_items.each do |item|  %>
+          <tr>
+            <td><%= line_item.item.title %></td>
+            <td></td>
+            <td><%#= link_to 'Proceed To Checkout', checkout_path, class: "btn btn-primary btn-lg" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+    </table>
+    <td><%= link_to 'Return to Menu', root_path, class: "btn btn-danger" %></td>
+  </div>
+
+</div>
