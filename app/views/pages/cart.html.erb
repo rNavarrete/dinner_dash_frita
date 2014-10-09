@@ -1,7 +1,6 @@
 <div class="cart-view">
 <div class="container">
   <h1 class="page-header">Your Cart</h1>
-
   <div class="edit-users-container">
       <table class="table">
         <thead>
@@ -11,19 +10,30 @@
             <th>Price</th>
           </tr>
         </thead>
-
         <tbody>
-          <%= @cart_items %>
-          <% @cart_items.each do |item|  %>
+          <%#= @cart_items %>
+          <% cart.each_pair do |item_id, quantity|  %>
+
           <tr>
-            <td><%= line_item.item.title %></td>
-            <td></td>
-            <td><%#= link_to 'Proceed To Checkout', checkout_path, class: "btn btn-primary btn-lg" %></td>
+            <td><%= find_item(item_id).title %></td>
+            <td><%= quantity %></td>
+            <td><%= find_item(item_id).price %></td>
           </tr>
           <% end %>
+        </tbody>
+        <tbody>
+          <th></th>
+        <th class="order-totals">Total Qty</th>
+        <th class="order-totals">Total Price</th>
+          <tr>
+            <td></td>
+            <td class="order-totals"><%= total_quantity %></td>
+            <td class="order-totals"><%= subtotal %></td>
+          </tr>
         </tbody>
     </table>
     <td><%= link_to 'Return to Menu', root_path, class: "btn btn-danger" %></td>
   </div>
+
 
 </div>
