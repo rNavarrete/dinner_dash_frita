@@ -15,12 +15,11 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
        <!--     <li><a href="#">Link</a></li> -->
-       <% if session[:user_id].nil? %>
+       <% if current_user == nil  %>
             <li><a href="#" class="btn" data-toggle="modal" data-target="#basicModal">New Account</a></li>
 
             <%= render partial: 'shared/create_user_form' %>
-
-    <% end %>
+       <% end %>
 
 
       </ul>
@@ -31,9 +30,11 @@
           <li><%= link_to 'Settings', user_path(current_user) %></li>
           <li><%= link_to 'Logout', logout_path %></li>
           <li>
-            <button type="button" id="cart-button" class="btn btn-default btn-md">
-            <span class="glyphicon glyphicon-shopping-cart"></span><%= cart.item_count %>
-          </button>
+
+            <button id="cart-button" class="btn btn-default btn-md" >
+              <span class="glyphicon glyphicon-shopping-cart"></span><%= total_quantity %>
+            </button>
+
         </li>
         <% elsif admin? && current_user %>
         <li><p id="user_welcome">Welcome, <span class="user-name"><%= link_to current_user.name.capitalize, user_orders_path(current_user) %></span></p></li>
