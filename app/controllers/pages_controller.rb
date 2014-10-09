@@ -15,4 +15,8 @@ class PagesController < ApplicationController
     @categories = Category.all
     @users = User.all
   end
+
+  def cart
+    @cart_items = session[:cart_items]
+  end
 end

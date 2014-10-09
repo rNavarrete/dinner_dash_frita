@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   resources :line_items
 
-  resources :carts
-
   root 'pages#menu'
 
   get '/menu'  => 'pages#menu'
   get '/admin' => 'pages#admin'
+  get '/cart'  => 'pages#cart'
 
 
   resources :users

@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
   has_many :line_items
 
   before_destroy :ensure_not_referenced_by_any_line_item
-  has_many :orders, through: :order_items
+  # has_many :orders, through: :order_items
 
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "http://fillmurray.com/252/158"
 

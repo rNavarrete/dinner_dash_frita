@@ -1,20 +1,15 @@
-class Cart < ActiveRecord::Base
-   has_many :line_items, dependent: :destroy
-   belongs_to :user
-
-
-  class Null
-    def line_items
-      []
-    end
-
-    def item_count
-      0
-    end
+class Cart
+  def initialize(session)
+    @session ||= session
   end
 
-
-  def item_count
-    line_items.sum(:quantity)
+  def line_items
+    @session[:cart_items] ||= {}
   end
+
+  def add_line_item(item_id, quantity)
+    line_items[item_id] = quantity
+  end
+
+  
 end
