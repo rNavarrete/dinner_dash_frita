@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def total_quantity
-    session[:cart_items].values.reduce(0) {|sum, quantity| sum += quantity.to_i }
+    line_items.values.reduce(0) {|sum, quantity| sum += quantity.to_i }
   end
 
   def line_item_total(item_id, quantity)
@@ -55,5 +55,5 @@ class ApplicationController < ActionController::Base
   def valid_state_code
     %w(AK AL AR AS AZ CA CO CT DC DE FL GA GU HI IA ID IL IN KS KY LA MA MD ME MI MN MO MS MT NC ND NE NH NJ NM NV NY OH OK OR PA PR RI SC SD TN TX UT VA VI VT WA WI WV WY)
   end
-  
+
 end

@@ -6,7 +6,7 @@
         <h4 class="modal-title" id="myModalLabel">Create Account</h4>
       </div>
       <div class="modal-body">
-        <%= bootstrap_form_for(@user, html: { id: "register" }) do |f| %>
+        <%= bootstrap_form_for(@user, html: { id: "register-user" }) do |f| %>
           <%= f.text_field :name, placeholder: 'Name' %>
           <%= f.text_field :email, placeholder: 'Email' %>
           <%= f.text_field :username, placeholder: 'Username' %>
