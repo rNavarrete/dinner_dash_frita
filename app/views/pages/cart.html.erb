@@ -7,7 +7,9 @@
           <tr>
             <th>Item</th>
             <th>Quantity</th>
-            <th>Price</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -18,6 +20,8 @@
             <td><%= find_item(item_id).title %></td>
             <td><%= quantity %></td>
             <td><%= find_item(item_id).price %></td>
+            <td><%= line_item_total(item_id, quantity) %></td>
+            <td><%= link_to "Remove from Cart", line_item_path(item_id), method: :delete, data: { confirm: "Are you sure?"} %></td>
           </tr>
           <% end %>
         </tbody>
