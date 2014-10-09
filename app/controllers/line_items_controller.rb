@@ -1,8 +1,6 @@
 class LineItemsController < ApplicationController
   # before_action :cart, only: [:create]
 
-
-
   def create
     cart.add_line_item(params[:id], params[:quantity][:quantity])
     flash[:notice] = "#{params[:quantity][:quantity]} #{find_item(params[:id]).title}".pluralize + " sucessfully added to your cart!"
@@ -11,7 +9,7 @@ class LineItemsController < ApplicationController
 
   def update
     update_item(params[:id], params[:quantity])
-    flash[:notice] = "{find_item(params[:id]).title} has been successfully changed"
+    flash[:notice] = "#{find_item(params[:id]).title} has been successfully updated."
     redirect_to cart_path
   end
 

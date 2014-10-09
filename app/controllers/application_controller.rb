@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def line_items
-    session[:cart_items]
+    session[:cart_items] ||= {}
   end
 
   def find_item(item_id)

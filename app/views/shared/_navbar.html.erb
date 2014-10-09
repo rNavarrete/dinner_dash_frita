@@ -41,11 +41,11 @@
           <li><%= link_to 'Administrator Menu', admin_path %></li>
           <li><%= link_to 'Logout', logout_path %></li>
         <% else %>
-          <%= form_tag(login_path, { style: "padding-top: 10px;" }) do %>
-          <%= text_field_tag :name, "", placeholder: 'Name' %>
-          <%= password_field_tag :password, "", placeholder: 'Password', class: 'focus' %>
-          <%= submit_tag 'Login', class: "btn btn-sm" %>
-          <% end %>
+          <%#= form_tag(login_path, { style: "padding-top: 10px;" }) do %>
+          <%#= text_field_tag :name, "", placeholder: 'Name' %>
+          <%#= password_field_tag :password, "", placeholder: 'Password', class: 'focus' %>
+          <%#= submit_tag 'Login', class: "btn btn-sm" %>
+          <%# end %>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

@@ -13,12 +13,12 @@
           </tr>
         </thead>
         <tbody>
-          <%#= @cart_items %>
-          <% cart.each_pair do |item_id, quantity|  %>
-
+          <% line_items.each_pair do |item_id, quantity|  %>
           <tr>
             <td><%= find_item(item_id).title %></td>
-            <td><%= quantity %></td>
+              <%= form_tag("/line_items/#{item_id}", method: :put) do %>
+                <td><%= number_field_tag("quantity", quantity, in: 1..20, value: 1) %><%= submit_tag "Save Changes" %></td>
+              <% end %>
             <td><%= find_item(item_id).price %></td>
             <td><%= line_item_total(item_id, quantity) %></td>
             <td><%= link_to "Remove from Cart", line_item_path(item_id), method: :delete, data: { confirm: "Are you sure?"} %></td>
