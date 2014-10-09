@@ -109,6 +109,7 @@ end
 
 
 
+# describe 'user settings', :type => :feature, :js => true do
 describe 'user settings' do
 
   before do
@@ -127,30 +128,43 @@ describe 'user settings' do
 
     expect(page).to have_content 'My Account Settings'
   end
+
+
+  it 'allows user to edit user settings' do
+      within(:css, "#nav_bar") do
+        fill_in'name',     with: "#{@user.name}"
+        fill_in'password', with: "#{@user.password}"
+        click_on('Login')
+      end
+
+      within(:css, "#nav_bar") do
+        click_on('Settings')
+      end
+
+      click_on('Edit Account Details')
+      fill_in 'Name', with: 'NewName'
+      click_on('Update Account')
+
+      expect(page).to have_content 'Account Successfully Updated'
+      expect(page).to have_content 'Account Settings'
+      expect(page).to_not have_content "#{@user.name}"
+    end
+
+
+  it 'deletes a user account when requested' do
+    within(:css, "#nav_bar") do
+      fill_in'name',     with: "#{@user.name}"
+      fill_in'password', with: "#{@user.password}"
+      click_on('Login')
+    end
+
+    within(:css, "#nav_bar") do
+      click_on('Settings')
+    end
+
+    click_on('Edit Account Details')
+    click_on('Delete Account')
+
+    expect(page).to have_content 'Successfully Deleted'
+  end
 end
-
-
-
-#
-#
-#   it 'correctly navigates to edit user settings page and updates name' do
-#     click_on('Edit Account Details')
-#
-#     expect(page).to have_content 'Edit My Account'
-#     fill_in('Name', with: 'lalala')
-#     click_on('Update Account')
-#
-#     expect(page).to have_content 'Account Successfully Updated'
-#     expect(page).to have_content 'Account Settings'
-#     expect(page).to have_content 'Welcome, Lalala!'
-#   end
-  # it 'deletes a user account when requested' do
-  #   click_on('Edit Account Details')
-  #   expect(page).to have_content 'Edit Account'
-  #   click_on('Delete Account')
-  #   accept_prompt do
-  #     click_link('Ok')
-  #   end
-  #   expect(page).to have_content 'Successfully Deleted Test1'
-  #   expect(page).to have_content 'Frita'
-  # end
