@@ -6,7 +6,6 @@
 
 
 
-db/schema.rb
 
 
 
@@ -59,4 +58,3 @@ s3_config.rb
 
 # Ignore application configuration
 /config/application.yml
-
