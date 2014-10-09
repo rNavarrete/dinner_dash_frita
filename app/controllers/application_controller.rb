@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   helper_method :line_item_total
   helper_method :delete_item
   helper_method :update_item
+  helper_method :valid_state_code
 
   def cart
     @cart ||= Cart.new(session)
@@ -50,4 +51,9 @@ class ApplicationController < ActionController::Base
   def delete_item(item_id)
     line_items.delete(item_id)
   end
+
+  def valid_state_code
+    %w(AK AL AR AS AZ CA CO CT DC DE FL GA GU HI IA ID IL IN KS KY LA MA MD ME MI MN MO MS MT NC ND NE NH NJ NM NV NY OH OK OR PA PR RI SC SD TN TX UT VA VI VT WA WI WV WY)
+  end
+  
 end

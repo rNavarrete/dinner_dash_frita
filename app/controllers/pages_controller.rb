@@ -17,6 +17,7 @@ class PagesController < ApplicationController
   end
 
   def cart
+    @user = User.new
     if line_items.empty?
       redirect_to root_path
       flash[:notice] = "Your cart is currently empty. You should fill it with Mojitos."

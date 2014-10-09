@@ -1,0 +1,43 @@
+<div class="cart-view">
+<div class="container">
+  <h1 class="page-header">Your Cart</h1>
+  <div class="edit-users-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% line_items.each_pair do |item_id, quantity|  %>
+          <tr>
+            <td><%= find_item(item_id).title %></td>
+              <%= form_tag("/line_items/#{item_id}", method: :put) do %>
+                <td><%= number_field_tag("quantity", quantity, in: 1..20, value: 1) %><%= submit_tag "Save Changes" %></td>
+              <% end %>
+            <td><%= find_item(item_id).price %></td>
+            <td><%= line_item_total(item_id, quantity) %></td>
+            <td><%= link_to "Remove from Cart", line_item_path(item_id), method: :delete, data: { confirm: "Are you sure?"} %></td>
+          </tr>
+          <% end %>
+        </tbody>
+        <tbody>
+          <th></th>
+        <th class="order-totals">Total Qty</th>
+        <th class="order-totals">Total Price</th>
+          <tr>
+            <td></td>
+            <td class="order-totals"><%= total_quantity %></td>
+            <td class="order-totals"><%= subtotal %></td>
+          </tr>
+        </tbody>
+    </table>
+    <td><%= link_to 'Return to Menu', root_path, class: "btn btn-danger" %></td>
+  </div>
+
+
+</div>

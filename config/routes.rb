@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   get '/admin' => 'pages#admin'
   get '/cart'  => 'pages#cart'
 
-
   resources :users
   resources :items, only: [:index, :show]
   resources :categories
+  resources :orders
 
   #optional if login form is on home page
   get    '/login',    to: 'sessions#new'
