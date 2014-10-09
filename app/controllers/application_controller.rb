@@ -11,8 +11,11 @@ class ApplicationController < ActionController::Base
   # end
 
   def cart
-    @cart ||= Cart.find_by_id(session[:cart_id]) || Cart::Null.new
+    @cart ||= Cart.find_by_id(session[:cart_id])
   end
+
+  ### def cart
+  ###   @cart ||= Cart.new(session)
 
   helper_method :cart
 end
