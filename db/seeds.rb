@@ -84,3 +84,4 @@ User.create(name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", pass
 User.create(name: "Jeff", username: "j3", email: "demo+jeff@jumpstartlab.com", password: "password", admin: "false")
 User.create(name: "Jorge Tellez", username: "novohispano", email: "demo+jorge@jumpstartlab.com", password: "password", admin: "false")
 User.create(name: "Josh Cheek", username: "josh", email: "demo+josh@jumpstartlab.com", password: "password", admin: "true")
+User.create(name: "user", username: "user", email: "user@example.com", password: "password", admin: "false")
