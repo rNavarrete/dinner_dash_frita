@@ -21,6 +21,7 @@
             <%= render partial: 'shared/create_user_form' %>
        <% end %>
 
+          <li><%= render 'shared/cart_button' %></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -29,11 +30,6 @@
           <li><%= link_to "Welcome, #{current_user.name.capitalize}", user_orders_path(current_user), class: "welcome-link"%></li>
           <li><%= link_to 'Settings', user_path(current_user) %></li>
           <li><%= link_to 'Logout', logout_path %></li>
-          <li>
-            <button id="cart-button" class="btn btn-default btn-md" >
-              <span class="glyphicon glyphicon-shopping-cart"></span><%= total_quantity %>
-            </button>
-        </li>
         <% elsif admin? && current_user %>
         <li><p id="user_welcome">Welcome, <span class="user-name"><%= link_to current_user.name.capitalize, user_orders_path(current_user) %></span></p></li>
           <li><%= link_to 'Administrator Menu', admin_path %></li>
