@@ -109,51 +109,27 @@ end
 
 
 
-  describe 'user settings' do
+describe 'user settings' do
 
-    before do
-      @user = create(:user, name: "Jessica", password: "5555", password_confirmation: "5555")
-      visit root_path
-    end
-
-    it 'correctly directs user to settings show page' do
-      within(:css, "#nav_bar") do
-        fill_in'name',     with: "#{@user.name}"
-        fill_in'password', with: "#{@user.password}"
-        click_on('Login')
-        click_on('Settings')
-    end
-
-      expect(page).to have_content 'My Account Settings'
-    end
+  before do
+    @user = create(:user, name: "Jessica", password: "5555", password_confirmation: "5555")
+    visit root_path
   end
 
-  # describe 'user settings' do
-  #
-  #   before do
-  #     @user = create(:user, name: "Jessica", password: "5555", password_confirmation: "5555")
-  #     visit root_path
-  #
-  #     within(:css, "#nav_bar") do
-  #       fill_in'name',     with: "#{@user.name}"
-  #       fill_in'password', with: "#{@user.password}"
-  #       click_on('Login')
-  #       click_on('Settings')
-  #     end
-  #   end
-  #
-  #   it 'correctly directs user to settings show page' do
-  #     expect(page).to have_content 'Account Settings'
-  #   end
-  # end
+  it 'correctly directs user to settings show page' do
+    within(:css, "#nav_bar") do
+      fill_in'name',     with: "#{@user.name}"
+      fill_in'password', with: "#{@user.password}"
+      click_on('Login')
+    end
+
+    click_on('Settings')
+
+    expect(page).to have_content 'My Account Settings'
+  end
+end
 
 
-#------------------------
-
-
-
-#
-#
 
 #
 #
