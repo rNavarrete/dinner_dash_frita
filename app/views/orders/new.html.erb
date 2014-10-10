@@ -3,7 +3,15 @@
   <div class="container">
   <h1>Review Your Order</h1>
     <% if @address %>
-      <%= @address.street %>
+    <ul>
+      <h4><%= label_tag 'Street: ' %><%= @address.street_number %>&nbsp<%= @address.street %></h4>
+
+      <h4><%= label_tag 'City: ' %><%= @address.city %></h4>
+
+      <h4><%= label_tag 'State: ' %><%= @address.state %></h4>
+
+      <h4><%= label_tag 'Zipcode: ' %><%= @address.zip %></h4>
+    </ul>
     <% end %>
 
      <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addressModal">Enter Your Delivery Information</a></li>
