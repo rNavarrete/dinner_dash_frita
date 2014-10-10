@@ -17,7 +17,7 @@
           <tr>
             <td><%= find_item(item_id).title %></td>
               <%= form_tag("/line_items/#{item_id}", method: :put) do %>
-                <td><%= number_field_tag("quantity", quantity, in: 1..20, value: 1) %><%= submit_tag "Save Changes" %></td>
+                <td><%= number_field_tag("quantity", quantity, in: 1..20, value: quantity) %><%= submit_tag "Save Changes" %></td>
               <% end %>
             <td><%= find_item(item_id).price %></td>
             <td><%= line_item_total(item_id, quantity) %></td>
@@ -32,21 +32,6 @@
           <tr>
             <td></td>
             <td class="order-totals"><%= total_quantity %></td>
-
-<%= form_tag charges_path do %>
-  <article>
-    <label class="amount">
-      <span>Amount: $5.00</span>
-    </label>
-  </article>
-
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="<%= stripe_total(subtotal) %>"></script>
-<% end %>
-
-
             <td class="order-totals"><%= subtotal %></td>
           </tr>
         </tbody>
