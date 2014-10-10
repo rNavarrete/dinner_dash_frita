@@ -21,7 +21,7 @@ gem 'bootstrap_form'
 group :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara', '~> 2.4.3'
-  gem 'poltergeist', '~> 1.5.1'
+  gem 'capybara-webkit'
   gem 'launchy', '~> 2.4.2'
   gem 'database_cleaner', '~> 1.3.0'
 end
@@ -31,6 +31,10 @@ group :development do
   gem 'pry', '~> 0.10.1'
   gem 'puma', '~> 2.9.1'
   gem 'factory_girl_rails', '~> 4.4.1'
+end
+
+group :development, :test do
+  gem 'pry-rails'
 end
 
 gem 'rails_12factor', group: :production

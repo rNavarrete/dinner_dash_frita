@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
   resources :categories
   resources :orders
+  resources :addresses
 
   #optional if login form is on home page
   get    '/login',    to: 'sessions#new'
