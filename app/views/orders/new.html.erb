@@ -1,0 +1,16 @@
+<div class="order-form">
+
+  <div class="container">
+  <h1>Review Your Order</h1>
+     <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addressModal">Enter Your Delivery Information</a></li>
+    <%= render partial: 'shared/delivery_address_form' %>
+
+  <%= render 'shared/cart' %>
+  <% if !current_user %>
+    <%= button_to "Login", login_path, class: "btn btn-success btn-lg" %>
+    <%= button_to "Create An Account", new_user_path,  class: "btn btn-success btn-lg" %>
+  <% else %>
+    <%= button_to "Submit Order", orders_path,  class: "btn btn-success btn-lg" %>
+    <% end %>
+  </div>
+</div>
