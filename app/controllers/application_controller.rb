@@ -1,3 +1,5 @@
+require 'money'
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -13,6 +15,7 @@ class ApplicationController < ActionController::Base
   helper_method :delete_item
   helper_method :update_item
   helper_method :valid_state_code
+  helper_method :stripe_total
 
   def cart
     @cart ||= Cart.new(session)
@@ -34,14 +37,17 @@ class ApplicationController < ActionController::Base
     find_item(item_id).price.to_i * quantity.to_i
   end
 
-
   def subtotal
     # session[:cart_items].keys.reduce(0) { |sum, item_id| sum += find_item(item_id).price }
-    total = 0
+    sum = 0
     line_items.each do |item_id, quantity|
-      total += find_item(item_id).price * quantity.to_i
+      sum += find_item(item_id).price.to_i * quantity.to_i
     end
-    total
+      sum
+  end
+
+  def stripe_total(amount)
+      Money.new((amount * 100) , "USD").cents
   end
 
   def update_item(item_id, quantity)
@@ -55,5 +61,5 @@ class ApplicationController < ActionController::Base
   def valid_state_code
     %w(AK AL AR AS AZ CA CO CT DC DE FL GA GU HI IA ID IL IN KS KY LA MA MD ME MI MN MO MS MT NC ND NE NH NJ NM NV NY OH OK OR PA PR RI SC SD TN TX UT VA VI VT WA WI WV WY)
   end
-  
+
 end
