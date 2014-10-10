@@ -3,13 +3,9 @@ class Item < ActiveRecord::Base
   has_many :categories, through: :item_categories
   has_many :order_items
 
-<<<<<<< HEAD
   before_destroy :ensure_not_referenced_by_any_line_item
   # has_many :orders, through: :order_items
-=======
-  # before_destroy :ensure_not_referenced_by_any_order_item
-  has_many :orders, through: :order_items
->>>>>>> ced7b257692d6546190a69d399faa54f3ab493a8
+
 
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "http://fillmurray.com/252/158"
 
