@@ -34,9 +34,9 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
 
     if user.update(user_params)
-      flash[:notice] = 'Account Successfully Updated'
+      gflash :now, :success => 'Account Successfully Updated'
     else
-      flash[:errors] = @user.errors.full_messages.to_sentence
+      gflash :now, :error => @user.errors.full_messages.to_sentence
     end
     redirect_to user_path
   end
@@ -46,10 +46,10 @@ class UsersController < ApplicationController
 
     if user.destroy
       session.clear
-      flash[:notice]  = "Successfully Deleted #{user.name.capitalize}"
+      gflash :now, :success  => "Successfully Deleted #{user.name.capitalize}"
       redirect_to root_path
     else
-      flash[:errors] = @user.errors.full_messages.to_sentence
+      gflash :now, :error => @user.errors.full_messages.to_sentence
       redirect_to user_path
     end
   end
