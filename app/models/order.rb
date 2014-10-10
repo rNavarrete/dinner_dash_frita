@@ -1,10 +1,11 @@
 class Order < ActiveRecord::Base
   belongs_to :user
   has_many :items
+  belongs_to :address
 
-  validates :zip, length: { maximum: 5}, format: { with: /\d{5}/ }, if: :delivery?
-  validates :street_number, presence: true, format: { with: /\d+/}, if: :delivery?
-  validates :state, presence: true, allow_nil: false, inclusion: { in: :valid_state_code}, if: :delivery?
+  # validates :zip, length: { maximum: 5}, format: { with: /\d{5}/ }, if: :delivery?
+  # validates :street_number, presence: true, format: { with: /\d+/}, if: :delivery?
+  # validates :state, presence: true, allow_nil: false, inclusion: { in: :valid_state_code}, if: :delivery?
   validates :user_id, presence: true
   validates :line_items, presence: true
   validates :pickup_or_delivery, presence: true, inclusion: { in: ['pickup', 'delivery'] }

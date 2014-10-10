@@ -10,42 +10,6 @@ describe 'order' do
     expect(@order).to be_valid
   end
 
-  it 'requires a valid zipcode' do
-    @order.zip = 8020
-    expect(@order).to_not be_valid
-
-    @order.zip = 8020000
-    expect(@order).to_not be_valid
-
-    @order.zip = ""
-    expect(@order).to_not be_valid
-
-    @order.zip = nil
-    expect(@order).to_not be_valid
-  end
-
-  it 'requires a street number' do
-    @order.street_number = nil
-    expect(@order).to_not be_valid
-
-    @order.street_number = ""
-    expect(@order).to_not be_valid
-
-    @order.street_number = "my street"
-    expect(@order).to_not be_valid
-  end
-
-  it 'requires a valid state' do
-    @order.state = nil
-    expect(@order).to_not be_valid
-
-    @order.state = "California"
-    expect(@order).to_not be_valid
-
-    @order.state = "BQ"
-    expect(@order).to_not be_valid
-  end
-
   it 'has a user_id' do
     @order.user_id = nil
     expect(@order).to_not be_valid
