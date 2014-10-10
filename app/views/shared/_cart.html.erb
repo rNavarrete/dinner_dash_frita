@@ -1,5 +1,8 @@
 <div class="cart-view">
 <div class="container">
+</br>
+</br>
+</br>
   <h1 class="page-header">Your Cart</h1>
   <div class="edit-users-container">
       <table class="table">
@@ -17,7 +20,7 @@
           <tr>
             <td><%= find_item(item_id).title %></td>
               <%= form_tag("/line_items/#{item_id}", method: :put) do %>
-                <td><%= number_field_tag("quantity", quantity, in: 1..20, value: 1) %><%= submit_tag "Save Changes" %></td>
+                <td><%= number_field_tag("quantity", quantity, in: 1..20, value: quantity) %><%= submit_tag "Save Changes" %></td>
               <% end %>
             <td><%= find_item(item_id).price %></td>
             <td><%= line_item_total(item_id, quantity) %></td>
