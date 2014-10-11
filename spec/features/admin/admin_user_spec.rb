@@ -22,7 +22,7 @@ describe 'logged in administrator' do
     fill_in 'item[title]', with: "I changed it"
     click_on 'Save Item'
     expect(current_path).to eq admin_items_path
-    expect(page).to have_content "Item was successfully updated."
+    expect(page).to have_content "I changed it"
   end
 
   it 'can save an edited category' do
@@ -33,8 +33,9 @@ describe 'logged in administrator' do
     end
     fill_in 'category[title]', with: "Brand new category"
     click_on 'Save Category'
+
     expect(current_path).to eq admin_categories_path
-    expect(page).to have_content "Category was successfully updated."
+    expect(page).to have_content "Brand new category"
   end
 
 end
