@@ -1,4 +1,14 @@
 <%= render 'shared/cart' %>
 <div class="container">
-  <td><%= link_to 'Proceed to Checkout', new_order_path, class: "btn btn-primary" %></td>
+  <% if current_user %>
+    <h2>How would you like to get your food?</h2>
+    <%= link_to 'DELIVERY, please!', new_order_path, class: "btn btn-primary" %>
+    <%= link_to 'I\'ll PICK IT UP', new_order_path, class: "btn btn-success" %>
+  <% else %>
+    <h2>To get your food, we need you to</h2>
+    <button id="login-button" class="btn btn-success btn-lg">Login</button>
+    <h4>or</h4>
+    <a href="#" class="btn btn-success btn-lg" data-toggle="modal" data-target="#basicModal">Create An Account</a>
+    <%= render partial: 'shared/create_user_form' %>
+  <% end %>
 </div>
