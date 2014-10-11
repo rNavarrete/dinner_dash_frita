@@ -22,5 +22,5 @@ $.extend($.gritter.options, {
       position: 'bottom-right', // possibilities: bottom-left, bottom-right, top-left, top-right
       fade_in_speed: 100, // how fast notifications fade in (string or int)
       fade_out_speed: 100, // how fast the notices fade out
-      time: 1000000000 // hang on the screen for...
+      time: 2500 // hang on the screen for...
     });

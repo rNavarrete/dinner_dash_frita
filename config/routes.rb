@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get    'users/:id/orders', to: 'users#orders', as: 'user_orders'
 
   namespace :admin do
-    resources :users
+    resources :users, only: [:destroy]
     resources :items
     resources :categories
   end

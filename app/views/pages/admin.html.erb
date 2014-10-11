@@ -25,7 +25,6 @@
           <td><%= user.admin %></td>
           <td><%#= user.username %></td>
           <td><%#= user.email %></td>
-          <td><%= link_to 'edit', edit_admin_user_path(user), class: "btn btn-warning" %></td>
           <td><%= link_to 'destroy', admin_user_path(user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %></td>
         </tr>
     <% end %>
@@ -105,5 +104,5 @@
       </tbody>
     </table>
     </div>
-    
+
 </div>
