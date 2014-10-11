@@ -37,6 +37,8 @@ class Admin::CategoriesController < Admin::AdminController
 
   def destroy
     Category.find(params[:id]).destroy
+    gflash :now,  :success => "Category was successfully deleted."
+
     redirect_to admin_path
   end
 

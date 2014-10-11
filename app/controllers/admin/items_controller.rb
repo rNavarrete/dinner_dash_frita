@@ -44,6 +44,8 @@ class Admin::ItemsController < Admin::AdminController
 
   def destroy
     Item.find(params[:id]).destroy
+    gflash :now,  :success => "Item was successfully deleted."
+
     redirect_to admin_path
   end
 
