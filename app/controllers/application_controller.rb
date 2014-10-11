@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def total_quantity
-    session[:cart_items].values.reduce(0) {|sum, quantity| sum += quantity.to_i }
+    line_items.values.reduce(0) {|sum, quantity| sum += quantity.to_i }
   end
 
   def line_item_total(item_id, quantity)

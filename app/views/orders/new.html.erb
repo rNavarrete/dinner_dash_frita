@@ -2,8 +2,31 @@
 
   <div class="container">
   <h1>Review Your Order</h1>
+    <% if @address %>
+    <ul>
+      <h4><%= label_tag 'Street: ' %><%= @address.street_number %>&nbsp<%= @address.street %></h4>
+
+      <h4><%= label_tag 'City: ' %><%= @address.city %></h4>
+
+      <h4><%= label_tag 'State: ' %><%= @address.state %></h4>
+
+      <h4><%= label_tag 'Zipcode: ' %><%= @address.zip %></h4>
+    </ul>
+    <% end %>
+
      <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addressModal">Enter Your Delivery Information</a></li>
     <%= render partial: 'shared/delivery_address_form' %>
+
+  <%= render 'shared/cart' %>
+  <% if !current_user %>
+    <%= button_to "Login", login_path, class: "btn btn-success btn-lg" %>
+    <%= button_to "Create An Account", new_user_path,  class: "btn btn-success btn-lg" %>
+  <% else %>
+    <%= form_for Order.new do |form| %>
+      <%= form.hidden_field :address_id, value: @address.id %>
+      <%= form.submit 'BOOYAH' %>
+          <% end %>
+    <%= button_to "Submit Order", orders_path,  class: "btn btn-success btn-lg" %>
+    <% end %>
   </div>
 </div>
-  <%= render 'shared/cart' %>
