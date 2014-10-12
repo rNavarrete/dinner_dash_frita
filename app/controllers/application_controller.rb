@@ -94,7 +94,7 @@ class ApplicationController < ActionController::Base
    def past_order_total(line_items_hash)
  		total = 0
    		order_items(line_items_hash).each do |item_id, quantity|
-    		total += find_item(item_id).price * quantity.to_i
+    		total += find_item(item_id).price * quantity
     	end
     total
   end

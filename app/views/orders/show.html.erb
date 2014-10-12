@@ -2,8 +2,10 @@
 
 
 <div class="container">
-  <h1>Your Order Is Complete!</h1>
+  <h1 class="page-header">Your Order Is Complete!</h1>
   <h3>Order Status: <%= @order.status %></h3>
+  <h5>Date Ordered:<%= time_tag(@order.created_at) %></h5>
+
   <div class="edit-users-container">
     <table class="table">
       <thead>
@@ -12,6 +14,7 @@
           <th>Price</th>
           <th>Quantity</th>
           <th>Subtotal</th>
+          <th>Date Ordered</th>
           <th></th>
         </tr>
       </thead>
@@ -22,6 +25,7 @@
           <td><%= find_item(item_id).price %></td>
           <td><%= quantity %></td>
           <td><%= line_item_subtotal(item_id, quantity) %></td>
+          <td><%= time_tag(@order.created_at) %></td>
 
           <%#= form_tag("/line_items/#{item_id}", method: :put) do %>
           <td><%#= number_field_tag("quantity", quantity, in: 1..20, value: quantity) %><%#= submit_tag "Save Changes" %></td>
@@ -31,9 +35,11 @@
         </tr>
       </tbody>
       <tbody>
+      <% end %>
+
         <th></th>
         <th></th>
-        <th class="order-totals">Total Qty</th>
+        <th class="order-totals">Total Items Ordered</th>
         <th class="order-totals">Total Price</th>
         <tr>
           <td></td>
@@ -42,8 +48,6 @@
           <td class="order-totals"><%= past_order_total(@order.line_items)  %></td>
         </tr>
       </tbody>
-      <% end %>
-
     </table>
     <td><%= link_to 'Return to Menu', root_path, class: "btn btn-default" %></td>
   </div>
