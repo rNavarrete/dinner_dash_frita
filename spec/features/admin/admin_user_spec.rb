@@ -7,7 +7,7 @@ describe 'logged in administrator' do
       @user = create(:user, name: "bert", email: "bertrand@example.com", password: "12345", password_confirmation: "12345", admin: "true")
       visit root_path
       within('#nav_bar') do
-        fill_in 'name', with: "#{@user.name}"
+        fill_in 'email', with: "#{@user.email}"
         fill_in 'password', with: "#{@user.password}"
       end
       click_on 'Login'
