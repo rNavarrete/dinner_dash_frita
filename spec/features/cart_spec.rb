@@ -15,7 +15,7 @@ describe 'cart' do
     before do
       user = create(:user)
       within('.navbar-right') do
-        fill_in "Name", with: user.name
+        fill_in "Email", with: user.email
         fill_in "Password", with: user.password
         click_on "Login"
       end
