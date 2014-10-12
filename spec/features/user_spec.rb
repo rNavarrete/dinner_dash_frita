@@ -31,8 +31,8 @@ describe 'create user' do
       click_on('Create Account')
     end
 
-    expect(page).to have_content 'Username has already been taken'
-    expect(page).to_not have_content 'Logout'
+    expect(page).to have_selector ("#name")
+    expect(page).to  have_content 'New Account'
   end
 
 
@@ -46,13 +46,12 @@ describe 'create user' do
       click_on('Create Account')
     end
 
-    expect(page).to have_content "Password confirmation doesn't match Password"
+
+    expect(page).to have_selector ("#password")
     expect(page).to_not have_content 'Logout'
   end
 
 end
-
-
 
 describe 'user login' do
 
@@ -68,7 +67,7 @@ describe 'user login' do
       click_on 'Login'
     end
 
-    expect(page).to have_content "Successfully Logged In"
+  expect(page).to have_content "Welcome, #{@user.name}"
   end
 
 
@@ -81,7 +80,7 @@ describe 'user login' do
 
     click_on('Logout')
 
-    expect(page).to have_content 'Successfully Logged Out.'
+    expect(page).to have_selector("#register-user")
   end
 
 
@@ -92,7 +91,7 @@ describe 'user login' do
       click_on('Login')
     end
 
-    expect(page).to have_content 'Invalid login.'
+    expect(page).to have_selector("#register-user")
   end
 
 
@@ -103,7 +102,7 @@ describe 'user login' do
       click_on('Login')
     end
 
-    expect(page).to have_content 'Invalid login.'
+    expect(page).to have_selector("#register-user")
   end
 end
 
@@ -145,7 +144,8 @@ describe 'user settings' do
       fill_in 'Name', with: 'NewName'
       click_on('Update Account')
 
-      expect(page).to have_content 'Account Successfully Updated'
+
+      expect(page).to have_content 'Welcome, Newname'
       expect(page).to have_content 'Account Settings'
       expect(page).to_not have_content "#{@user.name}"
     end
@@ -165,6 +165,6 @@ describe 'user settings' do
     click_on('Edit Account Details')
     click_on('Delete Account')
 
-    expect(page).to have_content 'Successfully Deleted'
+    expect(page).to have_selector'#register-user'
   end
 end

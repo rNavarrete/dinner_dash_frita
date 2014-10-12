@@ -13,6 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require gritter
 //= require_tree .
 
 
+$.extend($.gritter.options, {
+      class_name: 'gritter-light', // for light notifications (can be added directly to $.gritter.add too)
+      position: 'bottom-right', // possibilities: bottom-left, bottom-right, top-left, top-right
+      fade_in_speed: 100, // how fast notifications fade in (string or int)
+      fade_out_speed: 100, // how fast the notices fade out
+      time: 1000000000 // hang on the screen for...
+    });

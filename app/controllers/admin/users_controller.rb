@@ -15,9 +15,9 @@ class Admin::UsersController < Admin::AdminController
   def update
     user = User.find(params[:id])
     if user.update(user_params)
-      flash[:notice] = "Account for #{user.name.capitalize} Updated"
+      gflash :now, :success => "Account for #{user.name.capitalize} Updated"
     else
-      flash[:errors] = user.errors.full_messages.to_sentence
+      gflash :now, :error => user.errors.full_messages.to_sentence
     end
     redirect_to admin_user_path(user)
   end
@@ -26,10 +26,10 @@ class Admin::UsersController < Admin::AdminController
     user = User.find(params[:id])
 
     if user.destroy
-      flash[:notice]  = "Successfully Deleted #{user.name.capitalize}"
+      gflash :now, :notice => "Successfully Deleted #{user.name.capitalize}"
       redirect_to admin_path
     else
-      flash[:errors] = user.errors.full_messages.to_sentence
+      gflash :now, :error => user.errors.full_messages.to_sentence
       redirect_to admin_show_user_path(user)
     end
   end
