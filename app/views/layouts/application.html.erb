@@ -4,12 +4,15 @@
     <title>FRITA</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'jquery', 'application' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans|Pacifico' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <%= csrf_meta_tags %>
+
+
   </head>
 
   <body>
@@ -17,7 +20,10 @@
     <%= render 'shared/flash_messages' %>
     <%= render 'shared/navbar' %>
 
-
+    <div id="arrow">
+      ARROW
+    </div>
+    
     <%= yield %>
 
 <script>

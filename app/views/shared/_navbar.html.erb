@@ -36,8 +36,8 @@
           <li><%= link_to 'Logout', logout_path %></li>
         <% else %>
           <%= form_tag(login_path, { style: "padding-top: 10px;" }) do %>
-          <%= text_field_tag :name, "", placeholder: 'Name' %>
-          <%= password_field_tag :password, "", placeholder: 'Password', class: 'focus' %>
+          <%= text_field_tag :name, "", placeholder: 'Name', class: 'login-field' %>
+          <%= password_field_tag :password, "", placeholder: 'Password', class: 'focus', class: 'login-field' %>
           <%= submit_tag 'Login', class: "btn btn-sm" %>
           <% end %>
         <% end %>

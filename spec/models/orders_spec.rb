@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'order' do
 
   before do
-    @order = Order.create(user_id: 1, line_items: {1 => 3}, status: 'ordered', pickup_or_delivery: 'delivery', street_number: 201, street: "Elm", state: "CO", city: "Denver", zip: 80206)
+    @order = Order.create(user_id: 1, line_items: {1 => 3}, status: 'ordered', pickup_or_delivery: 'delivery')
   end
 
   it 'is valid' do

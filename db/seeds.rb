@@ -85,3 +85,5 @@ User.create(name: "Jeff", username: "j3", email: "demo+jeff@jumpstartlab.com", p
 User.create(name: "Jorge Tellez", username: "novohispano", email: "demo+jorge@jumpstartlab.com", password: "password", admin: "false")
 User.create(name: "Josh Cheek", username: "josh", email: "demo+josh@jumpstartlab.com", password: "password", admin: "true")
 User.create(name: "user", username: "user", email: "user@example.com", password: "password", admin: "false")
+
+Address.create(user_id: 5, street_number: '201', street: 'Steele', city: 'Denver', state: 'CO', zip: '80206')
