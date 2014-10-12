@@ -21,7 +21,7 @@
             <%= render partial: 'shared/create_user_form' %>
        <% end %>
 
-          <!-- <li><%#= render 'shared/cart_button' %></li> -->
+      <li><%= render 'shared/cart_button' %></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -36,7 +36,7 @@
           <li><%= link_to 'Logout', logout_path %></li>
         <% else %>
           <%= form_tag(login_path, { style: "padding-top: 10px;" }) do %>
-          <%= text_field_tag :name, "", placeholder: 'Name', class: 'login-field' %>
+          <%= text_field_tag :email, "", placeholder: 'Email', class: 'login-field' %>
           <%= password_field_tag :password, "", placeholder: 'Password', class: 'focus', class: 'login-field' %>
           <%= submit_tag 'Login', class: "btn btn-sm" %>
           <% end %>
