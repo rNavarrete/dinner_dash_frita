@@ -34,7 +34,7 @@
   <div class="category_title"><h2 id="sec<%= category.id %>" class="category_titles"><%= category.title %></h2>
 </div>
   <div class="row">
-    <% category.items.each do |item| %>
+    <% available_items(category.items).each do |item| %>
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail",  id="menu_items">
         <img src="<%= item.image(:medium) %>", class="img-responsive img-rounded", id="menu_item_pics">

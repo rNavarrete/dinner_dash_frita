@@ -2,10 +2,10 @@
   <div class="container">
     <% @categories.each do |category| %>
 
-      <p><%= link_to "Create a New item", new_admin_item_path, id: "new_item", class: "btn btn-success btn-md"%></p>
+      <p><%= link_to "Create a New item", new_admin_item_path, id: "new_item", class: "btn btn-success btn-md pull-right"%></p>
 
       <h1><%= category.title %></h1>
-      <table>
+      <table class="table table-striped">
         <thead>
           <tr>
             <th>Image</th>
@@ -22,7 +22,7 @@
             <tr>
               <td><img src="<%= item.image(:thumb) %>"></td>
               <td><span class="item_title"><%= item.title %><span><td><%= number_to_currency(item.price) %></td></td>
-              <td><%= item.description %></td>
+              <td><%= item.status %></td>
               <td><%= link_to 'Edit', edit_admin_item_path(item) %></td>
               <td><%= link_to 'Destroy', admin_item_path(item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
