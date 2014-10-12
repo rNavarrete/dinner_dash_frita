@@ -1,14 +1,49 @@
+
+
+
+<div class="container">
 <h1>Your Order Is Complete!</h1>
+  <div class="edit-users-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Line Item Subtotal</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% order_items(@order.line_items).each_pair do |item_id, quantity | %>
+          <tr>
+            <td><%= link_to "#{(find_item(item_id).title)}", item_path(item_id)  %></td>
+            <td><%= quantity %></td>
+            <td><%= find_item(item_id).price %></td>
+            <td><%= line_item_subtotal(item_id, quantity) %></td>
 
-  <ul>
-    <h4><%= label_tag 'Customer Name: ' %><%= current_user.name %></h4>
-    <h4><%= label_tag 'Order Status: ' %><%= @order.status %></h4>
-    <h4><%= label_tag 'Youll get your food via '%><%= @order.pickup_or_delivery %>
-    <% if @order.pickup_or_delivery == 'delivery' %>
-      <h4><%= label_tag 'Street: ' %><%= @address.street_number %>&nbsp<%= @address.street %></h4>
-      <h4><%= label_tag 'City: ' %><%= @address.city %></h4>
-      <h4><%= label_tag 'State: ' %><%= @address.state %></h4>
-      <h4><%= label_tag 'Zipcode: ' %><%= @address.zip %></h4>
-    <% end %>
+              <%#= form_tag("/line_items/#{item_id}", method: :put) do %>
+                <td><%#= number_field_tag("quantity", quantity, in: 1..20, value: quantity) %><%#= submit_tag "Save Changes" %></td>
+              <% end %>
+            <td><%#= find_item(item_id).price %></td>
+            <td><%#= line_item_total(item.id, quantity) %></td>
+            <td><%#= link_to "Remove from Cart", line_item_path(item_id), method: :delete, data: { confirm: "Are you sure?"} %></td>
+          </tr>
+        </tbody>
+        <tbody>
+          <th></th>
+        <th class="order-totals">Total Qty</th>
+        <th class="order-totals">Total Price</th>
+          <tr>
+            <td></td>
+            <td class="order-totals"><%#= total_quantity %></td>
+            <td class="order-totals"><%#= subtotal %></td>
+          </tr>
+        </tbody>
+    </table>
+    <td><%= link_to 'Return to Menu', root_path, class: "btn btn-default" %></td>
+  </div>
 
-  </ul>
+
+</div>
+
