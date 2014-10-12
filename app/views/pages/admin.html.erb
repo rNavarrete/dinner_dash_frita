@@ -2,6 +2,9 @@
 
   <h1 class="page-header">Admin Options</h1>
 
+      <p><%= link_to "Edit My Account", edit_user_path(current_user.id), id: "new_item_button", class: "btn-lg btn-success" %></p>
+
+
   <div class="edit-users-container">
     <h1>Edit Users</h1>
 
@@ -25,7 +28,6 @@
           <td><%= user.admin %></td>
           <td><%#= user.username %></td>
           <td><%#= user.email %></td>
-          <td><%= link_to 'edit', edit_admin_user_path(user), class: "btn btn-warning" %></td>
           <td><%= link_to 'destroy', admin_user_path(user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %></td>
         </tr>
     <% end %>
@@ -105,5 +107,5 @@
       </tbody>
     </table>
     </div>
-    
+
 </div>

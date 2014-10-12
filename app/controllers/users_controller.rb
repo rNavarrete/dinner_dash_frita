@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
+
   def new
     @user = User.new
   end
 
   def show
-    @user = User.find(params[:id])
+    if current_user.nil? || current_user.id != params[:id].to_i
+        redirect_to root_path
+    else
+      @user = User.find(params[:id])
+    end
   end
 
   def create
@@ -23,11 +28,19 @@ class UsersController < ApplicationController
   end
 
   def orders
-    @user = User.find(params[:id])
+    if current_user.id == params[:id].to_i
+      @user = User.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
-    @user = User.find(params[:id])
+    if current_user.nil? || current_user.id != params[:id].to_i
+        redirect_to root_path
+    else
+      @user = User.find(params[:id])
+    end
   end
 
   def update
@@ -36,7 +49,7 @@ class UsersController < ApplicationController
     if user.update(user_params)
       gflash :now, :success => 'Account Successfully Updated'
     else
-      gflash :now, :error => @user.errors.full_messages.to_sentence
+      gflash :now, :error => user.errors.full_messages.to_sentence
     end
     redirect_to user_path
   end
