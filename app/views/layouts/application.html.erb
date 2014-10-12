@@ -23,7 +23,7 @@
     <div id="arrow">
       ARROW
     </div>
-    
+
     <%= yield %>
 
 <script>
@@ -58,5 +58,11 @@ $(document).ready(function() {
   });
 });
 </script>
+
+<% if current_user == nil  %>
+     <li><a href="#" class="btn" data-toggle="modal" data-target="#basicModal">New Account</a></li>
+     <%= render partial: 'shared/create_user_form' %>
+<% end %>
+
   </body>
 </html>
