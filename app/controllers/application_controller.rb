@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   helper_method :delete_item
   helper_method :update_item
   helper_method :valid_state_code
+  helper_method :address_delivered_to
 
   def cart
     @cart ||= Cart.new(session)
@@ -56,4 +57,12 @@ class ApplicationController < ActionController::Base
     %w(AK AL AR AS AZ CA CO CT DC DE FL GA GU HI IA ID IL IN KS KY LA MA MD ME MI MN MO MS MT NC ND NE NH NJ NM NV NY OH OK OR PA PR RI SC SD TN TX UT VA VI VT WA WI WV WY)
   end
 
+  def address_delivered_to(address_id)
+    if Address.find_by_id(address_id).nil?
+      "Pick Up Order"
+    else
+      address = Address.find_by_id(address_id)
+      "#{address.street_number}" + " " + "#{address.street}"
+    end
+  end
 end
