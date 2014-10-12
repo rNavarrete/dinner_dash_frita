@@ -14,7 +14,6 @@
           <th>Price</th>
           <th>Quantity</th>
           <th>Subtotal</th>
-          <th>Date Ordered</th>
           <th></th>
         </tr>
       </thead>
@@ -25,13 +24,6 @@
           <td><%= find_item(item_id).price %></td>
           <td><%= quantity %></td>
           <td><%= line_item_subtotal(item_id, quantity) %></td>
-          <td><%= time_tag(@order.created_at) %></td>
-
-          <%#= form_tag("/line_items/#{item_id}", method: :put) do %>
-          <td><%#= number_field_tag("quantity", quantity, in: 1..20, value: quantity) %><%#= submit_tag "Save Changes" %></td>
-          <td><%#= find_item(item_id).price %></td>
-          <td><%#= line_item_total(item.id, quantity) %></td>
-          <td><%#= link_to "Remove from Cart", line_item_path(item_id), method: :delete, data: { confirm: "Are you sure?"} %></td>
         </tr>
       </tbody>
       <tbody>
@@ -49,9 +41,7 @@
         </tr>
       </tbody>
     </table>
-    <td><%= link_to 'Return to Menu', root_path, class: "btn btn-default" %></td>
+    <%= link_to 'Return to Menu', root_path, class: "btn btn-default" %>
   </div>
-
-
 </div>
 
