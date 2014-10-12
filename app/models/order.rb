@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :user
   has_many :items
-  belongs_to :address
+  # belongs_to :address
 
   # validates :zip, length: { maximum: 5}, format: { with: /\d{5}/ }, if: :delivery?
   # validates :street_number, presence: true, format: { with: /\d+/}, if: :delivery?

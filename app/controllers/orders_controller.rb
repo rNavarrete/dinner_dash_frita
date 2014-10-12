@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find_by(id: params[:id])
     @address = Address.find_by(id: @order.address)
-   
+
   end
 
   private

@@ -12,8 +12,8 @@
         <h4><%= label_tag 'Zipcode: ' %><%= @address.zip %></h4>
       </ul>
       <%= form_for @order do |f| %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%#= f.hidden_field :address, value: @address.user_id %>
+        <%= f.hidden_field :user_id, value: current_user.id.to_i %>
+        <%= f.hidden_field :address, value: @address.id.to_i %>
         <%= f.hidden_field :status, value: 'ordered' %>
         <%= f.hidden_field :pickup_or_delivery, value: 'delivery' %>
         <%= f.hidden_field :line_items, value: line_items %>
