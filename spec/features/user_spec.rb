@@ -31,7 +31,8 @@ describe 'create user' do
       click_on('Create Account')
     end
 
-    expect(page).to have_selector ("#name")
+    print page.html
+    expect(page).to have_selector ("#email")
     expect(page).to  have_content 'New Account'
   end
 
@@ -62,7 +63,7 @@ describe 'user login' do
 
   it "can log in a user with an established username and password" do
     within(:css, "#nav_bar") do
-      fill_in 'name',     with: "#{@user.name}"
+      fill_in 'email',     with: "#{@user.email}"
       fill_in 'password', with: "#{@user.password}"
       click_on 'Login'
     end
@@ -73,7 +74,7 @@ describe 'user login' do
 
   it 'successfully logs out user' do
     within(:css, "#nav_bar") do
-      fill_in 'name',     with: "#{@user.name}"
+      fill_in 'email',     with: "#{@user.email}"
       fill_in 'password', with: "#{@user.password}"
       click_on('Login')
     end
@@ -86,7 +87,7 @@ describe 'user login' do
 
   it 'cannot login with incorrect password' do
     within(:css, "#nav_bar") do
-      fill_in 'name',     with: "#{@user.name}"
+      fill_in 'email',     with: "#{@user.email}"
       fill_in 'password', with: "incorrectpassword"
       click_on('Login')
     end
@@ -97,7 +98,7 @@ describe 'user login' do
 
   it 'cannot login with incorrect username' do
     within(:css, "#nav_bar") do
-      fill_in 'name',     with: "incorrectname"
+      fill_in 'email',     with: "incorrectemail@example.com"
       fill_in 'password', with: "#{@user.password}"
       click_on('Login')
     end
@@ -118,7 +119,7 @@ describe 'user settings' do
 
   it 'correctly directs user to settings show page' do
     within(:css, "#nav_bar") do
-      fill_in'name',     with: "#{@user.name}"
+      fill_in'email',     with: "#{@user.email}"
       fill_in'password', with: "#{@user.password}"
       click_on('Login')
     end
@@ -131,7 +132,7 @@ describe 'user settings' do
 
   it 'allows user to edit user settings' do
       within(:css, "#nav_bar") do
-        fill_in'name',     with: "#{@user.name}"
+        fill_in'email',     with: "#{@user.email}"
         fill_in'password', with: "#{@user.password}"
         click_on('Login')
       end
@@ -153,7 +154,7 @@ describe 'user settings' do
 
   it 'deletes a user account when requested' do
     within(:css, "#nav_bar") do
-      fill_in'name',     with: "#{@user.name}"
+      fill_in'email',     with: "#{@user.email}"
       fill_in'password', with: "#{@user.password}"
       click_on('Login')
     end
