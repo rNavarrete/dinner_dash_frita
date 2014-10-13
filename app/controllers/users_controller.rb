@@ -9,6 +9,8 @@ class UsersController < ApplicationController
         redirect_to root_path
     else
       @user = User.find(params[:id])
+      # @orders = Order.find_by(user_id: params[:id])
+      @address = Address.find_by(id: @order.address)
     end
   end
 
