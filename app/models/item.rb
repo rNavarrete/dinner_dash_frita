@@ -16,7 +16,10 @@ class Item < ActiveRecord::Base
     message: 'must be a URL for GIF, JPG or PNG image.' }
   validates :status, inclusion: { in: ['active', 'retired'] }
 
-  private
+
+  def available?
+    status == "active"
+  end
 
    # def ensure_not_referenced_by_any_order_item
    #   if order_items.empty?
