@@ -8,6 +8,21 @@ describe 'cart' do
     click_on 'Add to Cart'
     visit cart_path
     expect(page).to have_content "Your Cart"
+    expect(page).to have_content "Oil of Ole"
+  end
+
+  context 'before user logs in' do
+
+    it 'can remove an item from the cart' do
+      click_on('Remove')
+      expect(page).to_not have_content 'Oil of Ole'
+    end
+
+    it 'can edit quantity of one item'
+
+    it 'must log in to check out'
+
+
   end
 
   context 'after user logs in' do
@@ -37,6 +52,13 @@ describe 'cart' do
       expect(page).to have_content '123 Sesame St.'
     end
   end
+
+    #context 'logged out'
+    #context 'logged in'
+
+    #it 'can add item to cart'
+    #it 'can view '
+
     #Given I have two items in my cart
     #When I look at the cart icon
     #I see the number two
