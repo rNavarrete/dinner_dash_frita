@@ -1,14 +1,47 @@
-<h1>Your Order Is Complete!</h1>
 
-  <ul>
-    <h4><%= label_tag 'Customer Name: ' %><%= current_user.name %></h4>
-    <h4><%= label_tag 'Order Status: ' %><%= @order.status %></h4>
-    <h4><%= label_tag 'Youll get your food via '%><%= @order.pickup_or_delivery %>
-    <% if @order.pickup_or_delivery == 'delivery' %>
-      <h4><%= label_tag 'Street: ' %><%= @address.street_number %>&nbsp<%= @address.street %></h4>
-      <h4><%= label_tag 'City: ' %><%= @address.city %></h4>
-      <h4><%= label_tag 'State: ' %><%= @address.state %></h4>
-      <h4><%= label_tag 'Zipcode: ' %><%= @address.zip %></h4>
-    <% end %>
 
-  </ul>
+
+<div class="container">
+  <h1 class="page-header">Your Order Is Complete!</h1>
+  <h3>Order Status: <%= @order.status %></h3>
+  <h5>Date Ordered:<%= time_tag(@order.created_at) %></h5>
+
+  <div class="edit-users-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% order_items(@order.line_items).each_pair do |item_id, quantity | %>
+        <tr>
+          <td><%= link_to "#{(find_item(item_id).title)}", item_path(item_id)  %></td>
+          <td><%= find_item(item_id).price %></td>
+          <td><%= quantity %></td>
+          <td><%= line_item_subtotal(item_id, quantity) %></td>
+        </tr>
+      </tbody>
+      <tbody>
+      <% end %>
+
+        <th></th>
+        <th></th>
+        <th class="order-totals">Total Items Ordered</th>
+        <th class="order-totals">Total Price</th>
+        <tr>
+          <td></td>
+          <td></td>
+          <td class="order-totals"><%= past_order_quantity(@order.line_items) %></td>
+          <td class="order-totals"><%= past_order_total(@order.line_items)  %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to 'Return to Menu', root_path, class: "btn btn-default" %>
+  </div>
+</div>
+
