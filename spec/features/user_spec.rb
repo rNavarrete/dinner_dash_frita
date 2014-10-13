@@ -142,8 +142,6 @@ describe 'user settings' do
     fill_in 'Name', with: 'NewName'
     click_on('Update Account')
 
-    save_and_open_page
-    print page.html
     expect(page).to have_content 'Welcome, Newname'
     expect(page).to have_content 'Account Settings'
     expect(page).to_not have_content "Jessica"
