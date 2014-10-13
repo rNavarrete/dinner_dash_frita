@@ -14,4 +14,13 @@ class User < ActiveRecord::Base
   def admin?
     admin == true
   end
+
+  def display_name
+    username.empty? ? format(name) : format(username)
+  end
+
+  def format(name)
+    name.split.map {|n| n.strip.capitalize}.join(" ")
+  end
+
 end

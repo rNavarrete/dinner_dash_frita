@@ -24,8 +24,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user && !admin? %>
-
-          <li><%= link_to "Welcome, #{current_user.name.capitalize}", user_orders_path(current_user), class: "welcome-link"%></li>
+          <li><%= link_to "Welcome, #{current_user.display_name}", user_orders_path(current_user), class: "welcome-link"%></li>
+          <!-- <li><%#= link_to "Welcome, #{current_user.name.capitalize}", user_orders_path(current_user), class: "welcome-link"%></li> -->
           <li><%= link_to 'Settings', user_path(current_user) %></li>
           <li><%= link_to 'Logout', logout_path %></li>
         <% elsif admin? && current_user %>
