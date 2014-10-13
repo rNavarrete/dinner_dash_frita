@@ -1,26 +1,37 @@
+
 <p style="color: green"><%= flash[:notice] %></p>
 
+<div class="container">
+  <h1>Item Details</h1>
+  <div class="row">
+    <hr>
+    <div class="row row-margin-bottom">
+      <div class="col-md-7 no-padding lib-item" data-category="view">
+        <div class="lib-panel">
+          <div class="row box-shadow">
+            <div class="col-md-6">
+              <img src="<%= @item.image(:medium) %>" class="img-thumbnail">
+            </div>
+            <div class="col-md-6">
+              <div class="lib-row lib-header">
+                <h1><%= @item.title %></h1>
+                <div class="lib-header-seperator"></div>
+              </div>
+              <div class="lib-row lib-desc">
+               <h3><%= @item.description %></h3>
+             </div>
+             <p><h3 class="pull-center", style="margin-left: 21px;">Price: <%= number_to_currency(@item.price) %></h3></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @item.title %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
-
-<p>
-  <strong>Image url:</strong>
-    <img src="<%= @item.image(:large) %>">
-</p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
-<%= link_to 'New',  new_item_path %>
+           </div>
+          <% if @item.available? %>
+           <%= form_tag line_items_path, :style => "padding-top: 300px; padding-left: 546px;;" do %>
+              <%= number_field :quantity, "quantity", in: 1..20, value: 1 %>
+              <%= hidden_field_tag :id, @item.id %>
+              <%= submit_tag "Add to Cart", class: "btn btn-success" %>
+            <% end %>
+          <% end %>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>

@@ -30,7 +30,7 @@
 $(document).ready(function() {
   $('#sidebar').affix({
     offset: {
-      top: 917
+      top: 1000
     }
   });
 
@@ -50,7 +50,7 @@ $(document).ready(function() {
         target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
         if (target.length) {
           $('html,body').animate({
-            scrollTop: target.offset().top - 50
+            scrollTop: target.offset().top - 80
           }, 1000);
           return false;
         }
@@ -61,7 +61,7 @@ $(document).ready(function() {
 
 <% if current_user == nil  %>
      <li><a href="#" class="btn" data-toggle="modal" data-target="#basicModal">New Account</a></li>
-     <%= render partial: 'shared/create_user_form' %>
+     <%#= render partial: 'shared/create_user_form' %>
 <% end %>
 
   </body>
