@@ -33,13 +33,32 @@ class OrdersController < ApplicationController
     @address = Address.find_by(id: @order.address)
   end
 
+  def update
+    @order = Order.find_by(id: params[:id])
+    @order.update(status: params[:status])
+    if user_admin?
+
+      redirect_to orders_path
+    else
+      redirect_to user_orders_path(current_user.id)
+    end
+  end
+
+  def destroy
+    @order = Order.find_by(id: params[:id])
+    @order.delete
+    # /users/:id/orders
+  end
+
+  private
+
   def order_params
     params.require(:order).permit(:user_id, :address, :status, :pickup_or_delivery, :line_items)
   end
 
 
   def paid_orders
-    Order.all.where(status: "paid")
+    Order.all.where(status: "completed")
   end
 
   def cancelled_orders
@@ -47,6 +66,10 @@ class OrdersController < ApplicationController
   end
 
   def active_orders
-    return Order.all.where(status: "active")
+    Order.all.where(status: "ordered")
+  end
+
+  def user_admin?
+    User.find_by_id(current_user).admin == true
   end
 end
