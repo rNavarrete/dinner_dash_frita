@@ -21,10 +21,16 @@ describe 'logged in administrator' do
     expect(page).to have_content "Elephant"
   end
 
-  # it 'can delete own admin account' do
+  it 'can delete own admin account' do
+    click_on 'Edit My Account'
+    click_on 'Delete Account'
+    expect(current_path).to eq root_path
+    expect(page).to_not have_content "Admin Options"
+  end
 
-
-
+  # it 'can delete users' do
+  #
+  # end
 
   it 'can save an edited item' do
     @item = create(:item)
