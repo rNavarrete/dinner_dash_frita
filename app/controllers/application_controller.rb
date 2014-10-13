@@ -18,6 +18,12 @@ class ApplicationController < ActionController::Base
   helper_method :line_item_subtotal
   helper_method :past_order_quantity
   helper_method :past_order_total
+  helper_method :user_admin?
+
+
+  def user_admin?
+    User.find_by_id(current_user).admin == true
+  end
 
 
   def cart

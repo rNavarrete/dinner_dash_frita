@@ -38,7 +38,11 @@
         </tr>
       </tbody>
     </table>
-    <%= link_to 'Return to Menu', root_path, class: "btn btn-default" %>
-    <%= link_to 'Cancel This Order', order_path(@order, :status => :cancelled), method: 'patch', class: 'btn btn-danger', confirm: {message: 'This will remove your order permanently. '}%>
+    <% if user_admin? %>
+      <%= link_to 'Return to Orders', orders_path, class: "btn btn-default" %>
+    <% else %>
+      <%= link_to 'Return to Menu', root_path, class: "btn btn-default" %>
+    <% end %>
+    <%= link_to 'Cancel This Order', order_path(@order, :status => :cancelled), method: 'patch', class: 'btn btn-danger', data: {confirm: 'This will remove your order permanently. '}%>
   </div>
 </div>
