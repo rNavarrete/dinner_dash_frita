@@ -41,20 +41,20 @@ describe 'cart' do
         click_on "Login"
       end
 
-    describe 'chooses delivery' do
-      before do
-        visit cart_path
-        expect(page).to have_content 'How would you like to get your food?'
-        click_on('DELIVERY, please!')
-        click_on('Enter Your Delivery Information')
-        expect(page).to have_content 'Enter Your Delivery Information'
-        fill_in 'Street number', with: "123"
-        fill_in 'Street', with: " Sesame St."
-        fill_in 'City', with: "Denver"
-        select 'CO', from: 'State'
-        fill_in 'Zip', with: "80206"
-        click_on 'Save Address'
-      end
+      describe 'chooses delivery' do
+        before do
+          visit cart_path
+          expect(page).to have_content 'How would you like to get your food?'
+          click_on('DELIVERY, please!')
+          click_on('Enter Your Delivery Information')
+          expect(page).to have_content 'Enter Your Delivery Information'
+          fill_in 'Street number', with: "123"
+          fill_in 'Street', with: " Sesame St."
+          fill_in 'City', with: "Denver"
+          select 'CO', from: 'State'
+          fill_in 'Zip', with: "80206"
+          click_on 'Save Address'
+        end
 
         it "can set delivery address", :js do
           expect(page).to have_content 'Review Your Order'
@@ -73,36 +73,31 @@ describe 'cart' do
           click_on 'Cancel This Order'
           expect(page).to have_content "cancelled"
         end
-    end
-
-    describe 'chooses pickup' do
-      before do
-        visit cart_path
-        save_and_open_page
-        click_on("I'll PICK IT UP")
       end
 
-      it "can review and edit order" do
-        expect(current_path).to eq 'new?pickup_option=Pickup'
-        expect(page).to have_content 'Review Your Order'
-        fill_in :quantity, with: "2"
-        click_on 'Save'
-        click_on 'Complete My Order'
-        expect(current_path).to eq order_path(1)
-        expect(page).to have_content '2'
-        expect(page).to have_content 'Order status: ordered'
-      end
+      describe 'chooses pickup' do
+        before do
+          visit cart_path
+          save_and_open_page
+          click_on("I'll PICK IT UP")
+        end
 
-      xit "can see estimated wait time" do
+        it "can review and edit order" do
+          expect(current_path).to eq 'new?pickup_option=Pickup'
+          expect(page).to have_content 'Review Your Order'
+          fill_in :quantity, with: "2"
+          click_on 'Save'
+          click_on 'Complete My Order'
+          expect(current_path).to eq order_path(1)
+          expect(page).to have_content '2'
+          expect(page).to have_content 'Order status: ordered'
+        end
 
+        xit "can see estimated wait time" do
+
+        end
       end
     end
   end
-end
 
-    #Given I have one item in my cart with a quantity of two
-    #visit root_path
-    #And I click 'Proceed to Checkout'
-    #Then I see my cart contents
-    #
 end

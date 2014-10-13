@@ -14,6 +14,17 @@ describe 'logged in administrator' do
      expect(current_path).to eq admin_path
   end
 
+  it 'can edit own admin account' do
+    click_on 'Edit My Account'
+    fill_in 'user[name]', with: "Elephant"
+    click_on 'Update Account'
+    expect(page).to have_content "Elephant"
+  end
+
+  # it 'can delete own admin account' do
+
+
+
 
   it 'can save an edited item' do
     @item = create(:item)
@@ -24,6 +35,9 @@ describe 'logged in administrator' do
     expect(current_path).to eq admin_items_path
     expect(page).to have_content "I changed it"
   end
+
+  # it 'can delete an item' do
+
 
   it 'can save an edited category' do
     @category = create(:category)
@@ -37,5 +51,7 @@ describe 'logged in administrator' do
     expect(current_path).to eq admin_categories_path
     expect(page).to have_content "Brand new category"
   end
+
+  # it 'can delete a category' do
 
 end
