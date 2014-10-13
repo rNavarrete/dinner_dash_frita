@@ -6,11 +6,11 @@ class UsersController < ApplicationController
 
   def show
     if current_user.nil? || current_user.id != params[:id].to_i
-        redirect_to root_path
+       redirect_to root_path
     else
       @user = User.find(params[:id])
       # @orders = Order.find_by(user_id: params[:id])
-      @address = Address.find_by(id: @order.address)
+      # @address = Address.find_by(id: @order.address)
     end
   end
 
