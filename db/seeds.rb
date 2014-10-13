@@ -88,17 +88,17 @@ User.create(name: "user", username: "user", email: "user@example.com", password:
 
 Address.create(user_id: 5, street_number: '201', street: 'Steele', city: 'Denver', state: 'CO', zip: '80206')
 
-Order.create(user_id: 2, status: "ordered", pickup_or_delivery: "pickup",   line_items: {"1" => "3"}, address: 1)
-Order.create(user_id: 3, status: "ordered", pickup_or_delivery: "pickup",   line_items: {"2" => "4"}, address: 2)
-Order.create(user_id: 3, status: "ordered", pickup_or_delivery: "delivery", line_items: {"3" => "2"}, address: 2)
-Order.create(user_id: 5, status: "ordered", pickup_or_delivery: "delivery", line_items: {"4" => "1"}, address: 3)
-Order.create(user_id: 5, status: "ordered", pickup_or_delivery: "pickup",   line_items: {"5" => "2"}, address: 3)
+Order.create(user_id: 2, status: "ordered", pickup_or_delivery: "pickup",   line_items: {"1" => "3"},  address: 1)
+Order.create(user_id: 3, status: "ordered", pickup_or_delivery: "pickup",   line_items: {"2" => "17"}, address: 2)
+Order.create(user_id: 3, status: "ordered", pickup_or_delivery: "delivery", line_items: {"3" => "2"},  address: 2)
+Order.create(user_id: 5, status: "ordered", pickup_or_delivery: "delivery", line_items: {"4" => "1"},  address: 3)
+Order.create(user_id: 5, status: "ordered", pickup_or_delivery: "pickup",   line_items: {"5" => "2"},  address: 3)
 
-Order.create(user_id: 2, status: "completed", pickup_or_delivery: "pickup",   line_items: {"10" => "3"}, address: 1)
-Order.create(user_id: 3, status: "completed", pickup_or_delivery: "pickup",   line_items: {"11" => "4"}, address: 2)
-Order.create(user_id: 3, status: "completed", pickup_or_delivery: "delivery", line_items: {"12" => "1"}, address: 2)
-Order.create(user_id: 3, status: "completed", pickup_or_delivery: "delivery", line_items: {"13" => "4"}, address: 2)
-Order.create(user_id: 5, status: "completed", pickup_or_delivery: "delivery", line_items: {"14" => "3"}, address: 3)
+Order.create(user_id: 2, status: "completed", pickup_or_delivery: "pickup",   line_items: {"10" => "3"},  address: 1)
+Order.create(user_id: 3, status: "completed", pickup_or_delivery: "pickup",   line_items: {"11" => "10"}, address: 2)
+Order.create(user_id: 3, status: "completed", pickup_or_delivery: "delivery", line_items: {"12" => "1"},  address: 2)
+Order.create(user_id: 3, status: "completed", pickup_or_delivery: "delivery", line_items: {"13" => "4"},  address: 2)
+Order.create(user_id: 5, status: "completed", pickup_or_delivery: "delivery", line_items: {"14" => "3"},  address: 3)
 
 Order.create(user_id: 2, status: "cancelled", pickup_or_delivery: "pickup",   line_items: {"20" => "3"}, address: 1)
 Order.create(user_id: 2, status: "cancelled", pickup_or_delivery: "delivery", line_items: {"21" => "2"}, address: 1)
