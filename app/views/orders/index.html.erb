@@ -1,0 +1,106 @@
+<div class="container">
+  <h1 class="page-header">Orders Dashboard</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Customer Name</th>
+        <th>Customer Email</th>
+        <th>Date Ordered</th>
+        <th>Pickup or Delivery</th>
+        <th>Subtotal</th>
+        <th>View Order</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <h3><u>Recent Orders</u></h3>
+      <% @recent_orders.each do |order| %>
+      <tr>
+        <td><%= User.find_by_id(order.user_id).name %></td>
+        <td><%= User.find_by_id(order.user_id).email %></td>
+        <td><%= distance_of_time_in_words(order.created_at, Time.now) + " ago" %></td>
+        <td><%= order.pickup_or_delivery %></td>
+        <td><%= number_to_currency(order.subtotal) %></td>
+        <td><%= link_to "View Order", order_path(order), class: "btn btn-success" %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <% end %>
+    </tbody>
+  </table>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Customer Name</th>
+        <th>Customer Email</th>
+        <th>Date Ordered</th>
+        <th>Pickup or Delivery</th>
+        <th>Subtotal</th>
+        <th>View Order</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <h3><u>Paid Orders</u></h3>
+      <% @paid_orders.each do |order| %>
+      <tr>
+        <td><%= User.find_by_id(order.user_id).name %></td>
+        <td><%= User.find_by_id(order.user_id).email %></td>
+        <td><%= distance_of_time_in_words(order.created_at, Time.now) + " ago" %></td>
+        <td><%= order.pickup_or_delivery %></td>
+        <td><%= number_to_currency(order.subtotal) %></td>
+        <td><%= link_to "View Order", order_path(order), class: "btn btn-success" %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <% end %>
+    </tbody>
+  </table>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Customer Name</th>
+        <th>Customer Email</th>
+        <th>Date Ordered</th>
+        <th>Pickup or Delivery</th>
+        <th>Subtotal</th>
+        <th>View Order</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <h3><u>Cancelled Orders</u></h3>
+      <% @cancelled_orders.each do |order| %>
+      <tr>
+        <td><%= User.find_by_id(order.user_id).name %></td>
+        <td><%= User.find_by_id(order.user_id).email %></td>
+        <td><%= distance_of_time_in_words(order.created_at, Time.now) + " ago" %></td>
+        <td><%= order.pickup_or_delivery %></td>
+        <td><%= number_to_currency(order.subtotal) %></td>
+        <td><%= link_to "View Order", order_path(order), class: "btn btn-success" %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

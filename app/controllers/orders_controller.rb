@@ -1,4 +1,11 @@
 class OrdersController < ApplicationController
+  before_filter :active_orders, only: [:index]
+
+  def index
+    @recent_orders = active_orders
+    @paid_orders = paid_orders
+    @cancelled_orders = cancelled_orders
+  end
 
   def new
     @user = User.new
@@ -26,13 +33,20 @@ class OrdersController < ApplicationController
     @address = Address.find_by(id: @order.address)
   end
 
-  private
-
   def order_params
     params.require(:order).permit(:user_id, :address, :status, :pickup_or_delivery, :line_items)
   end
 
-  # def on_file?
-  #   @address.find_by(user_id: current_user.id)
-  # end
+
+  def paid_orders
+    Order.all.where(status: "paid")
+  end
+
+  def cancelled_orders
+    Order.all.where(status: "cancelled")
+  end
+
+  def active_orders
+    return Order.all.where(status: "active")
+  end
 end
