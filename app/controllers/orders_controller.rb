@@ -26,6 +26,17 @@ class OrdersController < ApplicationController
     @address = Address.find_by(id: @order.address)
   end
 
+  def update
+    @order = Order.find_by(id: params[:id])
+    @order.update(status: params[:status])
+    redirect_to user_orders_path(current_user.id)
+  end
+  def destroy
+    @order = Order.find_by(id: params[:id])
+    @order.delete
+    # /users/:id/orders
+  end
+
   private
 
   def order_params

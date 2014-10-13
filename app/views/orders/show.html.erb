@@ -1,6 +1,3 @@
-
-
-
 <div class="container">
   <h1 class="page-header">Your Order Is Complete!</h1>
   <h3>Order Status: <%= @order.status %></h3>
@@ -42,6 +39,6 @@
       </tbody>
     </table>
     <%= link_to 'Return to Menu', root_path, class: "btn btn-default" %>
+    <%= link_to 'Cancel This Order', order_path(@order, :status => :cancelled), method: 'patch', class: 'btn btn-danger', confirm: {message: 'This will remove your order permanently. '}%>
   </div>
 </div>
-
