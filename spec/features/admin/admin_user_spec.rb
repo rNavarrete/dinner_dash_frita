@@ -38,11 +38,10 @@ describe 'logged in administrator' do
       click_on 'Create a new item'
     end
 
-    fill_in 'item[title]', with: "Bananas"
-    fill_in 'item[description]', with: "Delicious"
-    fill_in 'item[price]', with: "98"
-    # select 'Desserts', from: 'item_categories'
-    select 'Desserts', from: '#item_categories'
+    fill_in 'title', with: "Bananas"
+    fill_in 'description', with: "Delicious"
+    fill_in 'price', with: "98"
+    select 'Desserts', from: 'categories'
 
     click_on 'Save Item'
 
