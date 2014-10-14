@@ -26,30 +26,6 @@
                 </div>
               </td>
               <%= form_tag("/line_items/#{item_id}", method: :put) do %>
-<<<<<<< HEAD
-                <td><%= number_field_tag("quantity", quantity, in: 1..20, value: quantity) %><%= submit_tag "Save Changes" %></td>
-              <% end %>
-            <td><%= find_item(item_id).price %></td>
-            <td><%= line_item_total(item_id, quantity) %></td>
-            <td><%= link_to "Remove from Cart", line_item_path(item_id), method: :delete, data: { confirm: "Are you sure?"} %></td>
-          </tr>
-          <% end %>
-        </tbody>
-        <tbody>
-          <th></th>
-        <th class="order-totals">Total Qty</th>
-        <th class="order-totals">Total Price</th>
-          <tr>
-            <td></td>
-            <td class="order-totals"><%= total_quantity %></td>
-            <td class="order-totals"><%= subtotal %></td>
-          </tr>
-        </tbody>
-    </table>
-    <td><%= link_to 'Return to Menu', root_path, class: "btn btn-danger" %></td>
-  </div>
-=======
->>>>>>> b88b5471f550a0c50a553b00c4c36d2cbb906e6c
 
               <td data-th="Price">$<%= find_item(item_id).price %></td>
               <td data-th="Quantity">

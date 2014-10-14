@@ -23,4 +23,15 @@ class User < ActiveRecord::Base
     name.split.map {|n| n.strip.capitalize}.join(" ")
   end
 
+  def active_orders
+    orders.where(status: "ordered")
+  end
+
+  def paid_orders
+    orders.where(status: "completed")
+  end
+
+  def cancelled_orders
+    orders.where(status: "cancelled")
+  end
 end

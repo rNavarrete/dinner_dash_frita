@@ -1,4 +1,3 @@
-require 'money'
 
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
@@ -15,7 +14,6 @@ class ApplicationController < ActionController::Base
   helper_method :delete_item
   helper_method :update_item
   helper_method :valid_state_code
-  helper_method :stripe_total
   helper_method :address_delivered_to
   helper_method :order_items
   helper_method :line_item_subtotal
@@ -57,9 +55,7 @@ class ApplicationController < ActionController::Base
     sum
   end
 
-  def stripe_total(amount)
-    Money.new((amount * 100) , "USD").cents
-  end
+
 
   def update_item(item_id, quantity)
    line_items[item_id] = quantity

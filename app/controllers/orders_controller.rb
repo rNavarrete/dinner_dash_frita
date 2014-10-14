@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_filter :active_orders, only: [:index]
 
   def index
+    redirect_to root_path unless current_user.admin == true
     @recent_orders = active_orders
     @paid_orders = paid_orders
     @cancelled_orders = cancelled_orders
@@ -30,7 +31,11 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by(id: params[:id])
-    @address = Address.find_by(id: @order.address)
+    if current_user.admin == true || @order.user_id == current_user.id
+      @address = Address.find_by(id: @order.address)
+    else
+      redirect_to root_path
+    end
   end
 
   def update

@@ -1,14 +1,17 @@
 <div class="container">
-<%= form_tag charges_path do %>
+  <%= form_tag charges_path(id: @order.id) do %>
   <article>
     <label class="amount">
-      <span>Amount: <%= number_to_currency(subtotal) %></span>
+      <span><h1 class="page-header">Pay Securely with Stripe</h1></span>
     </label>
   </article>
 
+
+
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="Thanks for Ordering!"
-          data-amount="<%= stripe_total(subtotal) %>"></script>
-<% end %>
-<div>
+  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+  data-description="Thanks for Ordering!"
+  data-amount="<%= @order.stripe_total %>"></script>
+  <% end %>
+
+  <div>
