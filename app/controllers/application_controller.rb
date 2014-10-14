@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   helper_method :past_order_quantity
   helper_method :past_order_total
 
-
   def cart
   	@cart ||= Cart.new(session)
   end

@@ -42,8 +42,4 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:user_id, :address_id, :status, :pickup_or_delivery, :line_items)
   end
-
-  # def on_file?
-  #   @address.find_by(user_id: current_user.id)
-  # end
 end

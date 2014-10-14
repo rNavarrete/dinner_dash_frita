@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
        <!--     <li><a href="#">Link</a></li> -->
-       <% if current_user == nil  %>
+       <% if !current_user %>
             <li><a href="#" class="btn" data-toggle="modal" data-target="#basicModal">New Account</a></li>
        <% end %>
 
@@ -34,7 +34,7 @@
           <li><%= link_to 'Logout', logout_path %></li>
         <% else %>
           <%= form_tag(login_path, { style: "padding-top: 10px;" }) do %>
-          <%= text_field_tag :email, "", placeholder: 'Email', class: 'login-field' %>
+          <%= text_field_tag :email, "", placeholder: 'Email', class: 'focus', class: 'login-field' %>
           <%= password_field_tag :password, "", placeholder: 'Password', class: 'focus', class: 'login-field' %>
           <%= submit_tag 'Login', class: "btn btn-sm" %>
           <% end %>

@@ -21,7 +21,8 @@ class PagesController < ApplicationController
     if cart.line_items.empty?
       redirect_to root_path
       gflash :now, :notice => "Your cart is currently empty. You should fill it with Mojitos."
+    else
+      render 'cart'
     end
-    render 'cart'
   end
 end

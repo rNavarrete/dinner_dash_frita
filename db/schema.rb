@@ -69,10 +69,6 @@ ActiveRecord::Schema.define(version: 20141014015037) do
     t.datetime "updated_at"
   end
 
-
-  # cart 1 -> N cart line items (item id, cart_id, quantity)
-  # order 1 -> N order line_items (item_id, order_id, quantity)
-
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
   add_index "line_items", ["item_id"], name: "index_line_items_on_item_id", using: :btree
 

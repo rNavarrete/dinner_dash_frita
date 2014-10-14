@@ -17,7 +17,6 @@ class Cart
   end
 
   def subtotal
-    # session[:cart_items].keys.reduce(0) { |sum, item_id| sum += find_item(item_id).price }
     total = 0
     line_items.each do |item_id, quantity|
       total += Item.find(item_id).price * quantity.to_i
