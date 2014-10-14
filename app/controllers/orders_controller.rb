@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   def new
     @user = User.new
     @order = Order.new(pickup_or_delivery: params[:pickup_option])
-    @line_items = line_items
+    @line_items = cart.line_items
     @address = Address.find_by(user_id: current_user.id)
     @pickup_option = params[:pickup_option]
   end
@@ -32,7 +32,8 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find_by(id: params[:id])
     if current_user.admin == true || @order.user_id == current_user.id
-      @address = Address.find_by(id: @order.address)
+      #### changed .address to .address_id to fix migration error
+      @address = Address.find_by(id: @order.address_id)
     else
       redirect_to root_path
     end
@@ -49,18 +50,16 @@ class OrdersController < ApplicationController
     end
   end
 
-  def destroy
-    @order = Order.find_by(id: params[:id])
-    @order.delete
-    # /users/:id/orders
-  end
+  # def destroy
+  #   @order = Order.find_by(id: params[:id])
+  #   @order.delete
+  # end
 
   private
 
   def order_params
-    params.require(:order).permit(:user_id, :address, :status, :pickup_or_delivery, :line_items)
+    params.require(:order).permit(:user_id, :address_id, :status, :pickup_or_delivery, :line_items)
   end
-
 
   def paid_orders
     Order.all.where(status: "completed")
@@ -77,4 +76,5 @@ class OrdersController < ApplicationController
   def user_admin?
     User.find_by_id(current_user).admin == true
   end
+
 end

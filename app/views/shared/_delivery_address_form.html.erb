@@ -11,7 +11,7 @@
           <%= f.text_field :street_number %>
           <%= f.text_field :street %>
           <%= f.text_field :city %>
-          <%= f.select :state, in: valid_state_code %>
+          <%= f.select :state, in: f.object.valid_state_code %>
           <%= f.text_field :zip %>
           <%= f.submit 'Save Address', class: "btn btn-primary" %>
         <% end %>

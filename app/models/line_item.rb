@@ -8,6 +8,4 @@ class LineItem < ActiveRecord::Base
     Item.find(:item_id)
   end
 
-  #item.title (in the view)
-  #item.quantity
 end
