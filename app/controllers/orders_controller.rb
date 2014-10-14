@@ -31,11 +31,11 @@ class OrdersController < ApplicationController
     @order.update(status: params[:status])
     redirect_to user_orders_path(current_user.id)
   end
-  def destroy
-    @order = Order.find_by(id: params[:id])
-    @order.delete
-    # /users/:id/orders
-  end
+
+  # def destroy
+  #   @order = Order.find_by(id: params[:id])
+  #   @order.delete
+  # end
 
   private
 
