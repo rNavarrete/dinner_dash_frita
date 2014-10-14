@@ -67,7 +67,7 @@ describe 'user login' do
       click_on 'Login'
     end
 
-    expect(page).to have_content "Welcome, #{@user.name}"
+    expect(page).to have_content "Welcome, #{@user.username}"
   end
 
 
@@ -113,27 +113,20 @@ describe 'user settings' do
   before do
     @user = User.create(username: "Lil Jess", name: "Jessica", password: "5555", password_confirmation: "5555", email: "jess@gmail.com")
     visit root_path
-  end
-
-  it 'correctly directs user to settings show page' do
     within(:css, "#nav_bar") do
       fill_in'email',     with: "#{@user.email}"
       fill_in'password', with: "#{@user.password}"
       click_on('Login')
     end
+  end
 
+  it 'correctly directs user to settings show page' do
     click_on('Settings')
     expect(page).to have_content 'My Account Settings'
   end
 
 
   it 'allows user to edit user settings' do
-    within(:css, "#nav_bar") do
-      fill_in'email',     with: "#{@user.email}"
-      fill_in'password', with: "#{@user.password}"
-      click_on('Login')
-    end
-
     within(:css, "#nav_bar") do
       click_on('Settings')
     end
@@ -142,18 +135,12 @@ describe 'user settings' do
     fill_in 'Name', with: 'NewName'
     click_on('Update Account')
 
-    expect(page).to have_content 'Welcome, Newname'
+    expect(page).to have_content 'Welcome, Lil Jess'
     expect(page).to have_content 'Account Settings'
     expect(page).to_not have_content "Jessica"
   end
 
   it 'deletes a user account when requested' do
-    within(:css, "#nav_bar") do
-      fill_in'email',     with: "#{@user.email}"
-      fill_in'password', with: "#{@user.password}"
-      click_on('Login')
-    end
-
     within(:css, "#nav_bar") do
       click_on('Settings')
     end

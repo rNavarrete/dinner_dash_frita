@@ -4,7 +4,7 @@
   <h1>Review Your Order</h1>
   <%= render 'shared/cart' %>
   <% if @address %>
-    <h4>Here's the address we have on file for you:</h4>
+      <h4>Here's the address we have on file for you:</h4>
       <ul>
         <h4><%= label_tag 'Street: ' %><%= @address.street_number %>&nbsp<%= @address.street %></h4>
         <h4><%= label_tag 'City: ' %><%= @address.city %></h4>
@@ -13,19 +13,19 @@
       </ul>
       <%= form_for @order do |f| %>
         <%= f.hidden_field :user_id, value: current_user.id.to_i %>
-        <%= f.hidden_field :address, value: @address.id.to_i %>
+        <%= f.hidden_field :address_id, value: @address.id.to_i %>
         <%= f.hidden_field :status, value: 'ordered' %>
         <%= f.hidden_field :pickup_or_delivery, value: 'delivery' %>
-        <%= f.hidden_field :line_items, value: line_items %>
+        <%= f.hidden_field :line_items, value: cart.line_items %>
         <%= f.submit "Complete My Order", class: "btn btn-success btn-lg" %>
       <% end %>
     <% elsif @order.pickup_or_delivery == "Pickup" %>
   		<%= form_for @order do |f| %>
        	<%= f.hidden_field :user_id, value: current_user.id.to_i %>
-        	<%= f.hidden_field :address, value:  nil %>
+        	<%= f.hidden_field :address_id, value:  nil %>
         	<%= f.hidden_field :status, value: 'ordered' %>
         	<%= f.hidden_field :pickup_or_delivery, value: 'pickup' %>
-        	<%= f.hidden_field :line_items, value: line_items %>
+        	<%= f.hidden_field :line_items, value: cart.line_items %>
         	<%= f.submit "Complete My Order", class: "btn btn-success btn-lg" %>
         <% end %>
     <% else %>

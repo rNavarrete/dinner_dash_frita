@@ -13,7 +13,7 @@
               <th style="width:10%"></th>
             </tr>
           </thead>
-          <% line_items.each_pair do |item_id, quantity|  %>
+          <% @cart.line_items.each_pair do |item_id, quantity|  %>
           <tbody>
             <tr>
               <td data-th="Product">
@@ -32,10 +32,10 @@
                 <%= number_field_tag("quantity", quantity, in: 1..20, value: quantity) %>
               </td>
 
-              <td data-th="Subtotal" class="text-center">$<%= line_item_total(item_id, quantity) %></td>
+              <td data-th="Subtotal" class="text-center">$<%= cart.line_item_total(item_id, quantity) %></td>
               <td class="actions" style="display: inline;">
                 <%= submit_tag "Save", class: "btn btn-info btn-sm" %>
-                <%= link_to "Remove", line_item_path(item_id), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
+                <%= link_to "Remove", line_item_path(item_id), method: :delete, class: "btn btn-danger btn-sm" %>
               </td>
               <% end %>
 
@@ -49,7 +49,7 @@
             <tr>
               <td><a href="/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
               <td colspan="2" class="hidden-xs"></td>
-              <td class="hidden-xs text-center"><strong>Total $<%= subtotal %></strong></td>
+              <td class="hidden-xs text-center"><strong>Total $<%= cart.subtotal %></strong></td>
             </tr>
           </tfoot>
         </table>

@@ -1,9 +1,5 @@
 <form action="<%= cart_path %>" method="get">
   <button id="cart-button" class="btn btn-default navbar-btn" >
-    <span class="glyphicon glyphicon-shopping-cart"></span><%= total_quantity %>
+    <span class="glyphicon glyphicon-shopping-cart"></span><%= cart.total_quantity %>
   </button>
 </form>
-
-<!-- <%#= link_to cart_path, id: "cart-button",  class:"btn btn-default btn-md navbar-btn" do %>
-  <span class="glyphicon glyphicon-shopping-cart"></span><%#= total_quantity %>
-<%# end %> -->

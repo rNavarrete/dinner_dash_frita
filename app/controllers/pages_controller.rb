@@ -16,11 +16,13 @@ class PagesController < ApplicationController
     @users = User.all
   end
 
-  def cart
+  def cart_route
     @user = User.new
-    if line_items.empty?
+    if cart.line_items.empty?
       redirect_to root_path
       gflash :now, :notice => "Your cart is currently empty. You should fill it with Mojitos."
+    else
+      render 'cart'
     end
   end
 end

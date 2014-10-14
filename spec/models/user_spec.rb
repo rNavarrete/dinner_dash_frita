@@ -50,6 +50,9 @@ describe 'valid user' do
     @user.username = nil
     expect(@user).to be_valid
 
+    @user.username = ""
+    expect(@user).to be_valid
+
     @user.username = "a"
     expect(@user).to_not be_valid
 

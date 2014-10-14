@@ -1,6 +1,28 @@
 <div class="container">
-<h1 class="page-header">Your Orders</h1>
+  <% if @user.orders.empty? %>
+    <h1 class="page-header">You have no active orders!</h1>
+  <% else %>
+    <h1 class="page-header">Your Orders</h1>
+  <% end %>
+<!--
+      <tbody>
+        <%# @user.orders.each do |order|  %>
+          <%# address_presenter = AddressPresenter.new(order.address) %>
+          <tr>
+            <td><%#= order.status %></td>
+            <td><%#= time_tag(order.created_at) %></td>
+            <td><%#= past_order_quantity(order.line_items) %></td>
+            <td><%#= address_presenter.delivery_address %></td>
+            <td><%#= link_to "View Details", order_path(order.id), class: "btn btn-success" %></td>
+          </tr>
+        <%# end %>
+      </tbody>
+    </table>
+  </div>
+<%# end %> -->
+
   <table class="table">
+    <h4><u>Pending Orders</u></h4>
     <thead>
       <tr>
         <th>Status</th>
@@ -12,27 +34,66 @@
     </thead>
 
     <tbody>
-      <% @user.orders.each do |order|  %>
-
+      <% @user.active_orders.each do |order|  %>
       <tr>
         <td><%= order.status %></td>
         <td><%= time_tag(order.created_at) %></td>
         <td><%= past_order_quantity(order.line_items) %></td>
-        <td><%= address_delivered_to(order.address) %></td>
+        <td><%= order.pickup_or_delivery %></td>
+        <td><%= link_to "View Details", order_path(order.id), class: "btn btn-warning" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <table class="table">
+    <h4><u>Paid/Completed Orders</u></h4>
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Order Date</th>
+        <th>No. Items Ordered</th>
+        <th>Delivered To</th>
+        <th>View Order</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @user.paid_orders.each do |order|  %>
+      <tr>
+        <td><%= order.status %></td>
+        <td><%= time_tag(order.created_at) %></td>
+        <td><%= past_order_quantity(order.line_items) %></td>
+        <td><%= order.pickup_or_delivery %></td>
         <td><%= link_to "View Details", order_path(order.id), class: "btn btn-success" %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
+
+
+  <table class="table">
+    <h4><u>Cancelled Orders</u></h4>
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Order Date</th>
+        <th>No. Items Ordered</th>
+        <th>Delivered To</th>
+        <th>View Order</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @user.cancelled_orders.each do |order|  %>
+      <tr>
+        <td><%= order.status %></td>
+        <td><%= time_tag(order.created_at) %></td>
+        <td><%= past_order_quantity(order.line_items) %></td>
+        <td><%= order.pickup_or_delivery %></td>
+        <td><%= link_to "View Details", order_path(order.id), class: "btn btn-danger" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
-
-
-
-
-
-
-
-</div>
-
-

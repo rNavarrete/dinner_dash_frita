@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   resources :line_items
+  resources :charges
+
 
   root 'pages#menu'
 
   get '/menu'  => 'pages#menu'
   get '/admin' => 'pages#admin'
-  get '/cart'  => 'pages#cart'
-
+  get '/cart'  => 'pages#cart_route', as: 'cart'
+  get '/about' => 'pages#about'
+  
   resources :users
   resources :items, only: [:index, :show]
   resources :categories
