@@ -1,32 +1,38 @@
 <div class="order-form">
-
   <div class="container">
+
   <h1>Review Your Order</h1>
-    <% if @address %>
-    <ul>
-      <h4><%= label_tag 'Street: ' %><%= @address.street_number %>&nbsp<%= @address.street %></h4>
-
-      <h4><%= label_tag 'City: ' %><%= @address.city %></h4>
-
-      <h4><%= label_tag 'State: ' %><%= @address.state %></h4>
-
-      <h4><%= label_tag 'Zipcode: ' %><%= @address.zip %></h4>
-    </ul>
-    <% end %>
-
-     <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addressModal">Enter Your Delivery Information</a></li>
-    <%= render partial: 'shared/delivery_address_form' %>
-
   <%= render 'shared/cart' %>
-  <% if !current_user %>
-    <%= button_to "Login", login_path, class: "btn btn-success btn-lg" %>
-    <%= button_to "Create An Account", new_user_path,  class: "btn btn-success btn-lg" %>
-  <% else %>
-    <%= form_for Order.new do |form| %>
-      <%= form.hidden_field :address_id, value: @address.id %>
-      <%= form.submit 'BOOYAH' %>
-          <% end %>
-    <%= button_to "Submit Order", orders_path,  class: "btn btn-success btn-lg" %>
-    <% end %>
+  <% if @address %>
+    <h4>Here's the address we have on file for you:</h4>
+      <ul>
+        <h4><%= label_tag 'Street: ' %><%= @address.street_number %>&nbsp<%= @address.street %></h4>
+        <h4><%= label_tag 'City: ' %><%= @address.city %></h4>
+        <h4><%= label_tag 'State: ' %><%= @address.state %></h4>
+        <h4><%= label_tag 'Zipcode: ' %><%= @address.zip %></h4>
+      </ul>
+      <%= form_for @order do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id.to_i %>
+        <%= f.hidden_field :address, value: @address.id.to_i %>
+        <%= f.hidden_field :status, value: 'ordered' %>
+        <%= f.hidden_field :pickup_or_delivery, value: 'delivery' %>
+        <%= f.hidden_field :line_items, value: line_items %>
+        <%= f.submit "Complete My Order", class: "btn btn-success btn-lg" %>
+      <% end %>
+    <% elsif @order.pickup_or_delivery == "Pickup" %>
+  		<%= form_for @order do |f| %>
+       	<%= f.hidden_field :user_id, value: current_user.id.to_i %>
+        	<%= f.hidden_field :address, value:  nil %>
+        	<%= f.hidden_field :status, value: 'ordered' %>
+        	<%= f.hidden_field :pickup_or_delivery, value: 'pickup' %>
+        	<%= f.hidden_field :line_items, value: line_items %>
+        	<%= f.submit "Complete My Order", class: "btn btn-success btn-lg" %>
+        <% end %>
+    <% else %>
+		<h1></h1>
+    	<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addressModal">Enter Your Delivery Information</a></li>
+   		<%= render partial: 'shared/delivery_address_form' %>
+ 	<% end %>
+
   </div>
 </div>

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
   resources :categories
   resources :orders
-  resources :addresses
+  resources :addresses, only: [:create]
 
   #optional if login form is on home page
   get    '/login',    to: 'sessions#new'
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get    'users/:id/orders', to: 'users#orders', as: 'user_orders'
 
   namespace :admin do
-    resources :users
+    resources :users, only: [:destroy]
     resources :items
     resources :categories
   end

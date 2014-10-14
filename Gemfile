@@ -17,6 +17,7 @@ gem 'binding_of_caller'
 gem 'bootstrap_form'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'money'
+gem "gritter", "1.1.0"
 
 
 

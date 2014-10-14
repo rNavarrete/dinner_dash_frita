@@ -8,7 +8,7 @@ describe 'create user' do
   end
 
   it 'creates a new user' do
-    within(:css, "#register-user") do
+    within(:css, "#register") do
       fill_in 'Name',             with: 'happyuser'
       fill_in 'Email',            with: 'happyuser@example.com'
       fill_in 'Username',         with: 'happyuser'
@@ -22,7 +22,7 @@ describe 'create user' do
   end
 
   it 'cannot create user if username is taken' do
-    within(:css, "#register-user") do
+    within(:css, "#register") do
       fill_in 'Name',             with: 'saduser'
       fill_in 'Email',            with: 'saduser@example.com'
       fill_in 'Username',         with: 'joe'
@@ -31,13 +31,13 @@ describe 'create user' do
       click_on('Create Account')
     end
 
-    expect(page).to have_content 'Username has already been taken'
-    expect(page).to_not have_content 'Logout'
+    expect(page).to have_selector ("#email")
+    expect(page).to  have_content 'New Account'
   end
 
 
   it "cannot create user if password doesn't match password confirmation" do
-    within(:css, "#register-user") do
+    within(:css, "#register") do
       fill_in 'Name',             with: 'user'
       fill_in 'Email',            with: 'user@example.com'
       fill_in 'Username',         with: 'user'
@@ -46,64 +46,62 @@ describe 'create user' do
       click_on('Create Account')
     end
 
-    expect(page).to have_content "Password confirmation doesn't match Password"
+
+    expect(page).to have_selector ("#password")
     expect(page).to_not have_content 'Logout'
   end
 
 end
 
-
-
 describe 'user login' do
 
   before do
-    @user = create(:user, name: "Joe", password: "1234", password_confirmation: "1234")
+    @user = User.create(username: "Jonycage", name: "Joe", password: "1234", password_confirmation: "1234", email: "jony@comelately.com")
     visit root_path
   end
 
   it "can log in a user with an established username and password" do
     within(:css, "#nav_bar") do
-      fill_in 'name',     with: "#{@user.name}"
+      fill_in 'email',     with: "#{@user.email}"
       fill_in 'password', with: "#{@user.password}"
       click_on 'Login'
     end
 
-    expect(page).to have_content "Successfully Logged In"
+    expect(page).to have_content "Welcome, #{@user.username}"
   end
 
 
   it 'successfully logs out user' do
     within(:css, "#nav_bar") do
-      fill_in 'name',     with: "#{@user.name}"
+      fill_in 'email',     with: "#{@user.email}"
       fill_in 'password', with: "#{@user.password}"
       click_on('Login')
     end
 
     click_on('Logout')
-
-    expect(page).to have_content 'Successfully Logged Out.'
+    expect(page).to_not have_content("Welcome, #{@user.username}")
   end
 
 
   it 'cannot login with incorrect password' do
     within(:css, "#nav_bar") do
-      fill_in 'name',     with: "#{@user.name}"
+      fill_in 'email',     with: "#{@user.email}"
       fill_in 'password', with: "incorrectpassword"
       click_on('Login')
     end
 
-    expect(page).to have_content 'Invalid login.'
+    expect(page).to have_selector(".login-field")
   end
 
 
   it 'cannot login with incorrect username' do
     within(:css, "#nav_bar") do
-      fill_in 'name',     with: "incorrectname"
+      fill_in 'email',     with: "incorrectemail@example.com"
       fill_in 'password', with: "#{@user.password}"
       click_on('Login')
     end
 
-    expect(page).to have_content 'Invalid login.'
+    expect(page).to have_selector(".login-field")
   end
 end
 
@@ -113,51 +111,36 @@ end
 describe 'user settings' do
 
   before do
-    @user = create(:user, name: "Jessica", password: "5555", password_confirmation: "5555")
+    @user = User.create(username: "Lil Jess", name: "Jessica", password: "5555", password_confirmation: "5555", email: "jess@gmail.com")
     visit root_path
-  end
-
-  it 'correctly directs user to settings show page' do
     within(:css, "#nav_bar") do
-      fill_in'name',     with: "#{@user.name}"
+      fill_in'email',     with: "#{@user.email}"
       fill_in'password', with: "#{@user.password}"
       click_on('Login')
     end
+  end
 
+  it 'correctly directs user to settings show page' do
     click_on('Settings')
-
     expect(page).to have_content 'My Account Settings'
   end
 
 
   it 'allows user to edit user settings' do
-      within(:css, "#nav_bar") do
-        fill_in'name',     with: "#{@user.name}"
-        fill_in'password', with: "#{@user.password}"
-        click_on('Login')
-      end
-
-      within(:css, "#nav_bar") do
-        click_on('Settings')
-      end
-
-      click_on('Edit Account Details')
-      fill_in 'Name', with: 'NewName'
-      click_on('Update Account')
-
-      expect(page).to have_content 'Account Successfully Updated'
-      expect(page).to have_content 'Account Settings'
-      expect(page).to_not have_content "#{@user.name}"
+    within(:css, "#nav_bar") do
+      click_on('Settings')
     end
 
+    click_on('Edit Account Details')
+    fill_in 'Name', with: 'NewName'
+    click_on('Update Account')
+
+    expect(page).to have_content 'Welcome, Lil Jess'
+    expect(page).to have_content 'Account Settings'
+    expect(page).to_not have_content "Jessica"
+  end
 
   it 'deletes a user account when requested' do
-    within(:css, "#nav_bar") do
-      fill_in'name',     with: "#{@user.name}"
-      fill_in'password', with: "#{@user.password}"
-      click_on('Login')
-    end
-
     within(:css, "#nav_bar") do
       click_on('Settings')
     end
@@ -165,6 +148,6 @@ describe 'user settings' do
     click_on('Edit Account Details')
     click_on('Delete Account')
 
-    expect(page).to have_content 'Successfully Deleted'
+    expect(page).to have_selector'.login-field'
   end
 end

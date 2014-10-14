@@ -1,0 +1,48 @@
+<div class="container">
+  <h1 class="page-header">Your Order Is Complete!</h1>
+  <h3>Order Status: <%= @order.status %></h3>
+  <h5>Date Ordered:<%= time_tag(@order.created_at) %></h5>
+
+  <div class="edit-users-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% order_items(@order.line_items).each_pair do |item_id, quantity | %>
+        <tr>
+          <td><%= link_to "#{(find_item(item_id).title)}", item_path(item_id)  %></td>
+          <td><%= find_item(item_id).price %></td>
+          <td><%= quantity %></td>
+          <td><%= line_item_subtotal(item_id, quantity) %></td>
+        </tr>
+      </tbody>
+      <tbody>
+      <% end %>
+
+        <th></th>
+        <th></th>
+        <th class="order-totals">Total Items Ordered</th>
+        <th class="order-totals">Total Price</th>
+        <tr>
+          <td></td>
+          <td></td>
+          <td class="order-totals"><%= past_order_quantity(@order.line_items) %></td>
+          <td class="order-totals"><%= past_order_total(@order.line_items)  %></td>
+        </tr>
+      </tbody>
+    </table>
+    <% if user_admin? %>
+      <%= link_to 'Return to Orders', orders_path, class: "btn btn-default" %>
+    <% else %>
+      <%= link_to 'Return to Menu', root_path, class: "btn btn-default" %>
+    <% end %>
+    <%= link_to 'Cancel This Order', order_path(@order, :status => :cancelled), method: 'patch', class: 'btn btn-danger', data: {confirm: 'This will remove your order permanently. '}%>
+  </div>
+</div>

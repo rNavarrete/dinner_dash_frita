@@ -1,4 +1,4 @@
-<nav id="nav_bar" class="navbar navbar-default" role="navigation">
+<nav id="nav_bar" class="navbar navbar-inverse navbar-fixed-top sticky" role="navigation">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -17,27 +17,25 @@
        <!--     <li><a href="#">Link</a></li> -->
        <% if current_user == nil  %>
             <li><a href="#" class="btn" data-toggle="modal" data-target="#basicModal">New Account</a></li>
-
-            <%= render partial: 'shared/create_user_form' %>
        <% end %>
 
-          <li><%= render 'shared/cart_button' %></li>
+      <li><%= render 'shared/cart_button' %></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user && !admin? %>
-
-          <li><%= link_to "Welcome, #{current_user.name.capitalize}", user_orders_path(current_user), class: "welcome-link"%></li>
+          <li><%= link_to "Welcome, #{current_user.display_name}", user_orders_path(current_user), class: "welcome-link"%></li>
+          <!-- <li><%#= link_to "Welcome, #{current_user.name.capitalize}", user_orders_path(current_user), class: "welcome-link"%></li> -->
           <li><%= link_to 'Settings', user_path(current_user) %></li>
           <li><%= link_to 'Logout', logout_path %></li>
         <% elsif admin? && current_user %>
-        <li><p id="user_welcome">Welcome, <span class="user-name"><%= link_to current_user.name.capitalize, user_orders_path(current_user) %></span></p></li>
+        <li><p id="user_welcome">Welcome, <span class="user-name"><%= link_to current_user.username.capitalize, orders_path %></span></p></li>
           <li><%= link_to 'Administrator Menu', admin_path %></li>
           <li><%= link_to 'Logout', logout_path %></li>
         <% else %>
           <%= form_tag(login_path, { style: "padding-top: 10px;" }) do %>
-          <%= text_field_tag :name, "", placeholder: 'Name' %>
-          <%= password_field_tag :password, "", placeholder: 'Password', class: 'focus' %>
+          <%= text_field_tag :email, "", placeholder: 'Email', class: 'login-field' %>
+          <%= password_field_tag :password, "", placeholder: 'Password', class: 'focus', class: 'login-field' %>
           <%= submit_tag 'Login', class: "btn btn-sm" %>
           <% end %>
         <% end %>

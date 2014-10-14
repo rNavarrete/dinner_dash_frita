@@ -4,12 +4,15 @@
     <title>FRITA</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'jquery', 'application' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans|Pacifico' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <%= csrf_meta_tags %>
+
+
   </head>
 
   <body>
@@ -17,6 +20,9 @@
     <%= render 'shared/flash_messages' %>
     <%= render 'shared/navbar' %>
 
+    <div id="arrow">
+      ARROW
+    </div>
 
     <%= yield %>
 
@@ -24,7 +30,7 @@
 $(document).ready(function() {
   $('#sidebar').affix({
     offset: {
-      top: 917
+      top: 1000
     }
   });
 
@@ -44,7 +50,7 @@ $(document).ready(function() {
         target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
         if (target.length) {
           $('html,body').animate({
-            scrollTop: target.offset().top - 50
+            scrollTop: target.offset().top - 80
           }, 1000);
           return false;
         }
@@ -52,5 +58,11 @@ $(document).ready(function() {
   });
 });
 </script>
+
+<% if current_user == nil  %>
+     <a href="#" class="btn" data-toggle="modal" data-target="#basicModal"></a>
+     <%= render partial: 'shared/create_user_form' %>
+<% end %>
+
   </body>
 </html>
