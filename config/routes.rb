@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :line_items
+  resources :charges
+
 
   root 'pages#menu'
 

@@ -4,7 +4,7 @@
   <h1>Review Your Order</h1>
   <%= render 'shared/cart' %>
   <% if @address %>
-``    <h4>Here's the address we have on file for you:</h4>
+      <h4>Here's the address we have on file for you:</h4>
       <ul>
         <h4><%= label_tag 'Street: ' %><%= @address.street_number %>&nbsp<%= @address.street %></h4>
         <h4><%= label_tag 'City: ' %><%= @address.city %></h4>
