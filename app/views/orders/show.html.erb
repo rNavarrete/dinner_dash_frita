@@ -38,7 +38,9 @@
         </tr>
       </tbody>
     </table>
-    <%= link_to 'Pay with Credit Card', new_charge_path(id: @order), class: 'btn btn-success' %>
+    <% if @order.status == "ordered" && current_user.id == @order.user_id %>
+      <%= link_to 'Pay with Credit Card', new_charge_path(id: @order), class: 'btn btn-success' %>
+    <% end %>
     <%= link_to 'Cancel This Order', order_path(@order, :status => :cancelled), method: 'patch', class: 'btn btn-danger', data: {confirm: 'This will remove your order permanently. '}%>
     <% if user_admin? %>
     <%= link_to 'Return to Orders', orders_path, class: "btn btn-default" %>
