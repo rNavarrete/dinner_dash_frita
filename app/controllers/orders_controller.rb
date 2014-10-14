@@ -32,7 +32,8 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find_by(id: params[:id])
     if current_user.admin == true || @order.user_id == current_user.id
-      @address = Address.find_by(id: @order.address)
+      #### changed .address to .address_id to fix migration error
+      @address = Address.find_by(id: @order.address_id)
     else
       redirect_to root_path
     end
@@ -75,5 +76,5 @@ class OrdersController < ApplicationController
   def user_admin?
     User.find_by_id(current_user).admin == true
   end
-  
+
 end
