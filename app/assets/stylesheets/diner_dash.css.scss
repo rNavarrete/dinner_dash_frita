@@ -1,23 +1,37 @@
-#arrow {
-  display: none;
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.7);
+  margin-left: -20%;
+  margin-right: -20%;
+  padding:10% 15%;
+  font-family: Josefin Sans, sans serif;
 }
-.display-arrow {
-  display: absolute;
-  right: 20px;
-  top: 50px;
+.scroll-indicator {
+  font-size: 6em;
 }
-
+.scroll-menu-text {
+  left: 45%;
+  /* color: rgba(208, 168, 37, 1); */
+  color: rgba(255, 255, 255, .8);
+  z-index: 1000;
+}
+#scroll-down {
+  left: 47%;
+  color: rgba(255, 255, 255, .5);
+}
+.scroll-menu-text,
+#scroll-down {
+  position: absolute;
+  z-index: 999;
+  opacity: 1;
+  top: 88%;
+}
 #name, #password {
   -webkit-transition: transform;
-    transition: transform 1s;
+  transition: transform 1s;
 }
 .highlight-login {
-//   background-color: red;
-//   border: 2px solid #D0A 8;
-//  transition-property: background-color;
-  //transition-duration: 1500;
   -webkit-transform:rotate(360deg);
-    transform:rotate(360deg);
+  transform:rotate(360deg);
 }
 
 #gritter-item-1 > div{

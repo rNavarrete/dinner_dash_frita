@@ -16,11 +16,12 @@
 
       <tbody>
         <% @user.orders.each do |order|  %>
+          <% address_presenter = AddressPresenter.new(order.address) %>
           <tr>
             <td><%= order.status %></td>
             <td><%= time_tag(order.created_at) %></td>
             <td><%= past_order_quantity(order.line_items) %></td>
-            <td><%= address_delivered_to(order.address) %></td>
+            <td><%= address_presenter.delivery_address %></td>
             <td><%= link_to "View Details", order_path(order.id), class: "btn btn-success" %></td>
           </tr>
         <% end %>

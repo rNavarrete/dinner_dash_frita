@@ -13,19 +13,19 @@
       </ul>
       <%= form_for @order do |f| %>
         <%= f.hidden_field :user_id, value: current_user.id.to_i %>
-        <%= f.hidden_field :address, value: @address.id.to_i %>
+        <%= f.hidden_field :address_id, value: @address.id.to_i %>
         <%= f.hidden_field :status, value: 'ordered' %>
         <%= f.hidden_field :pickup_or_delivery, value: 'delivery' %>
-        <%= f.hidden_field :line_items, value: line_items %>
+        <%= f.hidden_field :line_items, value: cart.line_items %>
         <%= f.submit "Complete My Order", class: "btn btn-success btn-lg" %>
       <% end %>
     <% elsif @order.pickup_or_delivery == "Pickup" %>
   		<%= form_for @order do |f| %>
        	<%= f.hidden_field :user_id, value: current_user.id.to_i %>
-        	<%= f.hidden_field :address, value:  nil %>
+        	<%= f.hidden_field :address_id, value:  nil %>
         	<%= f.hidden_field :status, value: 'ordered' %>
         	<%= f.hidden_field :pickup_or_delivery, value: 'pickup' %>
-        	<%= f.hidden_field :line_items, value: line_items %>
+        	<%= f.hidden_field :line_items, value: cart.line_items %>
         	<%= f.submit "Complete My Order", class: "btn btn-success btn-lg" %>
         <% end %>
     <% else %>

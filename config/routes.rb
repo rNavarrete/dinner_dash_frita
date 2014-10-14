@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get '/menu'  => 'pages#menu'
   get '/admin' => 'pages#admin'
-  get '/cart'  => 'pages#cart'
+  get '/cart'  => 'pages#cart_route', as: 'cart'
 
   resources :users
   resources :items, only: [:index, :show]

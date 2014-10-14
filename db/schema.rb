@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141011193010) do
+ActiveRecord::Schema.define(version: 20141014015037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,10 @@ ActiveRecord::Schema.define(version: 20141011193010) do
     t.datetime "updated_at"
   end
 
+
+  # cart 1 -> N cart line items (item id, cart_id, quantity)
+  # order 1 -> N order line_items (item_id, order_id, quantity)
+
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
   add_index "line_items", ["item_id"], name: "index_line_items_on_item_id", using: :btree
 
@@ -79,7 +83,7 @@ ActiveRecord::Schema.define(version: 20141011193010) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.hstore   "line_items"
-    t.integer  "address"
+    t.integer  "address_id"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
