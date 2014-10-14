@@ -29,8 +29,27 @@ describe 'logged in administrator' do
   end
 
   # it 'can delete users' do
-  #
+  #   click_on "destroy"
   # end
+
+  it 'can add an item to the menu' do
+    visit admin_path
+    within('.edit-items-container') do
+      click_on 'Create a new item'
+    end
+
+    fill_in 'item[title]', with: "Bananas"
+    fill_in 'item[description]', with: "Delicious"
+    fill_in 'item[price]', with: "98"
+    # select 'Desserts', from: 'item_categories'
+    select 'Desserts', from: '#item_categories'
+
+    click_on 'Save Item'
+
+    expect(current_path).to eq admin_path
+    expect(page).to have_content "Bananas"
+  end
+
 
   it 'can save an edited item' do
     @item = create(:item)
@@ -43,6 +62,11 @@ describe 'logged in administrator' do
   end
 
   # it 'can delete an item' do
+  #   @item = create(:item)
+  #   visit admin_items_path(@item)
+  #
+  #
+  # end
 
 
   it 'can save an edited category' do
