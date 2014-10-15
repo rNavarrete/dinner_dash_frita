@@ -30,7 +30,9 @@ class UsersController < ApplicationController
   end
 
   def orders
-    if current_user.id == params[:id].to_i
+    if current_user.nil?
+      redirect_to root_path
+    elsif current_user.id == params[:id].to_i || current_user.admin == true
       @user = User.find(params[:id])
     else
       redirect_to root_path
