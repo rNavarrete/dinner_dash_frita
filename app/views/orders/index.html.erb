@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <h3><u>Active Orders</u></h3>
+      <h3><u>Active Orders</u>(<%= @recent_orders.count %>)</h3>
       <% @recent_orders.each do |order| %>
       <tr>
         <td><%= User.find_by_id(order.user_id).name %></td>
@@ -46,7 +46,7 @@
       </tr>
     </thead>
     <tbody>
-      <h3><u>Paid Orders</u></h3>
+      <h3><u>Paid Orders</u>(<%= @paid_orders.count %>)</h3>
       <% @paid_orders.each do |order| %>
       <tr>
         <td><%= User.find_by_id(order.user_id).name %></td>
@@ -75,7 +75,7 @@
       </tr>
     </thead>
     <tbody>
-      <h3><u>Cancelled Orders</u></h3>
+      <h3><u>Cancelled Orders</u>(<%= @cancelled_orders.count %>)</h3>
       <% @cancelled_orders.each do |order| %>
       <tr>
         <td><%= User.find_by_id(order.user_id).name %></td>
