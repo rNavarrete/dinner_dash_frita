@@ -1,8 +1,12 @@
-<p style="color: green"><%= flash[:notice] %></p>
-<h1> Add a Category</h1>
-<%= bootstrap_form_for(@category, url: admin_categories_path ) do |f| %>
-  <p><%= f.text_field :title, :id => 'title', placeholder: "Title" %></p>
-  <p><%= f.text_area :description, :id => 'description', placeholder: "Description" %></p>
-  <%= f.submit "Save Category", :id => 'save' %>
-  <%= link_to "Back", admin_path, class: "btn btn-default" %>
-<% end %>
+<div class="create-category">
+  <div class="container">
+    <p style="color: green"><%= flash[:notice] %></p>
+    <h1> Add a Category</h1>
+    <%= bootstrap_form_for(@category, url: admin_categories_path ) do |f| %>
+      <p><%= f.text_field :title, :id => 'title', placeholder: "Title" %></p>
+      <p><%= f.text_area :description, :id => 'description', placeholder: "Description" %></p>
+      <%= f.submit "Save Category", :id => 'save' %>
+      <%= link_to "Back", admin_path, class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>

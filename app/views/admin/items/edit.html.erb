@@ -3,17 +3,22 @@
     <div class="col-md-4 col-md-offset-4">
       <h1 class="page-header">Edit Item</h1>
       <%= bootstrap_form_for(@item, url: admin_item_path) do |f| %>
-      <%= f.text_field :title, :id => 'title', placeholder: "Title" %>
-      <%= f.text_area :description, :id => 'description', placeholder: "Description" %>
-      <%= f.text_field :price, :id => 'price', placeholder: "Price" %>
-      <%= f.select :status, ['active', 'retired'] %>
-      <%= f.label :image, "Attach an Image" %>
-      <%= f.file_field :image %>
-      <%= f.select(:categories, options_from_collection_for_select(Category.all, "id", "title", @item.categories.pluck(:title)),
-      {}, {multiple: true, size: Category.all.count}) %>
-      <%= f.submit "Save Item", :id => 'save', class: "btn btn-success" %>
-      <%= link_to "Back", admin_path, class: "btn btn-default" %>
-    </div>
+        <%= f.text_field :title, :id => 'title', placeholder: "Title" %>
+        <%= f.text_area :description, :id => 'description', placeholder: "Description" %>
+        <%= f.text_field :price, :id => 'price', placeholder: "Price" %>
+        <%= f.select :status, ['active', 'retired'] %>
+        <%= f.label :image, "Attach an Image" %>
+        <%= f.file_field :image %>
+        <%# params[:item][:categories].each do |category_id| %>
+          <%# if check_category.include?(category_id) %>
+            <%= f.collection_check_boxes :categories, Category.all, :id, :title, checked: true %>
+          <%# else %>
+            <%#= f.collection_check_boxes :categories, Category.all, :id, :title %>
+          <%# end %>
+        <%# end %>
+        <%= f.submit "Save Item", :id => 'save', class: "btn btn-success" %>
+        <%= link_to "Back", admin_path, class: "btn btn-default" %>
     <% end %>
+      </div>
   </div>
 </div>

@@ -44,18 +44,31 @@ describe "creating an item" do
   end
 
   def new_product(image_url)
-    Item.new(title:       "Carrots",
-              description: "Vitamin K",
-              price:       1,
-              image_file_name:   image_url)
+    Item.create(
+    title:           "Carrots",
+    description:     "Vitamin K",
+    price:           1,
+    image_file_name: image_url,
+    )
   end
 
   it "should have an image_url with a valid extension" do
+    category = Category.create!(title: "Veggies", description: "Juicy.")
+    good     = %w{ donut.gif donut.jpg donut.png Donut.JPG Donut.Jpg http://a.b.c/x/y/z/donut.gif }
+    bad      = %w{ donut.doc donut.gif/more donut.gif.more }
 
-    good = %w{ donut.gif donut.jpg donut.png Donut.JPG Donut.Jpg http://a.b.c/x/y/z/donut.gif }
-    bad = %w{ donut.doc donut.gif/more donut.gif.more }
+    good.each do |file|
+      item = new_product(file)
+      item.categories << category
 
-    good.each {|file| expect(new_product(file)).to be_valid}
-    bad.each  {|file| expect(new_product(file)).to_not be_valid}
+      expect(item).to be_valid
+    end
+
+    bad.each  do |file|
+      item = new_product(file)
+      item.categories << category
+
+      expect(item).to_not be_valid
+    end
   end
 end
