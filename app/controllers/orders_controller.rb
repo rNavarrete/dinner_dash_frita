@@ -43,10 +43,17 @@ class OrdersController < ApplicationController
   end
 
   def update
+    order = Order.find_by(id: params[:id])
     @order = Order.find_by(id: params[:id])
     @order.update(status: params[:status])
+
+    if params[:quantity] && params[:item_id]
+      order.line_items_will_change!
+      order.update_line_items(params[:item_id], params[:quantity])
+      order.save
+    end
     if user_admin?
-      redirect_to orders_path
+      redirect_to orders_path(order)
     else
       redirect_to user_orders_path(current_user.id)
     end

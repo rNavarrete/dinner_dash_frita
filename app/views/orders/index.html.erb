@@ -25,6 +25,7 @@
         <td><%= number_to_currency(order.subtotal) %></td>
         <td><%= link_to "View Order", order_path(order), class: "btn btn-primary" %></td>
         <td><%= link_to 'Mark as Paid', order_path(order, :status => :completed), method: 'patch', class: 'btn btn-warning', data: {confirm: 'Are you sure you want to change this order to paid?'}%></td>
+        <td><%= link_to 'Cancel This Order', order_path(order, :status => :cancelled), method: 'patch', class: 'btn btn-danger', confirm: {message: 'This will remove your order permanently. '}%></td>
       </tr>
     </tbody>
     <tbody>

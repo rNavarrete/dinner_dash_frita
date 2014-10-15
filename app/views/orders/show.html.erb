@@ -1,6 +1,7 @@
 <div class="container">
-  <h1 class="page-header">Your Order Is Complete!</h1>
+  <h1 class="page-header">Order Details</h1>
   <h3>Order Status: <%= @order.status %></h3>
+  <h3>Order ID: <%= @order.id %></h3>
   <h5>Date Ordered:<%= time_tag(@order.created_at) %></h5>
   <div class="edit-users-container">
     <table class="table">
@@ -14,15 +15,22 @@
         </tr>
       </thead>
       <tbody>
-        <% order_items(@order.line_items).each_pair do |item_id, quantity | %>
+        <% @order.order_items.each_pair do |item_id, quantity | %>
         <tr>
           <td><%= link_to "#{(find_item(item_id).title)}", item_path(item_id)  %></td>
           <td><%= number_to_currency(find_item(item_id).price) %></td>
-          <td><%= quantity %></td>
-          <td><%= cart.line_item_subtotal(item_id, quantity) %></td>
+          <td><%= form_tag("/orders/#{item_id}", method: :put) do %>
+            <%= hidden_field_tag "item_id", item_id %>
+            <%= number_field_tag("quantity", quantity, in: 1..20, value: quantity) %>
+            <%= submit_tag "Save", class: "btn btn-primary" %>
+          <% end %></td>
+          <td data-th="Subtotal">$<%= cart.line_item_total(item_id, quantity) %>
+          <td><%= link_to "Remove", line_item_path(item_id), method: :delete, class: "btn btn-danger btn-sm" %></td>
         </tr>
-        <% end %>
+
+
       </tbody>
+
       <tbody>
         <th></th>
         <th></th>
@@ -36,6 +44,9 @@
         </tr>
       </tbody>
     </table>
+
+    <% end %>
+
     <% if @order.status == "ordered" && current_user.id == @order.user_id %>
       <%= link_to 'Pay with Credit Card', new_charge_path(id: @order), class: 'btn btn-success' %>
     <% end %>
