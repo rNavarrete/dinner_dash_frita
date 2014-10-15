@@ -9,8 +9,7 @@
           <%= f.text_field :price, :id => 'price', placeholder: "Price" %>
           <%= f.label :image, "Attach an Image" %>
           <%= f.file_field :image %>
-          <%= f.select(:categories, options_from_collection_for_select(Category.all, "id", "title", @item.categories.pluck(:title)),
-                      {}, {multiple: true, size: Category.all.count}) %>
+          <%= f.collection_check_boxes :categories, Category.all, :id, :title %>
           <%= f.submit "Save Item", :id => 'save' , class: "btn btn-success" %>
           <%= link_to "Back", admin_path, class: "btn btn-default" %>
         <% end %>

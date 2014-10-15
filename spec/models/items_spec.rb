@@ -70,7 +70,6 @@ describe "creating an item" do
     bad.each  do |file|
       item = new_product(file)
       item.categories << category
-
       expect(item).to_not be_valid
     end
   end

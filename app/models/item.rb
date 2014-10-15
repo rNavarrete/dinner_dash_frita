@@ -6,6 +6,8 @@ class Item < ActiveRecord::Base
 
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "http://fillmurray.com/252/158"
 
+  validates :categories, presence: true
+
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   validates :title, :description, presence: true, uniqueness: true
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
@@ -13,8 +15,6 @@ class Item < ActiveRecord::Base
     with:    %r{\.(gif|jpg|png)\Z}i,
     message: 'must be a URL for GIF, JPG or PNG image.' }
   validates :status, inclusion: { in: ['active', 'retired'] }
-
-  # validates :categories, presence: true
 
   def available?
     status == "active"
