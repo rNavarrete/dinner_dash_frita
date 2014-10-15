@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'logged in administrator' do
 
   before do
-      @user = create(:user, name: "bert", email: "bertrand@example.com", password: "12345", password_confirmation: "12345", admin: "true")
+      @user = create(:user, name: "bert", email: "bertrand@example.com", username: 'berty', password: "12345", password_confirmation: "12345", admin: "true")
       visit root_path
       within('#nav_bar') do
         fill_in 'email', with: "#{@user.email}"
@@ -14,6 +14,7 @@ describe 'logged in administrator' do
   end
 
   it 'can edit own admin account' do
+    click_on 'Berty'
     click_on 'Edit My Account'
     fill_in 'user[name]', with: "Elephant"
     click_on 'Update Account'
@@ -21,6 +22,7 @@ describe 'logged in administrator' do
   end
 
   it 'can delete own admin account' do
+    click_on 'Berty'
     click_on 'Edit My Account'
     click_on 'Delete Account'
     expect(current_path).to eq root_path
