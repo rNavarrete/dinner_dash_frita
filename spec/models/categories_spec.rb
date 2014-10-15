@@ -13,12 +13,12 @@ describe "creating a category" do
   end
 
   it "should be invalid without title" do
-    category = Category.new(title: nil, description: "Crunchy")
+    category = Category.new(description: "Crunchy")
     expect(category).to_not be_valid
   end
 
   it "should be invalid without a description" do
-    category = Category.new(description: nil, title: "Crickets" )
+    category = Category.new(title: "Crickets")
     expect(category).to_not be_valid
   end
 

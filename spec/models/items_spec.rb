@@ -18,17 +18,20 @@ describe "creating an item" do
     expect(item.price).to eq 9.99
   end
 
-
   it "should be invalid without title" do
-    item = Item.new(title: nil, description: "Crunchy")
+    item = Item.new(description: "Crunchy")
     expect(item).to_not be_valid
   end
 
   it "should be invalid without a description" do
-    item = Item.new(description: nil, title: "Crickets" )
+    item = Item.new(title: "Crickets")
     expect(item).to_not be_valid
   end
 
+  it "should be invalid without a category" do
+    item = Item.new(title: "Fish", description: "Fishy")
+    expect(item).to_not be_valid
+  end
 
   it "should be invalid unless price is a positive integer" do
     item = Item.new(title: "Oranges", description: "Tart")
@@ -45,11 +48,11 @@ describe "creating an item" do
 
   def new_product(image_url)
     Item.create(
-    title:           "Carrots",
-    description:     "Vitamin K",
-    price:           1,
-    image_file_name: image_url,
-    )
+      title:           "Carrots",
+      description:     "Vitamin K",
+      price:           1,
+      image_file_name: image_url,
+      )
   end
 
   it "should have an image_url with a valid extension" do
@@ -67,7 +70,6 @@ describe "creating an item" do
     bad.each  do |file|
       item = new_product(file)
       item.categories << category
-
       expect(item).to_not be_valid
     end
   end
