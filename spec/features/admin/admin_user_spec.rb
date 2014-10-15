@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe 'logged in administrator' do
 
   before do
@@ -28,28 +27,6 @@ describe 'logged in administrator' do
     expect(page).to_not have_content "Admin Options"
   end
 
-  # it 'can delete users' do
-  #   click_on "destroy"
-  # end
-
-  it 'can add an item to the menu' do
-    visit admin_path
-    within('.edit-items-container') do
-      click_on 'Create a new item'
-    end
-
-    fill_in 'title', with: "Bananas"
-    fill_in 'description', with: "Delicious"
-    fill_in 'price', with: "98"
-    select 'Desserts', from: 'categories'
-
-    click_on 'Save Item'
-
-    expect(current_path).to eq admin_path
-    expect(page).to have_content "Bananas"
-  end
-
-
   it 'can save an edited item' do
     @item = create(:item)
     visit admin_items_path(@item)
@@ -59,14 +36,6 @@ describe 'logged in administrator' do
     expect(current_path).to eq admin_items_path
     expect(page).to have_content "I changed it"
   end
-
-  # it 'can delete an item' do
-  #   @item = create(:item)
-  #   visit admin_items_path(@item)
-  #
-  #
-  # end
-
 
   it 'can save an edited category' do
     @category = create(:category)
@@ -80,7 +49,5 @@ describe 'logged in administrator' do
     expect(current_path).to eq admin_categories_path
     expect(page).to have_content "Brand new category"
   end
-
-  # it 'can delete a category' do
 
 end
