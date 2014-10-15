@@ -2,7 +2,6 @@ class Item < ActiveRecord::Base
   has_many :item_categories, dependent: :destroy
   has_many :categories, through: :item_categories
   has_many :order_items
-
   has_many :orders, through: :order_items
 
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "http://fillmurray.com/252/158"
@@ -15,6 +14,7 @@ class Item < ActiveRecord::Base
     message: 'must be a URL for GIF, JPG or PNG image.' }
   validates :status, inclusion: { in: ['active', 'retired'] }
 
+  validates :categories, presence: true
 
   def available?
     status == "active"
