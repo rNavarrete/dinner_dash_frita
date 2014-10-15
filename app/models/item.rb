@@ -15,6 +15,7 @@ class Item < ActiveRecord::Base
     message: 'must be a URL for GIF, JPG or PNG image.' }
   validates :status, inclusion: { in: ['active', 'retired'] }
 
+  validates :categories, presence: true
 
   def available?
     status == "active"
