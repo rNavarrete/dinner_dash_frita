@@ -2,10 +2,15 @@ class OrdersController < ApplicationController
   before_filter :active_orders, only: [:index]
 
   def index
-    redirect_to root_path unless current_user.admin == true
-    @recent_orders = active_orders
-    @paid_orders = paid_orders
-    @cancelled_orders = cancelled_orders
+    if current_user.nil?
+      redirect_to root_path
+    elsif current_user.admin == true
+      @recent_orders = active_orders
+      @paid_orders = paid_orders
+      @cancelled_orders = cancelled_orders
+    else
+      redirect_to root_path
+    end
   end
 
   def new

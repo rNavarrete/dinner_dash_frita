@@ -40,6 +40,7 @@ describe 'cart' do
           fill_in "Password", with: user.password
           click_on "Login"
         end
+      end
 
       describe 'chooses delivery' do
         before do
@@ -94,4 +95,3 @@ describe 'cart' do
       end
     end
   end
-end

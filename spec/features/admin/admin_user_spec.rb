@@ -13,6 +13,20 @@ describe 'logged in administrator' do
      expect(current_path).to eq admin_path
   end
 
+  it 'can edit own admin account' do
+    click_on 'Edit My Account'
+    fill_in 'user[name]', with: "Elephant"
+    click_on 'Update Account'
+    expect(page).to have_content "Elephant"
+  end
+
+  it 'can delete own admin account' do
+    click_on 'Edit My Account'
+    click_on 'Delete Account'
+    expect(current_path).to eq root_path
+    expect(page).to_not have_content "Admin Options"
+  end
+
   it 'can save an edited item' do
     @item = create(:item)
     visit admin_items_path(@item)
