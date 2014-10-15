@@ -34,6 +34,7 @@ describe 'logged in administrator' do
     visit admin_items_path(@item)
     click_on 'Edit'
     fill_in 'item[title]', with: "I changed it"
+    find(:css, '#item_categories_1').set(true)
     click_on 'Save Item'
     expect(current_path).to eq admin_items_path
     expect(page).to have_content "I changed it"
