@@ -18,25 +18,20 @@ describe "creating an item" do
     expect(item.price).to eq 9.99
   end
 
-
   it "should be invalid without title" do
-    item = Item.new(title: nil, description: "Crunchy")
+    item = Item.new(description: "Crunchy")
     expect(item).to_not be_valid
   end
 
   it "should be invalid without a description" do
-    item = Item.new(description: nil, title: "Crickets" )
+    item = Item.new(title: "Crickets")
     expect(item).to_not be_valid
   end
-
-  # --------------------
 
   it "should be invalid without a category" do
     item = Item.new(title: "Fish", description: "Fishy")
     expect(item).to_not be_valid
   end
-
-  # ---------------------
 
   it "should be invalid unless price is a positive integer" do
     item = Item.new(title: "Oranges", description: "Tart")
