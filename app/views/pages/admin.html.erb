@@ -1,12 +1,7 @@
-<div class="container">
-<br>
-<br>
-<br>
+<div class="container"><br><br><br>
   <h1 class="page-header">Admin Options</h1>
-
   <div class="edit-users-container">
     <h1>Edit Users</h1>
-
       <table class="table">
         <thead>
           <tr>
@@ -17,10 +12,8 @@
             <th>Email</th>
           </tr>
         </thead>
-
         <tbody>
           <% @users.each do |user|  %>
-
           <tr>
           <td><%= user.name %></td>
           <td><%= time_ago_in_words(user.created_at) %></td>
@@ -33,16 +26,10 @@
         </tbody>
     </table>
   </div>
-
-
-
   <div class="edit-items-container">
     <h1>Edit Items</h1>
-
     <p><%= link_to "Create a new item", new_admin_item_path, id: "new_item_button", class: "btn-lg btn-success" %></p>
-
     <% @categories.each do |category| %>
-
       <h3><%= category.title %></h3>
       <table class="table table-striped">
         <thead>
@@ -55,7 +42,6 @@
             <th colspan="3"></th>
           </tr>
         </thead>
-
         <tbody>
           <% category.items.each do |item| %>
             <tr>
@@ -70,13 +56,9 @@
       </table>
     <% end %>
   </div>
-
-
   <div class="edit-categories-container">
     <h2>Edit Categories</h2>
-
     <p><%= link_to "Create a New Category", new_admin_category_path, id: "new_item_button" , class: "btn-lg btn-success"%></p>
-
     <table class="table table-striped">
       <thead>
         <tr>
@@ -85,7 +67,6 @@
           <th colspan="3"></th>
         </tr>
       </thead>
-
       <tbody id="admin_categories_edit_table">
         <% @categories.each do |category| %>
           <tr>
@@ -98,5 +79,4 @@
       </tbody>
     </table>
     </div>
-
 </div>

@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe 'logged in administrator' do
 
   before do
@@ -13,7 +12,6 @@ describe 'logged in administrator' do
       click_on 'Login'
      expect(current_path).to eq admin_path
   end
-
 
   it 'can save an edited item' do
     @item = create(:item)

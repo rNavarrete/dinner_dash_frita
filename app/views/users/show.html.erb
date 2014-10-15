@@ -1,24 +1,22 @@
 <div class="container">
 <h1>My Account Settings</h1>
-
-<table class="table">
-  <tr>
-    <th>Name</th>
-    <td><%= @user.name %></td>
-  </tr>
-  <tr>
-    <th>Member Since</th>
-    <td><%= @user.created_at %></td>
-  </tr>
-  <tr>
-    <th>User Name:</th>
-    <td><%= @user.username %></td>
-  </tr>
-  <tr>
-    <th>Email</th>
-    <td><%= @user.email %></td>
-  </tr>
-</table>
-
-<%= link_to "Edit Account Details", edit_user_path(@user), class: "btn btn-success" %>
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th>Member Since</th>
+      <td><%= @user.created_at %></td>
+    </tr>
+    <tr>
+      <th>User Name:</th>
+      <td><%= @user.username %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= @user.email %></td>
+    </tr>
+  </table>
+  <%= link_to "Edit Account Details", edit_user_path(@user), class: "btn btn-success" %>
 </div>

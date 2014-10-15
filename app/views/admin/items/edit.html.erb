@@ -1,11 +1,7 @@
-
 <div class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
-
-
       <h1 class="page-header">Edit Item</h1>
-
       <%= bootstrap_form_for(@item, url: admin_item_path) do |f| %>
       <%= f.text_field :title, :id => 'title', placeholder: "Title" %>
       <%= f.text_area :description, :id => 'description', placeholder: "Description" %>

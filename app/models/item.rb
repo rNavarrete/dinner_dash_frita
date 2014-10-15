@@ -3,7 +3,6 @@ class Item < ActiveRecord::Base
   has_many :categories, through: :item_categories
   has_many :order_items
 
-  # before_destroy :ensure_not_referenced_by_any_order_item
   has_many :orders, through: :order_items
 
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "http://fillmurray.com/252/158"
@@ -20,14 +19,5 @@ class Item < ActiveRecord::Base
   def available?
     status == "active"
   end
-
-   # def ensure_not_referenced_by_any_order_item
-   #   if order_items.empty?
-   #     return true
-   #   else
-   #     errors.add(:base, 'order Items present')
-   #     return false
-   #   end
-   # end
 
 end

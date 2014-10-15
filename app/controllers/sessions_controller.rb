@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
 
-
   def new
   end
 
@@ -9,11 +8,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password]) && user.admin?
       session[:user_id] = user.id
       gflash :now, :success => 'Successfully Logged In'
-      # NormalizeUserCart.call(user, session)
       redirect_to admin_path
     elsif user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      # fix_cart_shit(user)
       gflash :now, :success  => 'Successfully Logged In'
       redirect_to root_path
     else

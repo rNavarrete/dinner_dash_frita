@@ -2,7 +2,6 @@
   <h1 class="page-header">Your Order Is Complete!</h1>
   <h3>Order Status: <%= @order.status %></h3>
   <h5>Date Ordered:<%= time_tag(@order.created_at) %></h5>
-
   <div class="edit-users-container">
     <table class="table">
       <thead>
@@ -22,10 +21,9 @@
           <td><%= quantity %></td>
           <td><%= cart.line_item_subtotal(item_id, quantity) %></td>
         </tr>
+        <% end %>
       </tbody>
       <tbody>
-        <% end %>
-
         <th></th>
         <th></th>
         <th class="order-totals">Total Items Ordered</th>
@@ -41,7 +39,6 @@
     <% if @order.status == "ordered" && current_user.id == @order.user_id %>
       <%= link_to 'Pay with Credit Card', new_charge_path(id: @order), class: 'btn btn-success' %>
     <% end %>
-
     <% if user_admin? %>
       <%= link_to 'Return to Orders', orders_path, class: "btn btn-default" %>
     <% else %>
@@ -50,6 +47,5 @@
         <%= link_to 'Cancel This Order', order_path(@order, :status => :cancelled), method: 'patch', class: 'btn btn-danger', confirm: {message: 'This will remove your order permanently. '}%>
       <% end %>
     <% end %>
-
   </div>
 </div>

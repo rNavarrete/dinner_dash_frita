@@ -1,11 +1,8 @@
 <p style="color: green"><%= flash[:notice] %></p>
-
 <div class="container">
   <div class="row">
       <div class="col-md-4 col-md-offset-4">
         <h1> Create a Menu Item</h1>
-
-
         <%= bootstrap_form_for(@item, url: admin_items_path) do |f| %>
           <%= f.text_field :title, :id => 'title', placeholder: "Title" %>
           <%= f.text_area :description, :id => 'description', placeholder: "Description" %>
