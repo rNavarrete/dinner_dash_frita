@@ -1,5 +1,4 @@
 class LineItemsController < ApplicationController
-  # before_action :cart, only: [:create]
 
   def create
     cart.add_line_item(params[:id], params[:quantity][:quantity])
@@ -19,12 +18,4 @@ class LineItemsController < ApplicationController
     redirect_to cart_path
   end
 
-  private
-
-  # def set_cart
-  #   @cart = Cart.find_by_id(session[:cart_id])
-  # rescue ActiveRecord::RecordNotFound
-  #   @cart = Cart.create
-  #   session[:cart_id] = @cart.id
-  # end
 end

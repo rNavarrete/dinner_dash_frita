@@ -26,18 +26,16 @@ class OrdersController < ApplicationController
     if @order.save
       session[:cart_items] = {}
       gflash :now, :success => "Thank you. Your order has been successfully created."
-
       redirect_to order_path(@order.id)
     else
       gflash :now, :error =>  @order.errors.full_messages.to_sentence
       redirect_to :back
-     end
+    end
   end
 
   def show
     @order = Order.find_by(id: params[:id])
     if current_user.admin == true || @order.user_id == current_user.id
-      #### changed .address to .address_id to fix migration error
       @address = Address.find_by(id: @order.address_id)
     else
       redirect_to root_path
@@ -48,17 +46,11 @@ class OrdersController < ApplicationController
     @order = Order.find_by(id: params[:id])
     @order.update(status: params[:status])
     if user_admin?
-
       redirect_to orders_path
     else
       redirect_to user_orders_path(current_user.id)
     end
   end
-
-  # def destroy
-  #   @order = Order.find_by(id: params[:id])
-  #   @order.delete
-  # end
 
   private
 

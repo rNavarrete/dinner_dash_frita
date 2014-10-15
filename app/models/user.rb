@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   end
 
   def display_name
-    username.empty? ? format(name) : format(username)
+    username.blank? ? format(name) : format(username)
   end
 
   def format(name)

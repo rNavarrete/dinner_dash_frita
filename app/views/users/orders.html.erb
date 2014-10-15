@@ -4,22 +4,6 @@
   <% else %>
     <h1 class="page-header">Your Orders</h1>
   <% end %>
-<!--
-      <tbody>
-        <%# @user.orders.each do |order|  %>
-          <%# address_presenter = AddressPresenter.new(order.address) %>
-          <tr>
-            <td><%#= order.status %></td>
-            <td><%#= time_tag(order.created_at) %></td>
-            <td><%#= past_order_quantity(order.line_items) %></td>
-            <td><%#= address_presenter.delivery_address %></td>
-            <td><%#= link_to "View Details", order_path(order.id), class: "btn btn-success" %></td>
-          </tr>
-        <%# end %>
-      </tbody>
-    </table>
-  </div>
-<%# end %> -->
 
   <table class="table">
     <h4><u>Pending Orders</u></h4>
@@ -70,7 +54,6 @@
       <% end %>
     </tbody>
   </table>
-
 
   <table class="table">
     <h4><u>Cancelled Orders</u></h4>

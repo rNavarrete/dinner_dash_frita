@@ -1,5 +1,5 @@
 <%= form_tag(login_path, { id: "login" }) do %>
-<%= text_field_tag :name, "", placeholder: 'Name' %>
-<%= password_field_tag :password, "", placeholder: 'Password', class: 'focus' %>
-<%= submit_tag 'Login' %>
+  <%= text_field_tag :name, "", placeholder: 'Name' %>
+  <%= password_field_tag :password, "", placeholder: 'Password', class: 'focus' %>
+  <%= submit_tag 'Login' %>
 <% end %>
