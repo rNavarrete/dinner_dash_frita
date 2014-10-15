@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_filter :active_orders, only: [:index]
 
   def index
-    if current_user.nill?
+    if current_user.nil?
       redirect_to root_path
     elsif current_user.admin == true
       @recent_orders = active_orders
