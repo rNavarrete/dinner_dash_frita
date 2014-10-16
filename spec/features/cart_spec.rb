@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe 'cart' do
+
     before do
       create(:item, categories: [create(:category)])
       visit '/'
@@ -62,33 +63,48 @@ describe 'cart' do
           expect(page).to have_content '123 Sesame St.'
         end
 
-      #   it 'can cancel an order' do
-      #     within(:css, "#nav_bar") do
-      #       find(:css, '.welcome-link').click
-      #     end
-      #     expect(current_path).to eq user_orders_path(@user)
-      #     save_and_open_page
-      #     expect(page).to have_content "Order Status: ordered"
-      #     click_on 'View Details'
-      #     expect(current_path).to eq orders_path(1)
-      #     click_on 'Cancel This Order'
-      #     expect(page).to have_content "cancelled"
-      #   end
+        it "can review order" do
+          visit cart_path
+          click_on("DELIVERY, please!")
+          expect(page).to have_content 'Review Your Order'
+          click_on 'Complete My Order'
+          expect(page).to have_content 'Order Status: ordered'
+        end
+
+        it 'can cancel an order' do
+          visit cart_path
+          click_on("DELIVERY, please!")
+          expect(page).to have_content 'Review Your Order'
+          click_on 'Complete My Order'
+          expect(page).to have_content "Order Status: ordered"
+          click_on "Welcome, #{@user.username.capitalize}"
+          click_on 'View Details'
+          click_on 'Cancel This Order'
+          expect(page).to have_content "cancelled"
+        end
       end
 
       describe 'chooses pickup' do
 
-        # it "can review and edit order" do
-        #   visit cart_path
-        #   click_on("I'll PICK IT UP")
-        #   expect(page).to have_content 'Review Your Order'
-        #   fill_in :quantity, with: "2"
-        #   click_on 'Save'
-        #   click_on 'Complete My Order'
-        #   expect(current_path).to eq order_path(1)
-        #   expect(page).to have_content '2'
-        #   expect(page).to have_content 'Order status: ordered'
-        # end
+        it "can review order" do
+          visit cart_path
+          click_on("I'll PICK IT UP")
+          expect(page).to have_content 'Review Your Order'
+          click_on 'Complete My Order'
+          expect(page).to have_content 'Order Status: ordered'
+        end
+        
+        it 'can cancel an order' do
+          visit cart_path
+          click_on("I'll PICK IT UP")
+          expect(page).to have_content 'Review Your Order'
+          click_on 'Complete My Order'
+          expect(page).to have_content "Order Status: ordered"
+          click_on "Welcome, #{@user.username.capitalize}"
+          click_on 'View Details'
+          click_on 'Cancel This Order'
+          expect(page).to have_content "cancelled"
+        end
       end
     end
   end
