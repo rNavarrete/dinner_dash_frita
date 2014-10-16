@@ -25,7 +25,7 @@ Item.create!(title: "Torta de milanesa", description: "Breaded chicken cutlet, b
 Item.create!(title: "El Ché", description: "Salami, pickles, chipotle mayo, gouda cheese", price: "13.00", image_file_name: "sourdough.jpg", category_ids: [3])
 Item.create!(title: "Bay of Pigs", description: "Ham, chorizo, pepperoni, mayo, mustard", price: "13.00", image_file_name: "bayofpigs.jpg", category_ids: [3])
 
-Item.create!(title: "Ropa vieja", description: "Shredded pork dish with tomato salsa, garbanzo beans, and potatoes", price: "17.00", image_file_name:"ropavieja.jpg", category_ids: [4])
+Item.create!(title: "Cuban Mussel Crisis", description: "All mussels are steamed with white wine, butter, garlic and shallots, served with papas fritas", price: "17.00", image_file_name:"mussels.jpg", category_ids: [4])
 Item.create!(title: "Churrasco", description: "Grilled skirt steak, moros, sweet plantain, chimichurri sauce", price: "20.00", image_file_name: "carneAzada.jpg", category_ids: [4])
 Item.create!(title: "Pernil", description: "Roasted pork, yucca, mojo, chicharron", price: "17.00", image_file_name: "pernil.jpg", category_ids: [4])
 Item.create!(title: "Plato Tipico", description: "Yucca, huevos fritos,  churrasco y platanos.", price: "16.00", image_file_name:"yucca_carne_huevos.jpg", category_ids: [2, 4])
