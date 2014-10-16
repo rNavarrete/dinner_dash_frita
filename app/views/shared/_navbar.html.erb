@@ -33,11 +33,13 @@
           <li><%= link_to 'Administrator Menu', admin_path %></li>
           <li><%= link_to 'Logout', logout_path %></li>
         <% else %>
+        <div id="login-fields">
           <%= form_tag(login_path, { style: "padding-top: 10px;" }) do %>
           <%= text_field_tag :email, "", placeholder: 'Email', class: 'focus', class: 'login-field' %>
           <%= password_field_tag :password, "", placeholder: 'Password', class: 'focus', class: 'login-field' %>
           <%= submit_tag 'Login', class: "btn btn-sm" %>
           <% end %>
+        </div>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

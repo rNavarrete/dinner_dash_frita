@@ -39,8 +39,8 @@ class Admin::ItemsController < Admin::AdminController
       redirect_to admin_items_path
     else
       gflash :now,  :error => "Item was not updated. Please try again."
-      redirect_to :back
-      # render :new
+      # redirect_to :back
+      render :new
     end
   end
 

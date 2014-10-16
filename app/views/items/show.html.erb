@@ -21,7 +21,7 @@
              <p><h3 class="pull-center", style="margin-left: 21px;">Price: <%= number_to_currency(@item.price) %></h3></p>
            </div>
           <% if @item.available? %>
-           <%= form_tag line_items_path, :style => "padding-top: 300px; padding-left: 546px;;" do %>
+           <%= form_tag line_items_path, :style => "padding-top: 25%; padding-left: 55%;" do %>
               <%= number_field :quantity, "quantity", in: 1..20, value: 1 %>
               <%= hidden_field_tag :id, @item.id %>
               <%= submit_tag "Add to Cart", class: "btn btn-success" %>
