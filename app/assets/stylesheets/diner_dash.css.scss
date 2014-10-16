@@ -1,4 +1,11 @@
-
+.padded-container {
+  background-color: rgba(0, 0, 0, .8);
+}
+.paid-format {
+  margin: 20% 10%;
+  padding: 20px;
+  color: white;
+}
 .carousel-caption {
   background-color: rgba(0, 0, 0, 0.7);
   margin-left: -20%;
@@ -18,6 +25,8 @@
 #scroll-down {
   left: 47%;
   color: rgba(255, 255, 255, .5);
+    color: grey;
+
 }
 .scroll-menu-text,
 #scroll-down {

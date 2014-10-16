@@ -30,6 +30,10 @@ class Order < ActiveRecord::Base
     Item.find(item_id)
   end
 
+  def update_line_items(item_id, quantity)
+    line_items[item_id] = quantity
+  end
+
   def subtotal
     items = {}
     line_items_array = line_items.to_a
@@ -44,4 +48,15 @@ class Order < ActiveRecord::Base
     end
     total
   end
+
+  def order_items
+      items = {}
+      line_items_array = line_items.to_a
+      line_items_array.each do |id_and_item_array|
+        item_id = id_and_item_array[0].scan(/\d+/)
+        quantity = id_and_item_array[1].to_i
+        items[item_id[0]] = quantity
+      end
+      items
+   end
 end
