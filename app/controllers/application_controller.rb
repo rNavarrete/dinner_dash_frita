@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   helper_method :past_order_quantity
   helper_method :past_order_total
   helper_method :user_admin?
+  helper_method :line_item_subtotal
 
   def cart
     @cart ||= Cart.new(session)
@@ -59,14 +60,6 @@ class ApplicationController < ActionController::Base
 
   def past_order_quantity(line_items_hash)
     order_items(line_items_hash).values.reduce(0) {|sum, quantity| sum += quantity}
-  end
-
-  def past_order_total(line_items_hash)
-    total = 0
-    order_items(line_items_hash).each do |item_id, quantity|
-      total += find_item(item_id).price * quantity
-    end
-    total
   end
 
 end
