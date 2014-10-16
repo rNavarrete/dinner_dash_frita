@@ -1,39 +1,3 @@
-# ItemCategory.create(item_id: 1, category_id: 1)
-# ItemCategory.create(item_id: 2, category_id: 1)
-# ItemCategory.create(item_id: 3, category_id: 1)
-# ItemCategory.create(item_id: 4, category_id: 1)
-# ItemCategory.create(item_id: 5, category_id: 1)
-# ItemCategory.create(item_id: 6, category_id: 1)
-#
-# ItemCategory.create(item_id: 7, category_id: 2)
-# ItemCategory.create(item_id: 8, category_id: 2)
-# ItemCategory.create(item_id: 9, category_id: 2)
-# ItemCategory.create(item_id: 10, category_id: 2)
-# ItemCategory.create(item_id: 11, category_id: 2)
-# ItemCategory.create(item_id: 12, category_id: 2)
-#
-# ItemCategory.create(item_id: 13, category_id: 3)
-# ItemCategory.create(item_id: 14, category_id: 3)
-# ItemCategory.create(item_id: 15, category_id: 3)
-# ItemCategory.create(item_id: 16, category_id: 3)
-# ItemCategory.create(item_id: 17, category_id: 3)
-# ItemCategory.create(item_id: 18, category_id: 3)
-#
-#
-# ItemCategory.create(item_id: 19, category_id: 4)
-# ItemCategory.create(item_id: 20, category_id: 4)
-# ItemCategory.create(item_id: 21, category_id: 4)
-# ItemCategory.create(item_id: 22, category_id: 4)
-# ItemCategory.create(item_id: 23, category_id: 4)
-# ItemCategory.create(item_id: 24, category_id: 4)
-#
-# ItemCategory.create(item_id: 25, category_id: 5)
-# ItemCategory.create(item_id: 26, category_id: 5)
-# ItemCategory.create(item_id: 27, category_id: 5)
-# ItemCategory.create(item_id: 28, category_id: 5)
-# ItemCategory.create(item_id: 29, category_id: 5)
-# ItemCategory.create(item_id: 30, category_id: 5)
-
 Category.create(title: "Drinks", description: "Cocktails, juices, and coffees")
 Category.create(title: "Small Plates", description: "Small tastes to whet your appetite")
 Category.create(title: "Sandwiches", description: "More than your average Cubano")
@@ -43,7 +7,7 @@ Category.create(title: "Desserts", description: "A sweet treat to end the meal")
 Item.create!(title: "Grapefruit Mojito", description: "Frita house mojito", price: "7.00", image_file_name: "rhubarb-mojito.jpg", category_ids: [1])
 Item.create!(title: "Sangria", description: "Frita house sangria", price: "6.00", image_file_name: "sangria.jpg", category_ids: [1])
 Item.create!(title: "Passion fruit drink", description: "Passion fruit soda made in-house", price: "3.00", image_file_name: "ku-de-ta-bangkok-7.jpg", category_ids: [1])
-Item.create!(title: "Tamarindo", description: "Tamarind soda made in-house", price: "3.00", image_file_name: "tamarindo.jpg", category_ids: [1])
+Item.create!(title: "Tamarindo", description: "Tamarind soda made in-house", price: "8.00", image_file_name: "tamarindo.jpg", category_ids: [1])
 Item.create!(title: "Cafe con leche", description: "Fresh roasted beans", price: "3.00", image_file_name: "cafe1.jpg", category_ids: [1])
 Item.create!(title: "Cortadito", description: "Cuba Libre", price: "3.00", image_file_name: "cafe2.jpg", category_ids: [1])
 
@@ -54,7 +18,7 @@ Item.create!(title: "Guacamole Cubano", description: "Platanos con guacamole.", 
 Item.create!(title: "Sopa Levanta Muerto", description: "Seafood soup,", price: "6.00", image_file_name: "levanta.jpg", category_ids: [2])
 Item.create!(title: "Congri", description: "Beans and rice with olives, raisins, and capers", price: "8.00", image_file_name: "rice-beans.jpg", category_ids: [2])
 
-Item.create!(title: "Cubano", description: "Roast pork, ham, swiss cheese, salami, pickles, mustard", price: "12.00", image_file_name: "cuban_sandwich.jpg", category_ids: [3])
+Item.create!(title: "Cubano", description: "Roast pork, ham, swiss cheese, salami, pickles, mustard", price: "12.00", image_file_name: "cuban_sandwich.jpg", category_ids: [3, 4])
 Item.create!(title: "Gordito de la calle ocho", description: "Cuban sandwich with plantains", price: "14.00", image_file_name: "cuban_roast.jpg", category_ids: [3])
 Item.create!(title: "Pan con lechon", description: "Roasted pork, chicharron, pickled red onion", price: "14.00", image_file_name: "lechon.jpg", category_ids: [3])
 Item.create!(title: "Torta de milanesa", description: "Breaded chicken cutlet, black beans, guacamole, chipotle mayo, rajas", price: "13.00", image_file_name: "milanesa.jpg", category_ids: [3])
@@ -64,7 +28,7 @@ Item.create!(title: "Bay of Pigs", description: "Ham, chorizo, pepperoni, mayo, 
 Item.create!(title: "Ropa vieja", description: "Shredded pork dish with tomato salsa, garbanzo beans, and potatoes", price: "17.00", image_file_name:"ropavieja.jpg", category_ids: [4])
 Item.create!(title: "Churrasco", description: "Grilled skirt steak, moros, sweet plantain, chimichurri sauce", price: "20.00", image_file_name: "carneAzada.jpg", category_ids: [4])
 Item.create!(title: "Pernil", description: "Roasted pork, yucca, mojo, chicharron", price: "17.00", image_file_name: "pernil.jpg", category_ids: [4])
-Item.create!(title: "Plato Tipico", description: "Yucca, huevos fritos,  churrasco y platanos", price: "16.00", image_file_name:"yucca_carne_huevos.jpg", category_ids: [4])
+Item.create!(title: "Plato Tipico", description: "Yucca, huevos fritos,  churrasco y platanos.", price: "16.00", image_file_name:"yucca_carne_huevos.jpg", category_ids: [2, 4])
 Item.create!(title: "Platanos con Chorizos", description: "Platanos Fritos con Chorizos Azados", price: "16.00", image_file_name:"platanos.jpg", category_ids: [4])
 Item.create!(title: "Lomo saltado", description: "Stir fry of beef short ribs, red onions, tomato, potato, ginger", price: "18.00", image_file_name: "lomo.jpg", category_ids: [4])
 
@@ -72,12 +36,10 @@ Item.create!(title: "Lomo saltado", description: "Stir fry of beef short ribs, r
 Item.create!(title: "Panatela Cubana", description: "Cuban chocolate cake", price: "3.00", image_file_name: "chocolate_cake.jpg", category_ids: [5])
 Item.create!(title: "Pudin Diplomatico", description: "Bread pudding", price: "5.00", image_file_name: "pudin.jpg", category_ids: [5])
 Item.create!(title: "Flan", description: "Milk cake", price: "5.00", image_file_name:"flan.jpg", category_ids: [5])
-Item.create!(title: "Pastelitos", description: "Cuban pastries: guava, cheese, and coconut", price: "3.00", image_file_name: "pastelitos.jpg", category_ids: [5])
+Item.create!(title: "Pastelitos", description: "Cuban pastries: guava, cheese, and coconut", price: "3.00", image_file_name: "pastelitos.jpg", category_ids: [2, 5])
 Item.create!(title: "Arroz en Leche", description: "Cuban rice pudding", price: "3.00", image_file_name: "arroz_leche.jpg", category_ids: [5])
 Item.create!(title: "Buñuelos de Yucca", description: "Yucca batter fried and drizzled w/ syrup.", price: "3.00", image_file_name: "nuegados_sal.jpg", category_ids: [5])
 
-
-User.create(name: "admin", email: "admin@example.com", password: "12345", admin: "true")
 
 User.create(name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", password: "password", admin: "false")
 User.create(name: "Jeff", username: "j3", email: "demo+jeff@jumpstartlab.com", password: "password", admin: "false")
@@ -87,19 +49,19 @@ User.create(name: "user", username: "user", email: "user@example.com", password:
 
 Address.create(user_id: 5, street_number: '201', street: 'Steele', city: 'Denver', state: 'CO', zip: '80206')
 
-Order.create(user_id: 2, status: "ordered", pickup_or_delivery: "pickup",   line_items: {"1" => "3"},  address_id: 1)
+Order.create(user_id: 2, status: "ordered", pickup_or_delivery: "pickup",   line_items: {"1" => "3", "14" => "5"},  address_id: 1)
 Order.create(user_id: 3, status: "ordered", pickup_or_delivery: "pickup",   line_items: {"2" => "17"}, address_id: 2)
-Order.create(user_id: 3, status: "ordered", pickup_or_delivery: "delivery", line_items: {"3" => "2"},  address_id: 2)
+Order.create(user_id: 3, status: "ordered", pickup_or_delivery: "delivery", line_items: {"3" => "2", "16" => "2"},  address_id: 2)
 Order.create(user_id: 5, status: "ordered", pickup_or_delivery: "delivery", line_items: {"4" => "1"},  address_id: 3)
 Order.create(user_id: 5, status: "ordered", pickup_or_delivery: "pickup",   line_items: {"5" => "2"},  address_id: 3)
 
-Order.create(user_id: 2, status: "completed", pickup_or_delivery: "pickup",   line_items: {"10" => "3"},  address_id: 1)
+Order.create(user_id: 2, status: "completed", pickup_or_delivery: "pickup",   line_items: {"10" => "3", "2" => "8"},  address_id: 1)
 Order.create(user_id: 3, status: "completed", pickup_or_delivery: "pickup",   line_items: {"11" => "10"}, address_id: 2)
-Order.create(user_id: 3, status: "completed", pickup_or_delivery: "delivery", line_items: {"12" => "1"},  address_id: 2)
-Order.create(user_id: 3, status: "completed", pickup_or_delivery: "delivery", line_items: {"13" => "4"},  address_id: 2)
-Order.create(user_id: 5, status: "completed", pickup_or_delivery: "delivery", line_items: {"14" => "3"},  address_id: 3)
+Order.create(user_id: 3, status: "completed", pickup_or_delivery: "delivery", line_items: {"12" => "1", "6" => "2"},  address_id: 2)
+Order.create(user_id: 3, status: "completed", pickup_or_delivery: "delivery", line_items: {"13" => "4", "12" => "3"},  address_id: 2)
+Order.create(user_id: 5, status: "completed", pickup_or_delivery: "delivery", line_items: {"14" => "3", "8" => "4"},  address_id: 3)
 
-Order.create(user_id: 2, status: "cancelled", pickup_or_delivery: "pickup",   line_items: {"20" => "3"}, address_id: 1)
+Order.create(user_id: 2, status: "cancelled", pickup_or_delivery: "pickup",   line_items: {"20" => "3", "15" => "22"}, address_id: 1)
 Order.create(user_id: 2, status: "cancelled", pickup_or_delivery: "delivery", line_items: {"21" => "2"}, address_id: 1)
 Order.create(user_id: 2, status: "cancelled", pickup_or_delivery: "delivery", line_items: {"22" => "3"}, address_id: 1)
 Order.create(user_id: 3, status: "cancelled", pickup_or_delivery: "pickup",   line_items: {"23" => "1"}, address_id: 2)

@@ -16,6 +16,10 @@ class PagesController < ApplicationController
     @users = User.all
   end
 
+  def about
+    @user = User.new
+  end
+
   def code
     redirect_to 'http://github.com/rNavarrete/dinner_dash_frita'
   end

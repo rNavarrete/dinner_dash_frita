@@ -1,5 +1,5 @@
 $( document ).ready(function() {
   $('#login-button').click(function() {
-    $(".login-field").addClass("highlight-login");
-  });
+    $( ".login-field" ).removeClass("highlight-login").addClass("highlight-login");
+  })
 });
