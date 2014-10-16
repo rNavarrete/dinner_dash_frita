@@ -20,7 +20,7 @@
           <td><%= link_to "#{(find_item(item_id).title)}", item_path(item_id)  %></td>
           <td><%= number_to_currency(find_item(item_id).price) %></td>
           <td><%= quantity %></td>
-          <td><%= cart.line_item_subtotal(item_id, quantity) %></td>
+          <td><%= number_to_currency(cart.line_item_subtotal(item_id, quantity)) %></td>
         </tr>
         <% end %>
       </tbody>
