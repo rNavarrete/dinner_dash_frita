@@ -1,7 +1,6 @@
 <div class="order-form">
   <div class="container">
   <h1>Review Your Order</h1>
-  <%= render 'shared/cart' %>
   <% if @address %>
       <h4>Here's the address we have on file for you:</h4>
       <ul>
@@ -32,5 +31,39 @@
     	<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addressModal">Enter Your Delivery Information</a></li>
    		<%= render partial: 'shared/delivery_address_form' %>
  	<% end %>
-  </div>
+
+  <table class="table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% cart.line_items.each_pair do |item_id, quantity | %>
+        <tr>
+          <td><%= link_to "#{(find_item(item_id).title)}", item_path(item_id)  %></td>
+          <td><%= number_to_currency(find_item(item_id).price) %></td>
+          <td><h6><%= quantity %></h6></td>
+          <td></td>
+        </tr>
+        <% end %>
+      </tbody>
+      <tbody>
+        <th></th>
+        <th></th>
+        <th class="order-totals">Total Items Ordered</th>
+        <th class="order-totals">Total Price</th>
+        <tr>
+          <td></td>
+          <td></td>
+          <td class="order-totals"><%= past_order_quantity(cart.line_items) %></td>
+          <td class="order-totals"><%= number_to_currency(past_order_total(cart.line_items))  %></td>
+        </tr>
+      </tbody>
+    </table>
 </div>
+</div>
+
