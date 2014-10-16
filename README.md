@@ -5,4 +5,4 @@ FRITA - a cuban gastronomic love affair
 
 [staging]
 
-[production](http://blooming-river-9713.herokuapp.com/)
+[production](http://frita.herokuapp.com/)
