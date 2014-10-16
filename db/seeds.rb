@@ -18,25 +18,25 @@ Item.create!(title: "Guacamole Cubano", description: "Platanos con guacamole.", 
 Item.create!(title: "Sopa Levanta Muerto", description: "Seafood soup,", price: "6.00", image_file_name: "levanta.jpg", category_ids: [2])
 Item.create!(title: "Congri", description: "Beans and rice with olives, raisins, and capers", price: "8.00", image_file_name: "rice-beans.jpg", category_ids: [2])
 
-Item.create!(title: "Cubano", description: "Roast pork, ham, swiss cheese, salami, pickles, mustard", price: "12.00", image_file_name: "cuban_sandwich.jpg", category_ids: [3, 4])
+Item.create!(title: "Cubano", description: "Roast pork, ham, swiss cheese, salami, pickles, mustard", price: "12.00", image_file_name: "cuban_sandwich.jpg", category_ids: [3])
 Item.create!(title: "Gordito de la calle ocho", description: "Cuban sandwich with plantains", price: "14.00", image_file_name: "cuban_roast.jpg", category_ids: [3])
 Item.create!(title: "Pan con lechon", description: "Roasted pork, chicharron, pickled red onion", price: "14.00", image_file_name: "lechon.jpg", category_ids: [3])
 Item.create!(title: "Torta de milanesa", description: "Breaded chicken cutlet, black beans, guacamole, chipotle mayo, rajas", price: "13.00", image_file_name: "milanesa.jpg", category_ids: [3])
 Item.create!(title: "El Ché", description: "Salami, pickles, chipotle mayo, gouda cheese", price: "13.00", image_file_name: "sourdough.jpg", category_ids: [3])
 Item.create!(title: "Bay of Pigs", description: "Ham, chorizo, pepperoni, mayo, mustard", price: "13.00", image_file_name: "bayofpigs.jpg", category_ids: [3])
 
-Item.create!(title: "Cuban Mussel Crisis", description: "All mussels are steamed with white wine, butter, garlic and shallots, served with papas fritas", price: "17.00", image_file_name:"mussels.jpg", category_ids: [4])
 Item.create!(title: "Churrasco", description: "Grilled skirt steak, moros, sweet plantain, chimichurri sauce", price: "20.00", image_file_name: "carneAzada.jpg", category_ids: [4])
 Item.create!(title: "Pernil", description: "Roasted pork, yucca, mojo, chicharron", price: "17.00", image_file_name: "pernil.jpg", category_ids: [4])
-Item.create!(title: "Plato Tipico", description: "Yucca, huevos fritos,  churrasco y platanos.", price: "16.00", image_file_name:"yucca_carne_huevos.jpg", category_ids: [2, 4])
+Item.create!(title: "Plato Tipico", description: "Yucca, huevos fritos,  churrasco y platanos.", price: "16.00", image_file_name:"yucca_carne_huevos.jpg", category_ids: [4])
 Item.create!(title: "Platanos con Chorizos", description: "Platanos Fritos con Chorizos Azados", price: "16.00", image_file_name:"platanos.jpg", category_ids: [4])
 Item.create!(title: "Lomo saltado", description: "Stir fry of beef short ribs, red onions, tomato, potato, ginger", price: "18.00", image_file_name: "lomo.jpg", category_ids: [4])
+Item.create!(title: "Cuban Mussel Crisis", description: "All mussels are steamed with white wine, butter, garlic and shallots, served with papas fritas", price: "17.00", image_file_name:"mussels.jpg", category_ids: [4])
 
 
 Item.create!(title: "Panatela Cubana", description: "Cuban chocolate cake", price: "3.00", image_file_name: "chocolate_cake.jpg", category_ids: [5])
 Item.create!(title: "Pudin Diplomatico", description: "Bread pudding", price: "5.00", image_file_name: "pudin.jpg", category_ids: [5])
 Item.create!(title: "Flan", description: "Milk cake", price: "5.00", image_file_name:"flan.jpg", category_ids: [5])
-Item.create!(title: "Pastelitos", description: "Cuban pastries: guava, cheese, and coconut", price: "3.00", image_file_name: "pastelitos.jpg", category_ids: [2, 5])
+Item.create!(title: "Pastelitos", description: "Cuban pastries: guava, cheese, and coconut", price: "3.00", image_file_name: "pastelitos.jpg", category_ids: [5])
 Item.create!(title: "Arroz en Leche", description: "Cuban rice pudding", price: "3.00", image_file_name: "arroz_leche.jpg", category_ids: [5])
 Item.create!(title: "Buñuelos de Yucca", description: "Yucca batter fried and drizzled w/ syrup.", price: "3.00", image_file_name: "nuegados_sal.jpg", category_ids: [5])
 
