@@ -1,7 +1,8 @@
 <div class="container">
-  <h1 class="page-header">Your Order Is Complete!</h1>
+  <h1 class="page-header">Order Details</h1>
   <h3>Order Status: <%= @order.status %></h3>
   <h5>Date Ordered:<%= time_tag(@order.created_at) %></h5>
+  <h5>Ordered:<%= time_tag(@order.created_at) %></h5>
   <div class="edit-users-container">
     <table class="table">
       <thead>
@@ -39,13 +40,17 @@
     <% if @order.status == "ordered" && current_user.id == @order.user_id %>
       <%= link_to 'Pay with Credit Card', new_charge_path(id: @order), class: 'btn btn-success' %>
     <% end %>
+
     <% if user_admin? %>
       <%= link_to 'Return to Orders', orders_path, class: "btn btn-default" %>
     <% else %>
       <%= link_to 'Return to Menu', root_path, class: "btn btn-default" %>
-      <% unless @order.status == 'cancelled' %>
+    <% unless @order.status == 'cancelled' %>
         <%= link_to 'Cancel This Order', order_path(@order, :status => :cancelled), method: 'patch', class: 'btn btn-danger', confirm: {message: 'This will remove your order permanently. '}%>
       <% end %>
     <% end %>
+    <% if @order.status == 'cancelled' %>
+      <h4>Date Cancelled: <%= distance_of_time_in_words(@order.updated_at, Time.now) %> ago.</h4>
+      <% end %>
   </div>
 </div>
